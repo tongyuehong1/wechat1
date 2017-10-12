@@ -1,0 +1,21 @@
+
+  <view>
+    <view class="center top">我想对你说</view>
+    <view/>
+    <view class="bottom center">
+      <view class="row bottomsize center avg">
+        <view class="column">
+          <image class="pic" bindtap="book" src="{{images.book}}"/>
+          <text class="bottomword">攻略</text>
+        </view>
+        <view class="column">
+          <image class="pic" bindtap="hearts" src="{{images.hearts}}"/>
+          <text class="bottomword">情书</text>
+        </view>
+        <view class="column">
+          <image class="pic" bindtap="two" src="{{images.two}}"/>
+          <text class="bottomword">我们</text>
+        </view>
+      </view>
+    </view>
+  </view>

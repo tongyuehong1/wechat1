@@ -1,0 +1,70 @@
+<style lang="less">
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background-color: pink;
+  height: 3rem;
+}
+
+.bottomword {
+  font-size: 0.7rem;
+  color: white;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottomsize {
+  width: 16rem;
+}
+
+.avg {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pic {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.top {
+  margin: 1.875rem 2.5rem 5px 2.5rem;
+  font-size: 1.6rem;
+  color:gray;
+  font-style: italic;
+}
+
+</style>
+<template>
+  <view>
+    <view class="center top">我想对你说</view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '陪你度过漫长岁月'
+  }
+  data = {
+  }
+  methods = {
+  }
+  onload() { }
+}
+</script>
