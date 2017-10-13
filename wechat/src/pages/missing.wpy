@@ -1,0 +1,108 @@
+<style lang="less">
+.lovers {
+  height: 8rem;
+  width: 10rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.topsize {
+  height: 3rem;
+  width: 3rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.word {
+  color: gray;
+  font-size: 1.2rem;
+}
+
+.border {
+  border: 1px solid black;
+  width: 9rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin {
+  margin-top: 60px;
+}
+.smallmar {
+  margin-top: 15px;
+}
+
+.firstleft {
+  margin-left: 25px;
+}
+.left {
+  margin-left: 10px;
+}
+.firstword {
+  margin-left: 70px;
+}
+</style>
+<template>
+  <view>
+    <view>
+      <image class="topsize" src="{{top}}"></image>
+    </view>
+    <view class="margin">
+      <view class="row">
+        <view class="word firstword">告白日</view>
+        <view class="border firstleft">
+          <input></input>
+        </view>
+      </view>
+      <view class="row smallmar center">
+        <view class="word">她的破壳日</view>
+        <view class="border left">
+          <input></input>
+        </view>
+      </view>
+      </view>
+      <view class="row smallmar center">
+        <view class="word">他的破壳日</view>
+        <view class="border left">
+          <input></input>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Missing extends wepy.page {
+  config = {
+    navigationBarTitleText: '纪念日'
+  }
+  data = {
+    // missing: '../images/missing.jpg',
+    top: '../images/misstop.png'
+  }
+  onLoad() {
+  }
+}
+</script>

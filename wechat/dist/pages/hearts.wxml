@@ -1,4 +1,7 @@
 
-  <view>
-    <view class="center top">我想对你说</view>
+  <view class="size center">
+    <view class="column">
+      <image src="{{center}}"/>
+      <view class="center top border mar" bindtap="letter">我想对你说</view>
+    </view>
   </view>

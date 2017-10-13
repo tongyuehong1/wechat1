@@ -1,22 +1,13 @@
 <style lang="less">
-.bottom {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  background-color: pink;
-  height: 3rem;
-}
-
-.bottomword {
-  font-size: 0.7rem;
-  color: white;
-}
-
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.size {
+  height: 30rem;
+  width: 20rem;
 }
 
 .row {
@@ -28,43 +19,45 @@
   display: flex;
   flex-direction: column;
 }
-
-.bottomsize {
-  width: 16rem;
-}
-
-.avg {
-  display: flex;
-  justify-content: space-between;
-}
-
-.pic {
-  height: 1.25rem;
-  width: 1.25rem;
-}
 .top {
   margin: 1.875rem 2.5rem 5px 2.5rem;
   font-size: 1.6rem;
-  color:gray;
+  color: gray;
   font-style: italic;
 }
-
+.border {
+  border: 3px solid gray;
+  border-radius: 1rem;
+}
+.mar {
+  margin-top: 4rem;
+}
 </style>
 <template>
-  <view>
-    <view class="center top">我想对你说</view>
+  <view class="size center">
+    <view class="column">
+      <image src="{{center}}"></image>
+      <view class="center top border mar" @tap="letter">我想对你说</view>
+    </view>
   </view>
 </template>
 <script>
 import wepy from 'wepy'
-export default class Index extends wepy.page {
+export default class Hearts extends wepy.page {
   config = {
     navigationBarTitleText: '陪你度过漫长岁月'
   }
   data = {
+    src: '',
+    center: '../images/center.jpg'
   }
   methods = {
+    letter() {
+      wepy.navigateTo({
+        url: './letter'
+      })
+    }
   }
-  onload() { }
+  onLoad() { }
 }
 </script>

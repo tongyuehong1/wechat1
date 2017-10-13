@@ -17,7 +17,12 @@ export default class extends wepy.app {
   config = {
     pages: [
       'pages/hearts',
-      'pages/index'
+      'pages/letter',
+      'pages/book',
+      'pages/two',
+      'pages/missing',
+      'pages/photo',
+      'pages/memory'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -26,29 +31,23 @@ export default class extends wepy.app {
       navigationBarTextStyle: 'white'
     },
     tabBar: {
+      backgroundColor: '#ffc0cb',
+      color: '#808080',
+      selectedColor: '#000000',
       list: [{
-        pagePath: 'pages/index',
-        color: '#000000',
-        selectedColor: '#808080',
-        backgroundColor: #ffc0cb,
-        iconPath: './images/book.png',
-        selectedIconPath: './images/booktwo.png',
+        pagePath: 'pages/book',
+        iconPath: './images/booktwo.png',
+        selectedIconPath: './images/book.png',
         text: '攻略'
       }, {
         pagePath: 'pages/hearts',
-        color: '#000000',
-        selectedColor: #808080,
-        backgroundColor: '#ffc0cb',
-        iconPath: './images/hearts.png',
-        selectedIconPath: './images/hearttwo.png',
+        iconPath: './images/hearttwo.png',
+        selectedIconPath: './images/hearts.png',
         text: '小情书'
       }, {
         pagePath: 'pages/two',
-        color: '#000000',
-        selectedColor: '#808080',
-        backgroundColor: #ffc0cb,
-        iconPath: './images/two.png',
-        selectedIconPath: './images/twotwo.png',
+        iconPath: './images/twotwo.png',
+        selectedIconPath: './images/two.png',
         text: '我们'
       }]
     }

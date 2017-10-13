@@ -6,9 +6,9 @@
 </template>
 <script>
 import wepy from 'wepy'
-export default class Book extends wepy.page {
+export default class Memory extends wepy.page {
   config = {
-    navigationBarTitleText: '陪你度过漫长岁月'
+    navigationBarTitleText: '回忆集'
   }
   onLoad() {
   }

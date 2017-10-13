@@ -1,15 +1,127 @@
 <style lang="less">
+.cir {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+}
 
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column; // background-color: gray;
+  margin-top: 1rem;
+  height: 3.8rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.out {
+  display: flex;
+  border: 1px solid pink;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 8rem;
+  background-color: pink;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice {
+  margin-top: 4rem;
+}
+
+.everychoice {
+  margin-top: 1rem;
+}
+
+.lovers {
+  height: 6rem;
+  width: 10rem;
+}
+
+.loversmar {
+  margin-top: 3rem;
+}
 </style>
 <template>
-
+  <view>
+    <view class="center userinfo row">
+      <view class="cir center">
+        <image class="userinfo-avatar" src="{{ avatarUrl }}" background-size="cover" />
+      </view>
+      <view class="userinfo-nickname center">{{ nickName }}</view>
+    </view>
+    <view class="center choice">
+      <text class="out" @tap="missing">纪念日</text>
+      <text class="out everychoice" @tap="photo">照片集</text>
+      <text class="out everychoice" @tap="memory">回忆集</text>
+    </view>
+    <view class="loversmar">
+      <view class="center">
+          <image class="lovers" src="{{lovers}}"></image>
+        </view>
+    </view>
+  </view>
 </template>
 <script>
 import wepy from 'wepy'
-export default class Index extends wepy.page {
+export default class Two extends wepy.page {
   config = {
     navigationBarTitleText: '陪你度过漫长岁月'
   }
-  onload() { }
+  data = {
+    src: '',
+    lovers: '../images/lovers.jpg',
+    // userInfo: '',
+    nickName: '',
+    avatarUrl: ''
+  }
+  methods = {
+    missing() {
+      wepy.navigateTo({
+        url: './missing'
+      })
+    },
+    photo() {
+      wepy.navigateTo({
+        url: './photo'
+      })
+    },
+    memory() {
+      wepy.navigateTo({
+        url: './memory'
+      })
+    }
+  }
+  onLoad() {
+    let self = this
+    wepy.getUserInfo({
+      success: function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+      }
+    })
+  }
 }
 </script>

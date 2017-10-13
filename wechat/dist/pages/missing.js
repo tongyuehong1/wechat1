@@ -19,34 +19,37 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Book = function (_wepy$page) {
-  _inherits(Book, _wepy$page);
+var Missing = function (_wepy$page) {
+  _inherits(Missing, _wepy$page);
 
-  function Book() {
+  function Missing() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, Book);
+    _classCallCheck(this, Missing);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Book.__proto__ || Object.getPrototypeOf(Book)).call.apply(_ref, [this].concat(args))), _this), _this.config = {
-      navigationBarTitleText: '陪你度过漫长岁月'
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Missing.__proto__ || Object.getPrototypeOf(Missing)).call.apply(_ref, [this].concat(args))), _this), _this.config = {
+      navigationBarTitleText: '纪念日'
+    }, _this.data = {
+      // missing: '../images/missing.jpg',
+      top: '../images/misstop.png'
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(Book, [{
+  _createClass(Missing, [{
     key: 'onLoad',
     value: function onLoad() {}
   }]);
 
-  return Book;
+  return Missing;
 }(_wepy2.default.page);
 
 
-Page(require('./../npm/wepy/lib/wepy.js').default.$createPage(Book , 'pages/book'));
+Page(require('./../npm/wepy/lib/wepy.js').default.$createPage(Missing , 'pages/missing'));
 
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJvb2suanMiXSwibmFtZXMiOlsiQm9vayIsImNvbmZpZyIsIm5hdmlnYXRpb25CYXJUaXRsZVRleHQiLCJwYWdlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFDQTs7Ozs7Ozs7Ozs7O0lBQ3FCQSxJOzs7Ozs7Ozs7Ozs7OztrTEFDbkJDLE0sR0FBUztBQUNQQyw4QkFBd0I7QUFEakIsSzs7Ozs7NkJBR0EsQ0FDUjs7OztFQUwrQixlQUFLQyxJOztrQkFBbEJILEkiLCJmaWxlIjoiYm9vay5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxuaW1wb3J0IHdlcHkgZnJvbSAnd2VweSdcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIEJvb2sgZXh0ZW5kcyB3ZXB5LnBhZ2Uge1xuICBjb25maWcgPSB7XG4gICAgbmF2aWdhdGlvbkJhclRpdGxlVGV4dDogJ+mZquS9oOW6pui/h+a8q+mVv+WygeaciCdcbiAgfVxuICBvbkxvYWQoKSB7XG4gIH1cbn1cbiJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1pc3NpbmcuanMiXSwibmFtZXMiOlsiTWlzc2luZyIsImNvbmZpZyIsIm5hdmlnYXRpb25CYXJUaXRsZVRleHQiLCJkYXRhIiwidG9wIiwicGFnZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQ0E7Ozs7Ozs7Ozs7OztJQUNxQkEsTzs7Ozs7Ozs7Ozs7Ozs7d0xBQ25CQyxNLEdBQVM7QUFDUEMsOEJBQXdCO0FBRGpCLEssUUFHVEMsSSxHQUFPO0FBQ0w7QUFDQUMsV0FBSztBQUZBLEs7Ozs7OzZCQUlFLENBQ1I7Ozs7RUFUa0MsZUFBS0MsSTs7a0JBQXJCTCxPIiwiZmlsZSI6Im1pc3NpbmcuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbmltcG9ydCB3ZXB5IGZyb20gJ3dlcHknXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBNaXNzaW5nIGV4dGVuZHMgd2VweS5wYWdlIHtcbiAgY29uZmlnID0ge1xuICAgIG5hdmlnYXRpb25CYXJUaXRsZVRleHQ6ICfnuqrlv7Xml6UnXG4gIH1cbiAgZGF0YSA9IHtcbiAgICAvLyBtaXNzaW5nOiAnLi4vaW1hZ2VzL21pc3NpbmcuanBnJyxcbiAgICB0b3A6ICcuLi9pbWFnZXMvbWlzc3RvcC5wbmcnXG4gIH1cbiAgb25Mb2FkKCkge1xuICB9XG59XG4iXX0=
