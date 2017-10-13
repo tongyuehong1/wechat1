@@ -19,24 +19,40 @@
   display: flex;
   flex-direction: column;
 }
+
 .top {
   margin: 1.875rem 2.5rem 5px 2.5rem;
   font-size: 1.6rem;
   color: gray;
   font-style: italic;
 }
+
 .border {
   border: 3px solid gray;
   border-radius: 1rem;
 }
+
 .mar {
   margin-top: 4rem;
+}
+.secondsize {
+  height: 368px;
+  width:320px;
 }
 </style>
 <template>
   <view class="size center">
-    <view class="column">
-      <image src="{{center}}"></image>
+    <view class="secondsize column">
+      <view>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="1000" duration="1000" circular="true">
+          <block wx:for="{{imgUrls}}" wx:key="index">
+            <swiper-item>
+              <image src="{{item}}"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+
       <view class="center top border mar" @tap="letter">我想对你说</view>
     </view>
   </view>
@@ -49,7 +65,11 @@ export default class Hearts extends wepy.page {
   }
   data = {
     src: '',
-    center: '../images/center.jpg'
+    center: '../images/center.jpg',
+    imgUrls: [
+      '../images/center.jpg',
+      '../images/twopeople.jpg'
+    ]
   }
   methods = {
     letter() {

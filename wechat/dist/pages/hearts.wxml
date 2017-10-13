@@ -1,7 +1,16 @@
 
   <view class="size center">
-    <view class="column">
-      <image src="{{center}}"/>
+    <view class="secondsize column">
+      <view>
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="1000" duration="1000" circular="true">
+          <block  wx:for="{{imgUrls}}" wx:key="index">
+            <swiper-item>
+              <image src="{{item}}"/>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+
       <view class="center top border mar" bindtap="letter">我想对你说</view>
     </view>
   </view>
