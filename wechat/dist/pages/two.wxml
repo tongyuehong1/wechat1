@@ -1,8 +1,9 @@
 
-  <view>
+<view class="background">
+  <!-- <view class="background"> -->
     <view class="center userinfo row">
       <view class="cir center">
-        <image class="userinfo-avatar" src="{{ avatarUrl }}" background-size="cover"/>
+        <image class="userinfo-avatar" src="{{ avatarUrl }}"/>
       </view>
       <view class="userinfo-nickname center">{{ nickName }}</view>
     </view>
@@ -16,4 +17,5 @@
           <image class="lovers" src="{{lovers}}"/>
         </view>
     </view>
+  <!-- </view> -->
   </view>

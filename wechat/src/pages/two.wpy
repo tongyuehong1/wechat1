@@ -20,7 +20,7 @@
 .userinfo {
   display: flex;
   flex-direction: column; // background-color: gray;
-  margin-top: 1rem;
+  margin-top: 2rem;
   height: 3.8rem;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .choice {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .everychoice {
@@ -63,12 +63,21 @@
 .loversmar {
   margin-top: 3rem;
 }
+.background {
+  // background-image: url('http://img1.3lian.com/2016/w2/71/6.jpg');
+  height: 30rem;
+  width: 20rem;
+}
+.mar {
+  margin-top: 30px;
+}
 </style>
 <template>
-  <view>
+<view class="background">
+  <!-- <view class="background"> -->
     <view class="center userinfo row">
       <view class="cir center">
-        <image class="userinfo-avatar" src="{{ avatarUrl }}" background-size="cover" />
+        <image class="userinfo-avatar" src="{{ avatarUrl }}"/>
       </view>
       <view class="userinfo-nickname center">{{ nickName }}</view>
     </view>
@@ -82,6 +91,7 @@
           <image class="lovers" src="{{lovers}}"></image>
         </view>
     </view>
+  <!-- </view> -->
   </view>
 </template>
 <script>

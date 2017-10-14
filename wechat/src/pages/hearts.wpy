@@ -33,21 +33,25 @@
 }
 
 .mar {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .secondsize {
-  height: 368px;
-  width:320px;
+  height: 25rem;
+  width:18rem;
+}
+.picsize {
+  height: 18rem;
+  width:15rem;
 }
 </style>
 <template>
   <view class="size center">
-    <view class="secondsize column">
+    <view class="secondsize column center">
       <view>
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="1000" duration="1000" circular="true">
+        <swiper class="picsize" indicator-dots="{{indicatorDots}}" autoplay="true" interval="1000" duration="1000" circular="true">
           <block wx:for="{{imgUrls}}" wx:key="index">
             <swiper-item>
-              <image src="{{item}}"></image>
+              <image src="{{item}}" class="picsize"></image>
             </swiper-item>
           </block>
         </swiper>
@@ -68,7 +72,8 @@ export default class Hearts extends wepy.page {
     center: '../images/center.jpg',
     imgUrls: [
       '../images/center.jpg',
-      '../images/twopeople.jpg'
+      '../images/twopeople.jpg',
+      '../images/tree.jpg'
     ]
   }
   methods = {

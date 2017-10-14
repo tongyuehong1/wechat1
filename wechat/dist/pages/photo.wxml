@@ -1,0 +1,9 @@
+
+<view>
+<view class="center column bottom">
+  <!-- <view class="border"> -->
+  <!-- <image src="{{img}}"></image> -->
+  <!-- </view> -->
+  <button class="botton center" bindtap="image">上传照片</button>
+</view>
+</view>

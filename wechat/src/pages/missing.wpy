@@ -35,6 +35,7 @@
 .border {
   border: 1px solid black;
   width: 9rem;
+  border-radius: 50px;
 }
 
 .row {
@@ -50,6 +51,7 @@
 .margin {
   margin-top: 60px;
 }
+
 .smallmar {
   margin-top: 15px;
 }
@@ -57,11 +59,17 @@
 .firstleft {
   margin-left: 25px;
 }
+
 .left {
   margin-left: 10px;
 }
+
 .firstword {
   margin-left: 70px;
+}
+
+.input {
+  padding-left: 10px;
 }
 </style>
 <template>
@@ -72,22 +80,28 @@
     <view class="margin">
       <view class="row">
         <view class="word firstword">告白日</view>
-        <view class="border firstleft">
-          <input></input>
+        <view class="border firstleft center">
+          <input class="input"></input>
         </view>
       </view>
       <view class="row smallmar center">
         <view class="word">她的破壳日</view>
-        <view class="border left">
-          <input></input>
+        <view class="border left center">
+          <input class="input"></input>
         </view>
       </view>
       <view class="row smallmar center">
         <view class="word">他的破壳日</view>
-        <view class="border left">
-          <input></input>
+        <view class="border left center">
+          <input class="input"></input>
         </view>
       </view>
+    </view>
+    <!-- <view wx:if="">
+
+    </view>
+    <view wx:else> -->
+
     </view>
   </view>
 </template>
@@ -98,10 +112,18 @@ export default class Missing extends wepy.page {
     navigationBarTitleText: '纪念日'
   }
   data = {
-    // missing: '../images/missing.jpg',
-    top: '../images/misstop.png'
+    top: '../images/misstop.png',
+    input: ''
+  }
+  methods = {
   }
   onLoad() {
+    wepy.request({
+      url: 'http://127.0.0.1:7001/missing',
+      success: function (res) {
+        console.log(res)
+      }
+    })
   }
 }
 </script>

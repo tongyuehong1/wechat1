@@ -1,11 +1,11 @@
 
   <view class="size center">
-    <view class="secondsize column">
+    <view class="secondsize column center">
       <view>
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="1000" duration="1000" circular="true">
+        <swiper class="picsize" indicator-dots="{{indicatorDots}}" autoplay="true" interval="1000" duration="1000" circular="true">
           <block  wx:for="{{imgUrls}}" wx:key="index">
             <swiper-item>
-              <image src="{{item}}"/>
+              <image src="{{item}}" class="picsize"/>
             </swiper-item>
           </block>
         </swiper>

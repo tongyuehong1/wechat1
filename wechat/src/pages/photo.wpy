@@ -1,14 +1,62 @@
 <style lang="less">
-
+.bottom {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  margin-bottom: 4rem;
+}
+.botton {
+  background-color: pink;
+  height: 2rem;
+  width: 7rem;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.border {
+  border: 3px solid gray;
+  height: 12rem;
+  width: 10rem;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
 </style>
 <template>
-
+<view>
+<view class="center column bottom">
+  <!-- <view class="border"> -->
+  <!-- <image src="{{img}}"></image> -->
+  <!-- </view> -->
+  <button class="botton center" bindtap="image">上传照片</button>
+</view>
+</view>
 </template>
 <script>
 import wepy from 'wepy'
 export default class Photo extends wepy.page {
   config = {
     navigationBarTitleText: '照片集'
+  }
+  methods = {
+    image() {
+      let self = this
+      wepy.chooseImage({
+        count: 1, // 默认9
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success(res) {
+          self.img = res.tempFilePaths[0]
+          self.setData({
+            img: res.tempFilePaths[0]
+          })
+        }
+      })
+    }
   }
   onLoad() {
   }

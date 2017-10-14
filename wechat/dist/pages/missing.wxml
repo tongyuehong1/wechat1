@@ -6,21 +6,26 @@
     <view class="margin">
       <view class="row">
         <view class="word firstword">告白日</view>
-        <view class="border firstleft">
-          <input/>
+        <view class="border firstleft center">
+          <input class="input"/>
         </view>
       </view>
       <view class="row smallmar center">
         <view class="word">她的破壳日</view>
-        <view class="border left">
-          <input/>
+        <view class="border left center">
+          <input class="input"/>
         </view>
       </view>
       <view class="row smallmar center">
         <view class="word">他的破壳日</view>
-        <view class="border left">
-          <input/>
+        <view class="border left center">
+          <input class="input"/>
         </view>
       </view>
     </view>
-  </view>
+    <!-- <view wx:if="">
+
+    </view>
+    <view wx:else> -->
+
+    </view>
