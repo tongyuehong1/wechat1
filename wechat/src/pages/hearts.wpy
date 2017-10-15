@@ -30,6 +30,7 @@
 .border {
   border: 3px solid gray;
   border-radius: 1rem;
+  width: 9.5rem;
 }
 
 .mar {
@@ -57,7 +58,7 @@
         </swiper>
       </view>
 
-      <view class="center top border mar" @tap="letter">我想对你说</view>
+      <view class="center top border mar" @tap="letter">我想对TA说</view>
     </view>
   </view>
 </template>

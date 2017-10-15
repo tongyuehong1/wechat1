@@ -49,7 +49,7 @@
 }
 
 .margin {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .smallmar {
@@ -71,9 +71,27 @@
 .input {
   padding-left: 10px;
 }
+.picmar {
+  margin-top: 60px;
+}
+.botton {
+  border: 1px solid white;
+  border-radius: 30px;
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.2rem;
+  width: 5rem;
+}
+.pic {
+  height: 11rem;
+  width: 20rem;
+}
 </style>
 <template>
   <view>
+    <form bindsubmit="formSubmit">
     <view>
       <image class="topsize" src="{{top}}"></image>
     </view>
@@ -81,7 +99,7 @@
       <view class="row">
         <view class="word firstword">告白日</view>
         <view class="border firstleft center">
-          <input class="input"></input>
+          <input class="input" name="input"></input>
         </view>
       </view>
       <view class="row smallmar center">
@@ -101,8 +119,15 @@
 
     </view>
     <view wx:else> -->
+      <view class="center margin">
+      <button class="botton" formType="submit">确定</button>
+      </view>
+      <view class="center pic picmar">
+        <image src="{{pinktree}}"></image>
+      </view>
 
     </view>
+  </form>
   </view>
 </template>
 <script>
@@ -113,17 +138,31 @@ export default class Missing extends wepy.page {
   }
   data = {
     top: '../images/misstop.png',
-    input: ''
+    input: '',
+    pinktree: '../images/pinktree.jpg',
+    confession: ''
   }
   methods = {
+    formSubmit(e) {
+      console.log('form发生了submit事件，携带数据为：', e.detail.value)
+      let self = this
+      self.confession = e.detail.value
+
+      wepy.request({
+        url: 'http://127.0.0.1:7001/two/missing',
+        method: 'POST',
+        data: {
+          date: e.detail.value.input
+          // 她的破壳日: 'self.herbirth',
+          // 他的破壳日: 'self.hisbirth'
+        },
+        success: function (res) {
+          console.log(res)
+        }
+      })
+    }
   }
   onLoad() {
-    wepy.request({
-      url: 'http://127.0.0.1:7001/missing',
-      success: function (res) {
-        console.log(res)
-      }
-    })
   }
 }
 </script>

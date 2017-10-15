@@ -1,0 +1,12 @@
+
+<view>
+  <view class="center userinfo">
+    <view class="cir center">
+      <image class="userinfo-avatar" src="{{avatarUrl}}"/>
+    </view>
+    <view class="userinfo-nickname center">{{nickName}}</view>
+  </view>
+  <view class="center mar">
+  <view class="border center" bindtap="hearts">授权登录</view>
+  </view>
+  </view>

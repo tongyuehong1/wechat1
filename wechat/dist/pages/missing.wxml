@@ -1,5 +1,6 @@
 
   <view>
+    <form bindsubmit="formSubmit">
     <view>
       <image class="topsize" src="{{top}}"/>
     </view>
@@ -7,7 +8,7 @@
       <view class="row">
         <view class="word firstword">告白日</view>
         <view class="border firstleft center">
-          <input class="input"/>
+          <input class="input" name="input"/>
         </view>
       </view>
       <view class="row smallmar center">
@@ -27,5 +28,13 @@
 
     </view>
     <view wx:else> -->
+      <view class="center margin">
+      <button class="botton" formType="submit">确定</button>
+      </view>
+      <view class="center pic picmar">
+        <image src="{{pinktree}}"/>
+      </view>
 
-    </view>
+    
+  </form>
+  </view>

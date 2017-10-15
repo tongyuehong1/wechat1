@@ -11,6 +11,6 @@
         </swiper>
       </view>
 
-      <view class="center top border mar" bindtap="letter">我想对你说</view>
+      <view class="center top border mar" bindtap="letter">我想对TA说</view>
     </view>
   </view>
