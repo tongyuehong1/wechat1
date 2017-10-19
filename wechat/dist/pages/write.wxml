@@ -1,0 +1,12 @@
+
+  <view class="image column">
+    <view class="marleft martop">
+      <text>我想对TA说</text>
+    </view>
+    <view class="center lettertop">
+      <textarea class="letter" name="textarea" bindinput="letter"/>
+    </view>
+    <view class="center bottontop">
+      <view class="bottom" bindtap="show">寄给TA</view>
+    </view>
+  </view>

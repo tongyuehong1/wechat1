@@ -1,12 +1,11 @@
 
-  <view class="image column">
-    <view class="marleft martop">
-      <text>我想对TA说</text>
+  <view>
+    <view class="add imgmargin">
+      <image class="add" src="{{add}}" bindtap="letter"/>
     </view>
-    <view class="center lettertop">
-      <textarea class="letter"/>
+    <view class="center">
+    <view class="size"  wx:for="{{text}}" wx:key="index">
+      <text>{{item.letters}}</text>
     </view>
-    <view class="center bottontop">
-    <botton class="bottom">寄给TA</botton>
     </view>
   </view>

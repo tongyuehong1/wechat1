@@ -63,21 +63,23 @@
 .loversmar {
   margin-top: 3rem;
 }
+
 .background {
   // background-image: url('http://img1.3lian.com/2016/w2/71/6.jpg');
-  height: 30rem;
-  width: 20rem;
+  height: 100%;
+  width: 100%;
 }
+
 .mar {
   margin-top: 30px;
 }
 </style>
 <template>
-<view class="background">
-  <!-- <view class="background"> -->
+  <view class="background">
+    <!-- <view class="background"> -->
     <view class="center userinfo row">
       <view class="cir center">
-        <image class="userinfo-avatar" src="{{ avatarUrl }}"/>
+        <image class="userinfo-avatar" src="{{ avatarUrl }}" />
       </view>
       <view class="userinfo-nickname center">{{ nickName }}</view>
     </view>
@@ -88,10 +90,10 @@
     </view>
     <view class="loversmar">
       <view class="center">
-          <image class="lovers" src="{{lovers}}"></image>
-        </view>
+        <image class="lovers" src="{{lovers}}"></image>
+      </view>
     </view>
-  <!-- </view> -->
+    <!-- </view> -->
   </view>
 </template>
 <script>

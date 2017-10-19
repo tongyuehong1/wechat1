@@ -1,40 +1,45 @@
 
   <view>
-    <form bindsubmit="formSubmit">
-    <view>
-      <image class="topsize" src="{{top}}"/>
-    </view>
-    <view class="margin">
-      <view class="row">
-        <view class="word firstword">告白日</view>
-        <view class="border firstleft center">
-          <input class="input" name="input"/>
+    <view class="back center"  wx:if="{{text}}">
+      <!-- <view class="back center"> -->
+        <view class="center">
+          <text>告白日: {{text.date}}</text>
+          <text>她的生日: {{text.female}}</text>
+          <text>他的生日: {{text.male}}</text>
         </view>
-      </view>
-      <view class="row smallmar center">
-        <view class="word">她的破壳日</view>
-        <view class="border left center">
-          <input class="input"/>
-        </view>
-      </view>
-      <view class="row smallmar center">
-        <view class="word">他的破壳日</view>
-        <view class="border left center">
-          <input class="input"/>
-        </view>
-      </view>
+      <!-- </view> -->
     </view>
-    <!-- <view wx:if="">
-
+    <view  wx:else>
+      <form bindsubmit="formSubmit">
+        <view>
+          <image class="topsize" src="{{top}}"/>
+        </view>
+        <view class="margin">
+          <view class="row">
+            <view class="word firstword">告白日</view>
+            <view class="border firstleft center">
+              <input class="input" name="input"/>
+            </view>
+          </view>
+          <view class="row smallmar center">
+            <view class="word">她的破壳日</view>
+            <view class="border left center">
+              <input class="input" name="female"/>
+            </view>
+          </view>
+          <view class="row smallmar center">
+            <view class="word">他的破壳日</view>
+            <view class="border left center">
+              <input class="input" name="male"/>
+            </view>
+          </view>
+        </view>
+        <view class="center margin">
+          <button class="botton" formType="submit">确定</button>
+        </view>
+        <view class="center pic picmar">
+          <image src="{{pinktree}}"/>
+        </view>
+      </form>
     </view>
-    <view wx:else> -->
-      <view class="center margin">
-      <button class="botton" formType="submit">确定</button>
-      </view>
-      <view class="center pic picmar">
-        <image src="{{pinktree}}"/>
-      </view>
-
-    
-  </form>
   </view>

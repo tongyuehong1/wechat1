@@ -16,13 +16,15 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/home',
+      // 'pages/home',
       'pages/hearts',
+      'pages/write',
       'pages/letter',
-      'pages/book',
+      'pages/strategy',
       'pages/two',
       'pages/missing',
       'pages/photo',
+      // 'pages/show',
       'pages/memory'
     ],
     window: {
@@ -36,7 +38,7 @@ export default class extends wepy.app {
       color: '#808080',
       selectedColor: '#000000',
       list: [{
-        pagePath: 'pages/book',
+        pagePath: 'pages/strategy',
         iconPath: './images/booktwo.png',
         selectedIconPath: './images/book.png',
         text: '攻略'

@@ -71,9 +71,11 @@
 .input {
   padding-left: 10px;
 }
+
 .picmar {
   margin-top: 60px;
 }
+
 .botton {
   border: 1px solid white;
   border-radius: 30px;
@@ -84,50 +86,62 @@
   height: 2.2rem;
   width: 5rem;
 }
+
 .pic {
   height: 11rem;
   width: 20rem;
 }
+
+.back {
+  height: 28rem;
+  width: 100%;
+  background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508329488875&di=e30bdf66a4750343f3c56b6b184fba7c&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F64%2F91%2F41F58PIC9A3_1024.jpg');
+}
 </style>
 <template>
   <view>
-    <form bindsubmit="formSubmit">
-    <view>
-      <image class="topsize" src="{{top}}"></image>
-    </view>
-    <view class="margin">
-      <view class="row">
-        <view class="word firstword">告白日</view>
-        <view class="border firstleft center">
-          <input class="input" name="input"></input>
+    <view class="back center" wx:if="{{text}}">
+      <!-- <view class="back center"> -->
+        <view class="center">
+          <text>告白日: {{text.date}}</text>
+          <text>她的生日: {{text.female}}</text>
+          <text>他的生日: {{text.male}}</text>
         </view>
-      </view>
-      <view class="row smallmar center">
-        <view class="word">她的破壳日</view>
-        <view class="border left center">
-          <input class="input"></input>
+      <!-- </view> -->
+    </view>
+    <view wx:else>
+      <form bindsubmit="formSubmit">
+        <view>
+          <image class="topsize" src="{{top}}"></image>
         </view>
-      </view>
-      <view class="row smallmar center">
-        <view class="word">他的破壳日</view>
-        <view class="border left center">
-          <input class="input"></input>
+        <view class="margin">
+          <view class="row">
+            <view class="word firstword">告白日</view>
+            <view class="border firstleft center">
+              <input class="input" name="input"></input>
+            </view>
+          </view>
+          <view class="row smallmar center">
+            <view class="word">她的破壳日</view>
+            <view class="border left center">
+              <input class="input" name="female"></input>
+            </view>
+          </view>
+          <view class="row smallmar center">
+            <view class="word">他的破壳日</view>
+            <view class="border left center">
+              <input class="input" name="male"></input>
+            </view>
+          </view>
         </view>
-      </view>
+        <view class="center margin">
+          <button class="botton" formType="submit">确定</button>
+        </view>
+        <view class="center pic picmar">
+          <image src="{{pinktree}}"></image>
+        </view>
+      </form>
     </view>
-    <!-- <view wx:if="">
-
-    </view>
-    <view wx:else> -->
-      <view class="center margin">
-      <button class="botton" formType="submit">确定</button>
-      </view>
-      <view class="center pic picmar">
-        <image src="{{pinktree}}"></image>
-      </view>
-
-    </view>
-  </form>
   </view>
 </template>
 <script>
@@ -140,7 +154,11 @@ export default class Missing extends wepy.page {
     top: '../images/misstop.png',
     input: '',
     pinktree: '../images/pinktree.jpg',
-    confession: ''
+    confession: '',
+    date: '',
+    female: '',
+    male: '',
+    text: ''
   }
   methods = {
     formSubmit(e) {
@@ -148,21 +166,58 @@ export default class Missing extends wepy.page {
       let self = this
       self.confession = e.detail.value
 
-      wepy.request({
-        url: 'http://127.0.0.1:7001/two/missing',
-        method: 'POST',
-        data: {
-          date: e.detail.value.input
-          // 她的破壳日: 'self.herbirth',
-          // 他的破壳日: 'self.hisbirth'
-        },
-        success: function (res) {
-          console.log(res)
+      wepy.getUserInfo({
+        success: function(res) {
+          self.nickName = res.userInfo.nickName
+          self.avatarUrl = res.userInfo.avatarUrl
+          wepy.request({
+            url: 'http://127.0.0.1:7001/two/missinginsert',
+            method: 'POST',
+            data: {
+              date: e.detail.value.input,
+              female: e.detail.value.female,
+              male: e.detail.value.male,
+              wechat: self.nickName
+            },
+            success: function(res) {
+              console.log(res)
+            }
+          })
         }
       })
     }
+    // show() {
+    //   wepy.navigateTo({
+    //     url: './show'
+    //   })
+    // }
   }
-  onLoad() {
+  async onLoad() {
+    let self = this
+    wepy.getUserInfo({
+      success: async function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        await wepy.request({
+          url: 'http://127.0.0.1:7001/two/missingselect',
+          method: 'POST',
+          data: {
+            wechat: self.nickName
+          },
+          success: function(res) {
+            self.text = res.data[0]
+            // self.date = res.data[0].date
+            // self.female = res.data[0].female
+            // self.male = res.data[0].male
+            self.setData({
+              text: res.data[0]
+            })
+            console.log(self.text)
+          }
+        })
+      }
+    })
+    this.$apply()
   }
 }
 </script>

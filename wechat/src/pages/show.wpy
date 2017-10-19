@@ -1,0 +1,40 @@
+<style lang="less">
+
+</style>
+<template>
+  <view>
+    {{text}}
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Show extends wepy.page {
+  config = {
+    navigationBarTitleText: '纪念日'
+  }
+  data = {
+    text: ''
+  }
+  onLoad() {
+    let self = this
+    wepy.getUserInfo({
+      success: function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        wepy.request({
+          url: 'http://127.0.0.1:7001/two/missingselect',
+          method: 'POST',
+          data: {
+            wechat: self.nickName
+          },
+          success: function(res) {
+            self.text = res.data[0].date
+            console.log(self.text)
+            // console.log(self.text.date)
+          }
+        })
+      }
+    })
+  }
+}
+</script>

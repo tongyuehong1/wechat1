@@ -6,8 +6,8 @@
 }
 
 .size {
-  height: 30rem;
-  width: 20rem;
+  height: 100%;
+  width: 100%;
 }
 
 .row {
@@ -39,6 +39,7 @@
 .secondsize {
   height: 25rem;
   width:18rem;
+  margin-top: 2.5rem;
 }
 .picsize {
   height: 18rem;
