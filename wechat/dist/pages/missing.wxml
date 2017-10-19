@@ -9,37 +9,38 @@
         </view>
       <!-- </view> -->
     </view>
-    <view  wx:else>
+    <view  wx:else class="back">
       <form bindsubmit="formSubmit">
-        <view>
-          <image class="topsize" src="{{top}}"/>
+        <!-- <view>
+          <image class="topsize" src="{{top}}"></image>
+        </view> -->
+        <view class="center">
+          <view class="out">
+            <view class="word">我们相遇在</view>
+            <view class="left center">
+              <input class="input center inputword" name="input" placeholder="2017-10-19"/>
+            </view>
+          </view>
+          <view class="out">
+            <view class="word">我的诞生日</view>
+            <view class="left center">
+              <input class="input center inputword" name="female" placeholder="填写日期"/>
+            </view>
+          </view>
+          <view class="out">
+            <view class="word">TA的诞生日</view>
+            <view class="left center">
+              <input class="input center inputword" name="male" placeholder="填写日期"/>
+            </view>
+          </view>
         </view>
-        <view class="margin">
-          <view class="row">
-            <view class="word firstword">告白日</view>
-            <view class="border firstleft center">
-              <input class="input" name="input"/>
-            </view>
-          </view>
-          <view class="row smallmar center">
-            <view class="word">她的破壳日</view>
-            <view class="border left center">
-              <input class="input" name="female"/>
-            </view>
-          </view>
-          <view class="row smallmar center">
-            <view class="word">他的破壳日</view>
-            <view class="border left center">
-              <input class="input" name="male"/>
-            </view>
-          </view>
-        </view>
-        <view class="center margin">
+        <view class="space"/>
+        <!-- <view class="center margin">
           <button class="botton" formType="submit">确定</button>
-        </view>
-        <view class="center pic picmar">
-          <image src="{{pinktree}}"/>
-        </view>
+        </view> -->
+        <!-- <view class="center pic picmar">
+          <image src="{{pinktree}}"></image>
+        </view> -->
       </form>
     </view>
   </view>

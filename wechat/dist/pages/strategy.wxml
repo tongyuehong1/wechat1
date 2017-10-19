@@ -1,6 +1,10 @@
 
+  <view class="background">
   <view class="all center">
     <view class="size"  wx:for="{{text}}" wx:key="index">
       <text>{{item.strategy}}</text>
-      </view>
+    </view>
+    <view class="background">
+  </view>
+  </view>
   </view>

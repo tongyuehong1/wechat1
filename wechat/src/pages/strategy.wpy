@@ -7,22 +7,34 @@
   margin-top: 0.8rem;
   padding-left: 0.5rem;
 }
+
 .all {
   height: 100%;
   width: 100%;
 }
+
 .center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.background {
+  // background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508420533481&di=8217b39963e897f5faec526dc22ed101&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fw14%2F35%2Fd%2F83.jpg');
+  height: 100%;
+  width: 100%;
+}
 </style>
 <template>
+  <view class="background">
   <view class="all center">
     <view class="size" wx:for="{{text}}" wx:key="index">
       <text>{{item.strategy}}</text>
-      </view>
+    </view>
+    <view class="background">
+  </view>
+  </view>
   </view>
 </template>
 <script>

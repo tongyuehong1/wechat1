@@ -28,8 +28,10 @@
 }
 
 .word {
-  color: gray;
-  font-size: 1.2rem;
+  flex: direction;
+  font-size: 0.8rem;
+  align-items: center;
+  padding-left: 0.5rem;
 }
 
 .border {
@@ -41,6 +43,16 @@
 .row {
   display: flex;
   flex-direction: row;
+}
+.out {
+  display: flex;
+  border: 1px solid whitesmoke;
+  height: 2.5rem;
+  width: 18rem;
+  background-color: white;
+  align-items: center;
+  padding-left: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .column {
@@ -61,7 +73,7 @@
 }
 
 .left {
-  margin-left: 10px;
+  margin-left: 5.5rem;
 }
 
 .firstword {
@@ -69,7 +81,8 @@
 }
 
 .input {
-  padding-left: 10px;
+  height: 2.5rem;
+  width: 6rem;
 }
 
 .picmar {
@@ -93,10 +106,19 @@
 }
 
 .back {
-  height: 28rem;
+  height: 100%;
   width: 100%;
-  background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508329488875&di=e30bdf66a4750343f3c56b6b184fba7c&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F64%2F91%2F41F58PIC9A3_1024.jpg');
+  background-color: whitesmoke;
 }
+.space {
+  height: 25rem;
+  width: 20rem;
+  background-color: whitesmoke;
+}
+.inputword {
+  font-size: 0.8rem;
+}
+
 </style>
 <template>
   <view>
@@ -109,37 +131,38 @@
         </view>
       <!-- </view> -->
     </view>
-    <view wx:else>
+    <view wx:else class="back">
       <form bindsubmit="formSubmit">
-        <view>
+        <!-- <view>
           <image class="topsize" src="{{top}}"></image>
+        </view> -->
+        <view class="center">
+          <view class="out">
+            <view class="word">我们相遇在</view>
+            <view class="left center">
+              <input class="input center inputword" name="input" placeholder="2017-10-19"></input>
+            </view>
+          </view>
+          <view class="out">
+            <view class="word">我的诞生日</view>
+            <view class="left center">
+              <input class="input center inputword" name="female" placeholder="填写日期"></input>
+            </view>
+          </view>
+          <view class="out">
+            <view class="word">TA的诞生日</view>
+            <view class="left center">
+              <input class="input center inputword" name="male" placeholder="填写日期"></input>
+            </view>
+          </view>
         </view>
-        <view class="margin">
-          <view class="row">
-            <view class="word firstword">告白日</view>
-            <view class="border firstleft center">
-              <input class="input" name="input"></input>
-            </view>
-          </view>
-          <view class="row smallmar center">
-            <view class="word">她的破壳日</view>
-            <view class="border left center">
-              <input class="input" name="female"></input>
-            </view>
-          </view>
-          <view class="row smallmar center">
-            <view class="word">他的破壳日</view>
-            <view class="border left center">
-              <input class="input" name="male"></input>
-            </view>
-          </view>
-        </view>
-        <view class="center margin">
+        <view class="space"></view>
+        <!-- <view class="center margin">
           <button class="botton" formType="submit">确定</button>
-        </view>
-        <view class="center pic picmar">
+        </view> -->
+        <!-- <view class="center pic picmar">
           <image src="{{pinktree}}"></image>
-        </view>
+        </view> -->
       </form>
     </view>
   </view>

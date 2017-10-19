@@ -1,1 +1,1 @@
-.size{border:2px solid gray;border-radius:30px;height:4rem;width:16rem;margin-top:.8rem;padding-left:.5rem}.all{height:100%;width:100%}.center{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.size{border:2px solid gray;border-radius:30px;height:4rem;width:16rem;margin-top:.8rem;padding-left:.5rem}.all{height:100%;width:100%}.center{display:flex;flex-direction:column;justify-content:center;align-items:center}.background{height:100%;width:100%}
