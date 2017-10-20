@@ -1,10 +1,10 @@
 
-  <view class="background">
+  <view style="height: {{height}}px; width:{{width}}px;" class="background">
     <view class="center userinfo">
       <view class="cir center">
         <image class="userinfo-avatar avatarUrl" src="{{ avatarUrl }}"/>
       </view>
-      <view class="userinfo-nickname center everychoice">{{ nickName }}</view>
+      <view class="userinfo-nickname center name">{{ nickName }}</view>
     </view>
     <view class="center choice">
       <view class="out" bindtap="missing">
@@ -19,7 +19,6 @@
         <text class="word">回忆集</text>
         <image src="{{point}}" class="point"/>
       </view>
-      <view class="space"/>
     </view>
     <!-- <view class="loversmar">
         <view class="center">

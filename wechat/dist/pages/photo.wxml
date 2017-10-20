@@ -1,11 +1,21 @@
 
-  <view>
+  <view style="height: {{height}}px; width:{{width}}px;" class="background">
+    <view class="top"/>
+    <view class="center">
+    <view class="second">
     <view class="row">
-    <view class="pic"  wx:for="{{img}}" wx:key="index">
-      <image class="pic" src="{{item}}"/>
+      <view class="camera center" bindtap="image">
+        <image class="pic" src="{{camera}}"/>
+      </view>
+       <block  wx:for="{{img}}" wx:key="index">
+          <view>
+            <image class="picpho" mode="scaleToFill" src="{{item}}"/>
+          </view>
+        </block>
     </view>
     </view>
-    <view class="bottom">
-      <button class="botton center" bindtap="image">上传照片</button>
+    </view>
+    <view class="bottom center">
+      <view class="word">编辑</view>
     </view>
   </view>

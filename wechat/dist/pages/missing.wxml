@@ -9,7 +9,7 @@
         </view>
       <!-- </view> -->
     </view>
-    <view  wx:else class="back">
+    <view  wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
       <form bindsubmit="formSubmit">
         <!-- <view>
           <image class="topsize" src="{{top}}"></image>
@@ -29,12 +29,11 @@
           </view>
           <view class="out">
             <view class="word">TA的诞生日</view>
-            <view class="left center">
+            <view class="TA center">
               <input class="input center inputword" name="male" placeholder="填写日期"/>
             </view>
           </view>
         </view>
-        <view class="space"/>
         <!-- <view class="center margin">
           <button class="botton" formType="submit">确定</button>
         </view> -->

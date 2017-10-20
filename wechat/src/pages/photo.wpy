@@ -4,12 +4,9 @@
   position: fixed;
   width: 100%;
   bottom: 0px;
-  margin-bottom: 4rem;
-}
-.botton {
-    background-color: pink;
-  height: 2rem;
-  width: 7rem;
+  border: 1px solid white;
+  height: 2.5rem;
+  background-color: white;
 }
 
 .center {
@@ -17,29 +14,81 @@
   justify-content: center;
   align-items: center;
 }
-.pic {
-  height: 6rem;
-  width: 6rem;
-  margin-left: 10px;
-}
 .row {
-  display:flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .left {
   margin-left: 10px;
 }
+
+.word {
+  font-size: 1rem;
+}
+
+.background {
+  background-color: #f4f5f7;
+}
+
+.camera {
+  height: 9.5rem;
+  width: 9.5rem;
+  background-color: lightgray;
+  margin-top: 0.2rem;
+  margin-left: 0.2rem;
+}
+
+.pic {
+  height: 4.5rem;
+  width: 4.5rem;
+  margin-left: 0.2rem;
+}
+
+.margin {
+  margin-top: 0.2rem;
+  margin-left: 0.6rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.top {
+  height: 0.3rem;
+  background-color: #f4f5f7;
+}
+.picpho {
+  height: 4.5rem;
+  width: 4.5rem;
+  margin-top: 0.3rem;
+  margin-left: 0.2rem;
+  margin-right:0.1rem;
+} 
+.second {
+  height: 100%;
+  width: 19.35rem
+}
 </style>
 <template>
-  <view>
+  <view style="height: {{height}}px; width:{{width}}px;" class="background">
+    <view class="top"></view>
+    <view class="center">
+    <view class="second">
     <view class="row">
-    <view class="pic" wx:for="{{img}}" wx:key="index">
-      <image class="pic" src="{{item}}"></image>
+      <view class="camera center" bindtap="image">
+        <image class="pic" src="{{camera}}"></image>
+      </view>
+       <block wx:for="{{img}}" wx:key="index">
+          <view>
+            <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
+          </view>
+        </block>
     </view>
     </view>
-    <view class="bottom">
-      <button class="botton center" bindtap="image">上传照片</button>
+    </view>
+    <view class="bottom center">
+      <view class="word">编辑</view>
     </view>
   </view>
 </template>
@@ -51,28 +100,37 @@ export default class Photo extends wepy.page {
   }
   data = {
     img: [],
-    arr: ''
+    arr: '',
+    height: '',
+    width: '',
+    camera: '../images/camera.png'
   }
   methods = {
     image() {
       let self = this
       wepy.chooseImage({
-        count: 1, // 默认9
+        count: 9, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success(res) {
           let arr = self.img
-          arr.push(res.tempFilePaths[0])
-
-          self.img = arr
+          let image = arr.concat(res.tempFilePaths)
+          self.img = image
           self.setData({
-            img: arr
+            img: image
           })
         }
       })
     }
   }
   onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
   }
 }
 </script>

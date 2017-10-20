@@ -1,0 +1,33 @@
+
+  <view style="height: {{height}}px; width:{{width}}px;" class="background">
+    <view class="space"/>
+    <view class="center">
+      <textarea class="area " name="textarea" bindinput="letter" placeholder="请输入内容"/>
+    </view>
+    <view class="center">
+      <view class="picture same">
+        <block  wx:for="{{img}}" wx:key="index">
+          <view>
+            <image class="picpho" mode="scaleToFill" src="{{item}}"/>
+          </view>
+        </block>
+        <view>
+          <view class="pho center">
+            <image class="img" src="{{add}}" bindtap="image"/>
+          </view>
+          <view class="wordwid center">
+            <text class="addword">添加图片</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="flex center">
+        <text>确定</text>
+      </view>
+      <view class="line"/>
+      <view class="flex center">
+        <text>删除</text>
+      </view>
+    </view>
+  </view>

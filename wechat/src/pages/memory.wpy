@@ -1,8 +1,143 @@
 <style lang="less">
+.area {
+  border: 1px solid white;
+  background-color: white;
+  height: 14.2rem;
+  width: 18.2rem;
+  font-size: 0.75rem;
+  padding-left: 0.8rem;
+  padding-top: 0.8rem;
+  margin-bottom: 0.65rem;
+}
 
+.background {
+  background-color: #f4f5f7;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  border: 1px solid white;
+  align-items: center;
+  height: 2.2rem;
+  width: 100%;
+  background-color: white;
+}
+
+.line {
+  border-right: 1px solid gray;
+  height: 1rem;
+}
+
+.pho {
+  border: 1px solid darkgray;
+  height: 4.5rem;
+  width: 4.5rem;
+  margin-left: 0.2rem;
+}
+
+.picpho {
+  border: 1px solid white;
+  height: 4.5rem;
+  width: 4.5rem;
+  margin-left: 0.2rem;
+}
+
+.same {
+  height: 8rem;
+  width: 19.5rem;
+}
+
+.samepho {
+  width: 3.3rem;
+  margin-top: 0.8rem;
+}
+
+.img {
+  height: 2rem;
+  width: 2rem;
+}
+
+.space {
+  height: 1rem;
+}
+
+.addword {
+  font-size: 0.65rem;
+  color: gray;
+}
+
+.word {
+  height: 3rem;
+  width: 19rem;
+  margin-top: 1rem;
+}
+
+.wordwid {
+  margin-left: 0.2rem;
+}
+
+.flex {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.picture {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.imagesize {
+  height: 3.3rem;
+  width: 3.3rem;
+}
 </style>
 <template>
-
+  <view style="height: {{height}}px; width:{{width}}px;" class="background">
+    <view class="space"></view>
+    <view class="center">
+      <textarea class="area " name="textarea" bindinput="letter" placeholder="请输入内容"></textarea>
+    </view>
+    <view class="center">
+      <view class="picture same">
+        <block wx:for="{{img}}" wx:key="index">
+          <view>
+            <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
+          </view>
+        </block>
+        <view>
+          <view class="pho center">
+            <image class="img" src="{{add}}" bindtap="image"></image>
+          </view>
+          <view class="wordwid center">
+            <text class="addword">添加图片</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="flex center">
+        <text>确定</text>
+      </view>
+      <view class="line"></view>
+      <view class="flex center">
+        <text>删除</text>
+      </view>
+    </view>
+  </view>
 </template>
 <script>
 import wepy from 'wepy'
@@ -10,7 +145,40 @@ export default class Memory extends wepy.page {
   config = {
     navigationBarTitleText: '回忆集'
   }
+  data = {
+    src: '',
+    height: '',
+    width: '',
+    add: '../images/add.png',
+    img: [],
+    arr: ''
+  }
+  methods = {
+    image() {
+      let self = this
+      wepy.chooseImage({
+        count: 9, // 默认9
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success(res) {
+          let arr = self.img
+          let image = arr.concat(res.tempFilePaths)
+          self.img = image
+          self.setData({
+            img: image
+          })
+        }
+      })
+    }
+  }
   onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
   }
 }
 </script>

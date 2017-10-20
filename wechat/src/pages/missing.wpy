@@ -48,7 +48,7 @@
   display: flex;
   border: 1px solid whitesmoke;
   height: 2.5rem;
-  width: 18rem;
+  width: 19rem;
   background-color: white;
   align-items: center;
   padding-left: 0.5rem;
@@ -73,7 +73,10 @@
 }
 
 .left {
-  margin-left: 5.5rem;
+  margin-left: 8.1rem;
+}
+.TA {
+  margin-left: 7.91rem;
 }
 
 .firstword {
@@ -82,7 +85,7 @@
 
 .input {
   height: 2.5rem;
-  width: 6rem;
+  width: 5.2rem;
 }
 
 .picmar {
@@ -106,8 +109,6 @@
 }
 
 .back {
-  height: 100%;
-  width: 100%;
   background-color: whitesmoke;
 }
 .space {
@@ -131,7 +132,7 @@
         </view>
       <!-- </view> -->
     </view>
-    <view wx:else class="back">
+    <view wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
       <form bindsubmit="formSubmit">
         <!-- <view>
           <image class="topsize" src="{{top}}"></image>
@@ -151,12 +152,11 @@
           </view>
           <view class="out">
             <view class="word">TA的诞生日</view>
-            <view class="left center">
+            <view class="TA center">
               <input class="input center inputword" name="male" placeholder="填写日期"></input>
             </view>
           </view>
         </view>
-        <view class="space"></view>
         <!-- <view class="center margin">
           <button class="botton" formType="submit">确定</button>
         </view> -->
@@ -181,7 +181,9 @@ export default class Missing extends wepy.page {
     date: '',
     female: '',
     male: '',
-    text: ''
+    text: '',
+    height: '',
+    width: ''
   }
   methods = {
     formSubmit(e) {
@@ -217,6 +219,12 @@ export default class Missing extends wepy.page {
   }
   async onLoad() {
     let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
     wepy.getUserInfo({
       success: async function(res) {
         self.nickName = res.userInfo.nickName

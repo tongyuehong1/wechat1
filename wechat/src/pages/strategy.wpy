@@ -41,7 +41,7 @@
 import wepy from 'wepy'
 export default class Strategy extends wepy.page {
   config = {
-    navigationBarTitleText: '陪你度过漫长岁月'
+    navigationBarTitleText: '小情书'
   }
   data = {
     text: ''
