@@ -1,38 +1,112 @@
 <style lang="less">
-.add {
-  display: flex;
-  height: 2rem;
-  width: 2rem;
-}
-.imgmargin {
-   margin-left: 17rem;
-   margin-top: 0.5rem;
-}
 .center {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.size {
-  border: 2px solid gray;
-  border-radius: 30px;
-  height: 4rem;
-  width: 16rem;
+
+.rowline {
+  border-top: 1px solid lightgray;
+}
+
+.input {
+  height: 1.1rem;
+  width: 12rem;
+  border: 1px solid #f4f5f7;
+  font-size: 0.9rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
+.left {
+  display: flex;
+  margin-left: 1rem;
+}
+
+.top {
+  height: 1.2rem;
+  background-color: #f4f5f7;
+}
+
+.area {
+  // height: 12rem;
+  padding-left: 0.8rem;
+  padding-top: 0.5rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  background-color: white;
+}
+
+.add {
+  border: 1px solid darkgray;
+  height: 4.3rem;
+  width: 4.3rem;
+  margin-left: 1rem;
   margin-top: 0.8rem;
-  padding-left: 10px;
-  padding-top: 10px;
+}
+
+.pic {
+  height: 2rem;
+  width: 2rem;
+}
+
+.addpic {
+  width: 4.3rem;
+  margin-left: 1rem;
+  margin-top: 0.2rem;
+}
+
+.bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  border: 1px solid white;
+  align-items: center;
+  height: 2.2rem;
+  width: 100%;
+  background-color: white;
+}
+
+.line {
+  border-right: 1px solid gray;
+  height: 1rem;
+}
+
+.flex {
+  flex: 1;
+  font-size: 0.8rem;
 }
 </style>
 <template>
   <view>
-    <view class="add imgmargin">
-      <image class="add" src="{{add}}" @tap="letter"></image>
-    </view>
-    <view class="center">
-    <view class="size" wx:for="{{text}}" wx:key="index">
-      <text>{{item.letters}}</text>
-    </view>
+    <view class="rowline"></view>
+    <view class="top"></view>
+    <view style="height: {{height-1}}px; width:{{width}}px; background-color:#f4f5f7;">
+      <view class="row">
+        <view>标题:</view>
+        <input class="input left center" placeholder="请输入标题"></input>
+      </view>
+      <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"></view>
+      <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"></textarea>
+      <view class="add center">
+        <image class="pic" src="{{add}}" bindtap="image"></image>
+      </view>
+      <view class="addpic center">
+        <text style="font-size:0.7rem; color=lightgray">封面图片</text>
+      </view>
+      <view class="bottom">
+        <view class="flex center">
+          <text bindtap="set">确定</text>
+        </view>
+        <view class="line"></view>
+        <view class="flex center">
+          <text>删除</text>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -44,40 +118,37 @@ export default class Letter extends wepy.page {
   }
   data = {
     src: '',
+    height: '',
+    width: '',
     add: '../images/add.png',
-    text: '',
-    two: ''
+    inside: ''
   }
   methods = {
-    letter() {
-      wepy.navigateTo({
-        url: './write'
-      })
+    inside(e) {
+      let self = this
+      console.log(e.detail.value)
+      self.inside = e.detail.value
+    },
+    set() {
+      let self = this
+      try {
+        wepy.setStorage({
+          key: 'third',
+          data: self.inside
+        })
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
-  async onLoad() {
+  onLoad() {
     let self = this
-    wepy.getUserInfo({
-      success: async function(res) {
-        self.nickName = res.userInfo.nickName
-        self.avatarUrl = res.userInfo.avatarUrl
-        await wepy.request({
-          url: 'http://127.0.0.1:7001/hearts/list',
-          method: 'POST',
-          data: {
-            wechat: self.nickName
-          },
-          success: function(res) {
-            self.text = res.data
-            self.setData({
-              text: res.data
-            })
-            console.log(res)
-          }
-        })
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
       }
     })
-    this.$apply()
   }
 }
 </script>

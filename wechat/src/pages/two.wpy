@@ -155,9 +155,9 @@ export default class Two extends wepy.page {
       })
     }
   }
-  onLoad() {
+  async onLoad() {
     let self = this
-    wepy.getUserInfo({
+    await wepy.getUserInfo({
       success: function(res) {
         self.nickName = res.userInfo.nickName
         self.avatarUrl = res.userInfo.avatarUrl

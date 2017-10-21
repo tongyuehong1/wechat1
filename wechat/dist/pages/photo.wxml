@@ -1,21 +1,23 @@
 
-  <view style="height: {{height}}px; width:{{width}}px;" class="background">
-    <view class="top"/>
-    <view class="center">
-    <view class="second">
-    <view class="row">
-      <view class="camera center" bindtap="image">
-        <image class="pic" src="{{camera}}"/>
-      </view>
-       <block  wx:for="{{img}}" wx:key="index">
-          <view>
-            <image class="picpho" mode="scaleToFill" src="{{item}}"/>
+  <view>
+    <scroll-view scroll-y style="height: {{height}}px; width:{{width}}px;" class="background">
+      <view class="top"/>
+      <view class="center">
+        <view class="second">
+          <view class="row">
+            <view class="camera center" bindtap="image">
+              <image class="pic" src="{{camera}}"/>
+            </view>
+            <view  wx:for="{{img}}" wx:key="index">
+              <view>
+                <image class="picpho" mode="scaleToFill" src="{{item}}"/>
+              </view>
+            </view>
+            <view class="bottom center">
+              <view class="word">编辑</view>
+            </view>
           </view>
-        </block>
-    </view>
-    </view>
-    </view>
-    <view class="bottom center">
-      <view class="word">编辑</view>
-    </view>
+        </view>
+      </view>
+    </scroll-view>
   </view>

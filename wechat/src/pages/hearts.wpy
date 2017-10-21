@@ -28,17 +28,72 @@
 .flex {
   flex: 1;
 }
+
+.addborder {
+  display: flex;
+  border: 0.5px solid gray;
+  border-radius: 0.5rem;
+  height: 7.5rem;
+  width: 5.5rem;
+  background-color: #f4f5f7;
+  // margin-right: 0.8rem;
+}
+
+.add {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.second {
+  height: 100%;
+  width: 18rem;
+  margin-top: 1rem;
+}
+.image {
+  height: 7.5rem;
+  width: 5.5rem;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+}
+.avg {
+  display: flex;
+  justify-content: space-between;
+}
+.word {
+  font-size: 0.5rem;
+  margin-left: 0.5rem;
+}
+.rowline {
+  border-top: 1px solid #f4f5f7;
+}
 </style>
 <template>
-  <view class="center">
-    <view class="top row center">
-      <view class="flex center">
-        <view style="color: {{writecolor}};" bindtap="write">写信</view>
+  <view>
+    <view class="rowline"></view>
+    <view class="center">
+      <view class="top row center">
+        <view class="flex center">
+          <view style="color: {{writecolor}};" bindtap="write">写信</view>
+        </view>
+        <view class="line"></view>
+        <view class="flex center">
+          <view style="color: {{sendcolor}};" bindtap="send">收信</view>
+        </view>
       </view>
-      <view class="line"></view>
-      <view class="flex center">
-        <view style="color: {{sendcolor}};" bindtap="send">收信</view>
+    </view>
+    <view class="center">
+    <view class="row second avg">
+      <view class="addborder center" bindtap="letter">
+        <image class="add" src="{{add}}"></image>
       </view>
+      <view class="image">
+        <image class="image" src="{{cat}}"></image>
+        <view class="word">写给你的第二封信</view>
+      </view>
+      <view class="image">
+        <image class="image" src="{{plant}}" bindtap="first"></image>
+        <view class="word">写给你的第一封信</view>
+      </view>
+    </view>
     </view>
   </view>
 </template>
@@ -51,7 +106,10 @@ export default class Hearts extends wepy.page {
   data = {
     src: '',
     writecolor: 'black',
-    sendcolor: 'gray'
+    sendcolor: 'gray',
+    add: '../images/addletter.png',
+    cat: '../images/cat.jpg',
+    plant: '../images/plant.jpg'
   }
   methods = {
     write() {
@@ -67,6 +125,11 @@ export default class Hearts extends wepy.page {
     letter() {
       wepy.navigateTo({
         url: './letter'
+      })
+    },
+    first() {
+      wepy.navigateTo({
+        url: './list'
       })
     }
   }

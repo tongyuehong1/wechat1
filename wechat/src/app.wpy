@@ -18,13 +18,12 @@ export default class extends wepy.app {
     pages: [
       // 'pages/home',
       'pages/hearts',
-      'pages/write',
       'pages/letter',
+      'pages/list',
       'pages/strategy',
       'pages/two',
       'pages/missing',
       'pages/photo',
-      // 'pages/show',
       'pages/memory'
     ],
     window: {

@@ -14,6 +14,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .row {
   display: flex;
   flex-direction: row;
@@ -58,38 +59,43 @@
   height: 0.3rem;
   background-color: #f4f5f7;
 }
+
 .picpho {
   height: 4.5rem;
   width: 4.5rem;
   margin-top: 0.3rem;
   margin-left: 0.2rem;
-  margin-right:0.1rem;
-} 
+  margin-right: 0.1rem;
+}
+
 .second {
   height: 100%;
   width: 19.35rem
 }
 </style>
+
 <template>
-  <view style="height: {{height}}px; width:{{width}}px;" class="background">
-    <view class="top"></view>
-    <view class="center">
-    <view class="second">
-    <view class="row">
-      <view class="camera center" bindtap="image">
-        <image class="pic" src="{{camera}}"></image>
-      </view>
-       <block wx:for="{{img}}" wx:key="index">
-          <view>
-            <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
+  <view>
+    <scroll-view scroll-y style="height: {{height}}px; width:{{width}}px;" class="background">
+      <view class="top"></view>
+      <view class="center">
+        <view class="second">
+          <view class="row">
+            <view class="camera center" bindtap="image">
+              <image class="pic" src="{{camera}}"></image>
+            </view>
+            <view wx:for="{{img}}" wx:key="index">
+              <view>
+                <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
+              </view>
+            </view>
+            <view class="bottom center">
+              <view class="word">编辑</view>
+            </view>
           </view>
-        </block>
-    </view>
-    </view>
-    </view>
-    <view class="bottom center">
-      <view class="word">编辑</view>
-    </view>
+        </view>
+      </view>
+    </scroll-view>
   </view>
 </template>
 <script>

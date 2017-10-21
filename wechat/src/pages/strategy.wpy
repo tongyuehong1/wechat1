@@ -1,41 +1,65 @@
 <style lang="less">
-.size {
-  border: 2px solid gray;
-  border-radius: 30px;
-  height: 4rem;
-  width: 16rem;
-  margin-top: 0.8rem;
-  padding-left: 0.5rem;
-}
-
-.all {
-  height: 100%;
-  width: 100%;
-}
-
 .center {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 }
-
-.background {
-  // background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508420533481&di=8217b39963e897f5faec526dc22ed101&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fw14%2F35%2Fd%2F83.jpg');
-  height: 100%;
-  width: 100%;
+.every {
+  height: 13rem;
+  background-color: white;
+  margin-top: 0.6rem;
+}
+.pic {
+  height: 7rem;
+  width: 18rem;
+  margin-top: 0.8rem;
+}
+.line {
+  border-top: 1px solid gray;
+}
+.top {
+  height: 0.1rem;
+  background-color: #f4f5f7;
+}
+.word {
+  width: 18rem;
+  margin-top: 0.5rem;
+}
+.sentence {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
 }
 </style>
 <template>
-  <view class="background">
-  <view class="all center">
-    <view class="size" wx:for="{{text}}" wx:key="index">
-      <text>{{item.strategy}}</text>
+<view>
+  <view class="line">
+  <view style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
+    <view class="top"></view>
+    <view class="every center">
+      <image class="pic" src="{{first}}"></image>
+      <view class="word">
+        <view>致橡树</view>
+        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+      </view>
     </view>
-    <view class="background">
+    <view class="every center">
+      <image class="pic" src="{{first}}"></image>
+      <view class="word">
+        <view>致橡树</view>
+        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+      </view>
+    </view>
+    <view class="every center">
+      <image class="pic" src="{{first}}"></image>
+      <view class="word">
+        <view>致橡树</view>
+        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+      </view>
+    </view>
   </view>
-  </view>
-  </view>
+</view>
+</view>
 </template>
 <script>
 import wepy from 'wepy'
@@ -44,23 +68,19 @@ export default class Strategy extends wepy.page {
     navigationBarTitleText: '小情书'
   }
   data = {
-    text: ''
+    src: '',
+    first: '../images/first.jpg',
+    height: '',
+    width: ''
   }
-  async onLoad() {
+  onLoad() {
     let self = this
-    await wepy.request({
-      url: 'http://127.0.0.1:7001/strategy',
-      method: 'POST',
-      // data: {
-      //   wechat: self.nickName
-      // },
-      success: function(res) {
-        self.text = res.data
-        // console.log(res.data[0])
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
       }
     })
-
-    this.$apply()
   }
 }
 </script>
