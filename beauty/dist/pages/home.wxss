@@ -1,0 +1,1 @@
+.center{display:flex;justify-content:center;align-items:center}.slide-image{height:9rem;width:20rem}.margintop{margin-top:.4rem}.searchline{border:1px solid #f4f5f7;border-bottom:1px solid black;width:10rem;margin-top:.2rem;height:.6rem}.word{font-size:1rem;margin-top:.5rem}.row{display:flex;flex-direction:row}

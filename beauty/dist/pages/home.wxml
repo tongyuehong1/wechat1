@@ -1,0 +1,21 @@
+
+<view>
+  <view style="height:0.3rem; background-color:#f4f5f7"/>
+<view style="height:{{height-6}}px; width:{{width}}px; background-color: #f4f5f7;">
+  <view class="row center" style="height:1.6rem;">
+    <view class="word">搜一下</view>
+    <view>
+    <input class="searchline"/>
+    </view>
+  </view>
+ <view class="center">
+   <swiper autoplay="true" interval="1000" class="slide-image margintop" circular="true" indicator-dots="true">
+     <block  wx:for="{{img}}" wx:key="index">
+       <swiper-item>
+          <image src="{{item}}" class="slide-image"/>
+       </swiper-item>
+      </block>
+   </swiper>
+ </view>
+</view>
+</view>
