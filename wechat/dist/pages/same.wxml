@@ -17,17 +17,17 @@
         <view class="addborder center" bindtap="letter">
           <image class="add" src="{{add}}"/>
         </view>
-        <view class="image">
-          <image class="image" src="{{cat}}" bindtap="second"/>
+        <!-- <view class="image">
+          <image class="image" src="{{cat}}" bindtap="second"></image>
           <view class="word">写给你的第二封信</view>
         </view>
         <view class="image">
-          <image class="image" src="{{plant}}" bindtap="first"/>
+          <image class="image" src="{{plant}}" bindtap="first"></image>
           <view class="word">写给你的第一封信</view>
         </view>
-      </view>
+      </view> -->
     </view>
-    <view  wx:else class="center next">
+    <view wx:else class="center next">
       <view class="row second">
         <view class="receive">
           <image class="image" src="{{cat}}" bindtap="second"/>
@@ -40,3 +40,51 @@
       </view>
     </view>
   </view>
+
+<script>
+import wepy from 'wepy'
+export default class Hearts extends wepy.page {
+  config = {
+    navigationBarTitleText: '小情书'
+  }
+  data = {
+    src: '',
+    writecolor: 'black',
+    sendcolor: 'gray',
+    add: '../images/addletter.png',
+    cat: '../images/cat.jpg',
+    plant: '../images/plant.jpg',
+    show: true
+  }
+  methods = {
+    write() {
+      let self = this
+      self.writecolor = 'black'
+      self.sendcolor = 'gray'
+      self.show = true
+    },
+    receive() {
+      let self = this
+      self.writecolor = 'gray'
+      self.sendcolor = 'black'
+      self.show = false
+    },
+    letter() {
+      wepy.navigateTo({
+        url: './letter'
+      })
+    },
+    first() {
+      wepy.navigateTo({
+        url: './list'
+      })
+    },
+    second() {
+      wepy.navigateTo({
+        url: './second'
+      })
+    }
+  }
+  onLoad() { }
+}
+</script></view>
