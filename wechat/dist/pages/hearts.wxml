@@ -8,23 +8,38 @@
         </view>
         <view class="line"/>
         <view class="flex center">
-          <view style="color: {{sendcolor}};" bindtap="send">收信</view>
+          <view style="color: {{sendcolor}};" bindtap="receive">收信</view>
         </view>
       </view>
     </view>
-    <view class="center">
-    <view class="row second avg">
-      <view class="addborder center" bindtap="letter">
-        <image class="add" src="{{add}}"/>
-      </view>
-      <view class="image">
-        <image class="image" src="{{cat}}"/>
-        <view class="word">写给你的第二封信</view>
-      </view>
-      <view class="image">
-        <image class="image" src="{{plant}}" bindtap="first"/>
-        <view class="word">写给你的第一封信</view>
+    <view  wx:if="{{show}}" class="center next">
+      <view class="row second avg">
+        <view class="addborder center" bindtap="letter">
+          <image class="add" src="{{add}}"/>
+        </view>
+        <view class="image">
+          <image class="image" src="{{cat}}" bindtap="second"/>
+          <view class="word">写给你的第二封信</view>
+        </view>
+        <view class="image">
+          <image class="image" src="{{plant}}" bindtap="first"/>
+          <view class="word">写给你的第一封信</view>
+        </view>
       </view>
     </view>
+    <view  wx:else class="center next">
+      <view class="row second">
+        <!-- <view class="addborder center" bindtap="letter">
+          <image class="add" src="{{add}}"></image>
+        </view> -->
+        <view class="receive">
+          <image class="image" src="{{cat}}" bindtap="second"/>
+          <view class="word">写给你的第二封信</view>
+        </view>
+        <view class="receive">
+          <image class="image" src="{{plant}}" bindtap="first"/>
+          <view class="word">写给你的第一封信</view>
+        </view>
+      </view>
     </view>
   </view>

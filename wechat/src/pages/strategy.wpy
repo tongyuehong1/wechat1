@@ -65,14 +65,16 @@
 import wepy from 'wepy'
 export default class Strategy extends wepy.page {
   config = {
-    navigationBarTitleText: '小情书'
-  }
+    navigationBarTitleText: '小情书',
+    enablePullDownRefresh: true
+  };
   data = {
     src: '',
     first: '../images/first.jpg',
     height: '',
     width: ''
-  }
+  };
+  methods = {}
   onLoad() {
     let self = this
     wepy.getSystemInfo({
@@ -81,6 +83,12 @@ export default class Strategy extends wepy.page {
         self.width = res.windowWidth
       }
     })
+  }
+  onPullDownRefresh() {
+    wepy.startPullDownRefresh()
+    setTimeout(function() {
+      wepy.stopPullDownRefresh()
+    }, 1500)
   }
 }
 </script>

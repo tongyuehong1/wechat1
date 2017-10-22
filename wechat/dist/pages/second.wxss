@@ -1,0 +1,1 @@
+.image{height:10rem;width:17rem}.center{display:flex;justify-content:center;align-items:center}.top{margin-top:1.5rem}.column{display:flex;flex-direction:column}.bottom{display:flex;position:fixed;width:100%;bottom:0;border:1px solid white;height:2.5rem;background-color:white}

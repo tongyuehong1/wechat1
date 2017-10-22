@@ -65,6 +65,9 @@
 .rowline {
   border-top: 1px solid #f4f5f7;
 }
+.receive {
+  margin-right: 1rem;
+}
 </style>
 <template>
   <view>
@@ -76,24 +79,36 @@
         </view>
         <view class="line"></view>
         <view class="flex center">
-          <view style="color: {{sendcolor}};" bindtap="send">收信</view>
+          <view style="color: {{sendcolor}};" bindtap="receive">收信</view>
         </view>
       </view>
     </view>
-    <view class="center">
-    <view class="row second avg">
-      <view class="addborder center" bindtap="letter">
-        <image class="add" src="{{add}}"></image>
-      </view>
-      <view class="image">
-        <image class="image" src="{{cat}}"></image>
-        <view class="word">写给你的第二封信</view>
-      </view>
-      <view class="image">
-        <image class="image" src="{{plant}}" bindtap="first"></image>
-        <view class="word">写给你的第一封信</view>
+    <view wx:if="{{show}}" class="center next">
+      <view class="row second avg">
+        <view class="addborder center" bindtap="letter">
+          <image class="add" src="{{add}}"></image>
+        </view>
+        <view class="image">
+          <image class="image" src="{{cat}}" bindtap="second"></image>
+          <view class="word">写给你的第二封信</view>
+        </view>
+        <view class="image">
+          <image class="image" src="{{plant}}" bindtap="first"></image>
+          <view class="word">写给你的第一封信</view>
+        </view>
       </view>
     </view>
+    <view wx:else class="center next">
+      <view class="row second">
+        <view class="receive">
+          <image class="image" src="{{cat}}" bindtap="second"></image>
+          <view class="word">写给你的第二封信</view>
+        </view>
+        <view class="receive">
+          <image class="image" src="{{plant}}" bindtap="first"></image>
+          <view class="word">写给你的第一封信</view>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -109,18 +124,21 @@ export default class Hearts extends wepy.page {
     sendcolor: 'gray',
     add: '../images/addletter.png',
     cat: '../images/cat.jpg',
-    plant: '../images/plant.jpg'
+    plant: '../images/plant.jpg',
+    show: true
   }
   methods = {
     write() {
       let self = this
       self.writecolor = 'black'
       self.sendcolor = 'gray'
+      self.show = true
     },
-    send() {
+    receive() {
       let self = this
       self.writecolor = 'gray'
       self.sendcolor = 'black'
+      self.show = false
     },
     letter() {
       wepy.navigateTo({
@@ -130,6 +148,11 @@ export default class Hearts extends wepy.page {
     first() {
       wepy.navigateTo({
         url: './list'
+      })
+    },
+    second() {
+      wepy.navigateTo({
+        url: './second'
       })
     }
   }

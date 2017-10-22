@@ -24,6 +24,7 @@ export default class extends wepy.app {
       'pages/two',
       'pages/missing',
       'pages/photo',
+      'pages/second',
       'pages/memory'
     ],
     window: {
