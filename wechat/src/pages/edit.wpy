@@ -74,36 +74,9 @@
 .button {
   background-color: white;
 }
-
 </style>
 <template>
-  <view>
-    <view wx:if="{{text}}" style="height:{{height}}px; width:{{width}}px; background-color: #f4f5f9">
-        <view class="center">
-          <view class="out">
-            <view class="word">我们相遇在</view>
-            <view class="left center">
-              <text class="input center inputword">{{text.date}}</text>
-            </view>
-          </view>
-          <view class="out">
-            <view class="word">我的诞生日</view>
-            <view class="left center">
-              <text class="input center inputword">{{text.ME}}</text>
-            </view>
-          </view>
-          <view class="out">
-            <view class="word">TA的诞生日</view>
-            <view class="TA center">
-              <text class="input center inputword">{{text.TA}}</text>
-            </view>
-          </view>
-        </view>
-         <view class="bottom">
-        <button class="button" @tap="edit">编辑</button>
-      </view>
-    </view>
-    <view wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
+  <view style="height: {{height}}px; width:{{width}}px;" class="back">
       <form bindsubmit="formSubmit">
         <view class="center">
           <view class="out">
@@ -126,26 +99,18 @@
           </view>
         </view>
       <view class="bottom">
-        <button formType="submit" class="button">确定</button>
+        <button formType="submit" class="button" @tap="missing">确定</button>
       </view>
       </form>
     </view>
-  </view>
 </template>
 <script>
 import wepy from 'wepy'
-export default class Missing extends wepy.page {
+export default class Show extends wepy.page {
   config = {
     navigationBarTitleText: '纪念日'
   }
   data = {
-    top: '../images/misstop.png',
-    input: '',
-    pinktree: '../images/pinktree.jpg',
-    confession: '',
-    date: '',
-    ME: '',
-    TA: '',
     text: '',
     height: '',
     width: '',
@@ -153,7 +118,6 @@ export default class Missing extends wepy.page {
   }
   methods = {
     formSubmit(e) {
-      console.log(e.detail.value)
       let self = this
       self.ME = e.detail.value.ME
       self.TA = e.detail.value.TA
@@ -164,9 +128,10 @@ export default class Missing extends wepy.page {
             self.nickName = res.userInfo.nickName
             self.avatarUrl = res.userInfo.avatarUrl
             wepy.request({
-              url: 'http://127.0.0.1:7001/two/missinginsert',
+              url: 'http://127.0.0.1:7001/two/missingupdate',
               method: 'POST',
               data: {
+                id: 1,
                 date: e.detail.value.date,
                 ME: e.detail.value.ME,
                 TA: e.detail.value.TA,
@@ -185,13 +150,13 @@ export default class Missing extends wepy.page {
         })
       }
     },
-    edit() {
+    missing() {
       wepy.navigateTo({
-        url: './edit'
+        url: './missing'
       })
     }
   }
-  async onLoad() {
+  onLoad() {
     let self = this
     wepy.getSystemInfo({
       success(res) {
@@ -203,23 +168,8 @@ export default class Missing extends wepy.page {
       success: async function(res) {
         self.nickName = res.userInfo.nickName
         self.avatarUrl = res.userInfo.avatarUrl
-        await wepy.request({
-          url: 'http://127.0.0.1:7001/two/missingselect',
-          method: 'POST',
-          data: {
-            wechat: self.nickName
-          },
-          success: function(res) {
-            self.text = res.data[0]
-            self.setData({
-              text: res.data[0]
-            })
-            console.log(self.text)
-          }
-        })
       }
     })
-    this.$apply()
   }
 }
 </script>

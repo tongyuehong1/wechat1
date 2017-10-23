@@ -1,45 +1,55 @@
 
   <view>
-    <view class="back center"  wx:if="{{text}}">
-      <!-- <view class="back center"> -->
-        <view class="center">
-          <text>告白日: {{text.date}}</text>
-          <text>她的生日: {{text.female}}</text>
-          <text>他的生日: {{text.male}}</text>
-        </view>
-      <!-- </view> -->
-    </view>
-    <view  wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
-      <form bindsubmit="formSubmit">
-        <!-- <view>
-          <image class="topsize" src="{{top}}"></image>
-        </view> -->
+    <view  wx:if="{{text}}" style="height:{{height}}px; width:{{width}}px; background-color: #f4f5f9">
         <view class="center">
           <view class="out">
             <view class="word">我们相遇在</view>
             <view class="left center">
-              <input class="input center inputword" name="input" placeholder="2017-10-19"/>
+              <text class="input center inputword">{{text.date}}</text>
             </view>
           </view>
           <view class="out">
             <view class="word">我的诞生日</view>
             <view class="left center">
-              <input class="input center inputword" name="female" placeholder="填写日期"/>
+              <text class="input center inputword">{{text.ME}}</text>
             </view>
           </view>
           <view class="out">
             <view class="word">TA的诞生日</view>
             <view class="TA center">
-              <input class="input center inputword" name="male" placeholder="填写日期"/>
+              <text class="input center inputword">{{text.TA}}</text>
             </view>
           </view>
         </view>
-        <!-- <view class="center margin">
-          <button class="botton" formType="submit">确定</button>
-        </view> -->
-        <!-- <view class="center pic picmar">
-          <image src="{{pinktree}}"></image>
-        </view> -->
+         <view class="bottom">
+        <button class="button" bindtap="edit">编辑</button>
+      </view>
+    </view>
+    <view  wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
+      <form bindsubmit="formSubmit">
+        <view class="center">
+          <view class="out">
+            <view class="word">我们相遇在</view>
+            <view class="left center">
+              <input class="input center inputword" name="date" placeholder="2017-10-19"/>
+            </view>
+          </view>
+          <view class="out">
+            <view class="word">我的诞生日</view>
+            <view class="left center">
+              <input class="input center inputword" name="ME" placeholder="填写日期"/>
+            </view>
+          </view>
+          <view class="out">
+            <view class="word">TA的诞生日</view>
+            <view class="TA center">
+              <input class="input center inputword" name="TA" placeholder="填写日期"/>
+            </view>
+          </view>
+        </view>
+      <view class="bottom">
+        <button formType="submit" class="button">确定</button>
+      </view>
       </form>
     </view>
   </view>

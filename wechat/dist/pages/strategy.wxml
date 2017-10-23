@@ -26,4 +26,8 @@
     </view>
   </view>
 </view>
+<view>
+  <text bindtap="onPullDownRefresh"/>
+  <text bindtap="startPullDownRefresh"/>
+</view>  
 </view>

@@ -5,9 +5,10 @@
   height: 14.2rem;
   width: 18.2rem;
   font-size: 0.75rem;
-  padding-left: 0.8rem;
   padding-top: 0.8rem;
   margin-bottom: 0.65rem;
+  padding-left: 0.8rem;
+  // text-indent: 2em;
 }
 
 .background {

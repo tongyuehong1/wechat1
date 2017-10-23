@@ -6,18 +6,21 @@
         <view class="second">
           <view class="row">
             <view class="camera center" bindtap="image">
-              <image class="pic" src="{{camera}}"/>
+              <image class="camerapic" src="{{camera}}"/>
             </view>
             <view  wx:for="{{img}}" wx:key="index">
               <view>
                 <image class="picpho" mode="scaleToFill" src="{{item}}"/>
               </view>
             </view>
-            <view class="bottom center">
+            <!-- <view class="bottom center">
               <view class="word">编辑</view>
-            </view>
+            </view> -->
           </view>
         </view>
       </view>
     </scroll-view>
+    <view class="bottom center">
+      <view class="word">编辑</view>
+    </view>
   </view>

@@ -34,11 +34,15 @@
 }
 
 .camera {
-  height: 9.5rem;
-  width: 9.5rem;
+  height: 4.5rem;
+  width: 4.5rem;
   background-color: lightgray;
   margin-top: 0.2rem;
   margin-left: 0.2rem;
+}
+.camerapic {
+  height: 2rem;
+  width: 2rem;
 }
 
 .pic {
@@ -82,20 +86,23 @@
         <view class="second">
           <view class="row">
             <view class="camera center" bindtap="image">
-              <image class="pic" src="{{camera}}"></image>
+              <image class="camerapic" src="{{camera}}"></image>
             </view>
             <view wx:for="{{img}}" wx:key="index">
               <view>
                 <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
               </view>
             </view>
-            <view class="bottom center">
+            <!-- <view class="bottom center">
               <view class="word">编辑</view>
-            </view>
+            </view> -->
           </view>
         </view>
       </view>
     </scroll-view>
+    <view class="bottom center">
+      <view class="word">编辑</view>
+    </view>
   </view>
 </template>
 <script>
@@ -124,6 +131,14 @@ export default class Photo extends wepy.page {
           self.img = image
           self.setData({
             img: image
+          })
+          wepy.uploadFile({
+            url: 'http://127.0.0.1:7001/two/photoinsert',
+            filePath: self.img[0],
+            name: 'img',
+            success: function(res) {
+              console.log(res)
+            }
           })
         }
       })

@@ -59,6 +59,10 @@
     </view>
   </view>
 </view>
+<view>
+  <text @tap="onPullDownRefresh"></text>
+  <text @tap="startPullDownRefresh"></text>
+</view>  
 </view>
 </template>
 <script>

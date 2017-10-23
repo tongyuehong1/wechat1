@@ -20,9 +20,4 @@
         <image src="{{point}}" class="point"/>
       </view>
     </view>
-    <!-- <view class="loversmar">
-        <view class="center">
-          <image class="lovers" src="{{lovers}}"></image>
-        </view>
-      </view> -->
   </view>

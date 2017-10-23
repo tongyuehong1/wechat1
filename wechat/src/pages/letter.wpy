@@ -92,7 +92,7 @@
       </view>
       <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"></view>
       <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"></textarea>
-      <view class="add center">
+      <view class="add center" bindtap="image">
         <image class="pic" src="{{add}}" bindtap="image"></image>
       </view>
       <view class="addpic center">
@@ -121,7 +121,8 @@ export default class Letter extends wepy.page {
     height: '',
     width: '',
     add: '../images/add.png',
-    inside: ''
+    inside: '',
+    img: []
   }
   methods = {
     inside(e) {
@@ -139,6 +140,44 @@ export default class Letter extends wepy.page {
       } catch (e) {
         console.log(e)
       }
+    },
+    image() {
+      let self = this
+      wepy.chooseImage({
+        count: 9, // 默认9
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success(res) {
+          let arr = self.img
+          let image = arr.concat(res.tempFilePaths)
+          self.img = image
+          self.setData({
+            img: image
+          })
+        }
+      })
+    },
+    insert() {
+      wepy.getUserInfo({
+      success: async function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        await wepy.request({
+          url: 'http://127.0.0.1:7001/two/missingselect',
+          method: 'POST',
+          data: {
+            wechat: self.nickName
+          },
+          success: function(res) {
+            self.text = res.data[0]
+            self.setData({
+              text: res.data[0]
+            })
+            console.log(self.text)
+          }
+        })
+      }
+    })
     }
   }
   onLoad() {

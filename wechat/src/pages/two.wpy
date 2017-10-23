@@ -11,6 +11,7 @@
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
+  box-shadow: 0px 0px 35px 0px rgba(220,220,220,70%);
 }
 
 .userinfo-nickname {
@@ -52,15 +53,6 @@
 
 .everychoice {
   margin-top: 1rem;
-}
-
-.lovers {
-  height: 6rem;
-  width: 10rem;
-}
-
-.loversmar {
-  margin-top: 3rem;
 }
 
 .space {
@@ -117,11 +109,6 @@
         <image src="{{point}}" class="point"></image>
       </view>
     </view>
-    <!-- <view class="loversmar">
-        <view class="center">
-          <image class="lovers" src="{{lovers}}"></image>
-        </view>
-      </view> -->
   </view>
 </template>
 <script>
