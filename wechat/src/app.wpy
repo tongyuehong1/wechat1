@@ -29,7 +29,7 @@ export default class extends wepy.app {
       'pages/edit'
     ],
     window: {
-      backgroundTextStyle: 'light',
+      backgroundTextStyle: 'dark',
       navigationBarBackgroundColor: 'white',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'

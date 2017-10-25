@@ -93,9 +93,6 @@
                 <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
               </view>
             </view>
-            <!-- <view class="bottom center">
-              <view class="word">编辑</view>
-            </view> -->
           </view>
         </view>
       </view>

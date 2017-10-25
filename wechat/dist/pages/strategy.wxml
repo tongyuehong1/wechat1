@@ -1,33 +1,34 @@
 
 <view>
-  <view class="line">
-  <view style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
+  <view class="line"/>
+  <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
     <view class="top"/>
-    <view class="every center">
-      <image class="pic" src="{{first}}"/>
-      <view class="word">
-        <view>致橡树</view>
-        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+    <view class="center">
+      <view class="every center">
+        <image class="pic" src="{{first}}"/>
+        <view class="word">
+          <view>致橡树</view>
+          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+        </view>
       </view>
     </view>
-    <view class="every center">
-      <image class="pic" src="{{first}}"/>
-      <view class="word">
-        <view>致橡树</view>
-        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+     <view class="center">
+      <view class="every center">
+        <image class="pic" src="{{first}}"/>
+        <view class="word">
+          <view>致橡树</view>
+          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+        </view>
       </view>
     </view>
-    <view class="every center">
-      <image class="pic" src="{{first}}"/>
-      <view class="word">
-        <view>致橡树</view>
-        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+    <view class="center">
+      <view class="every center">
+        <image class="pic" src="{{first}}"/>
+        <view class="word">
+          <view>致橡树</view>
+          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+        </view>
       </view>
     </view>
-  </view>
-</view>
-<view>
-  <text bindtap="onPullDownRefresh"/>
-  <text bindtap="startPullDownRefresh"/>
-</view>  
+  </scroll-view>
 </view>

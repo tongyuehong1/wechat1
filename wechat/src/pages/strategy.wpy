@@ -7,12 +7,13 @@
 }
 .every {
   height: 13rem;
+  width: 18.5rem;
   background-color: white;
   margin-top: 0.6rem;
 }
 .pic {
   height: 7rem;
-  width: 18rem;
+  width: 16.5rem;
   margin-top: 0.8rem;
 }
 .line {
@@ -23,46 +24,52 @@
   background-color: #f4f5f7;
 }
 .word {
-  width: 18rem;
+  width: 16.5rem;
   margin-top: 0.5rem;
 }
 .sentence {
   margin-top: 0.5rem;
   font-size: 0.75rem;
 }
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
 </style>
 <template>
 <view>
-  <view class="line">
-  <view style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
+  <view class="line"></view>
+  <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
     <view class="top"></view>
-    <view class="every center">
-      <image class="pic" src="{{first}}"></image>
-      <view class="word">
-        <view>致橡树</view>
-        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+    <view class="center">
+      <view class="every center">
+        <image class="pic" src="{{first}}"></image>
+        <view class="word">
+          <view>致橡树</view>
+          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+        </view>
       </view>
     </view>
-    <view class="every center">
-      <image class="pic" src="{{first}}"></image>
-      <view class="word">
-        <view>致橡树</view>
-        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+     <view class="center">
+      <view class="every center">
+        <image class="pic" src="{{first}}"></image>
+        <view class="word">
+          <view>致橡树</view>
+          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+        </view>
       </view>
     </view>
-    <view class="every center">
-      <image class="pic" src="{{first}}"></image>
-      <view class="word">
-        <view>致橡树</view>
-        <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+    <view class="center">
+      <view class="every center">
+        <image class="pic" src="{{first}}"></image>
+        <view class="word">
+          <view>致橡树</view>
+          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+        </view>
       </view>
     </view>
-  </view>
-</view>
-<view>
-  <text @tap="onPullDownRefresh"></text>
-  <text @tap="startPullDownRefresh"></text>
-</view>  
+  </scroll-view>
 </view>
 </template>
 <script>
@@ -70,7 +77,7 @@ import wepy from 'wepy'
 export default class Strategy extends wepy.page {
   config = {
     navigationBarTitleText: '小情书',
-    enablePullDownRefresh: true
+    enablePullDownRefresh: 'true'
   };
   data = {
     src: '',
