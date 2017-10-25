@@ -1,0 +1,25 @@
+<style>
+</style>
+<template>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Home extends wepy.page {
+  config = {
+    navigationBarTitleText: '小程序'
+  }
+  data = {
+  }
+  methods = {
+  }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>

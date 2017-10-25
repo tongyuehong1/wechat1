@@ -1,1 +1,1 @@
-{"pages":["pages/home"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"WeChat","navigationBarTextStyle":"black"}}
+{"pages":["pages/home","pages/cart","pages/mine"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"WeChat","navigationBarTextStyle":"black"},"tabBar":{"backgroundColor":"#ffffff","color":"#808080","selectedColor":"#000000","list":[{"pagePath":"pages/home","text":"商城"},{"pagePath":"pages/cart","text":"购物车"},{"pagePath":"pages/mine","text":"我的"}]}}
