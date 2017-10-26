@@ -32,18 +32,18 @@ export default class extends wepy.app {
       selectedColor: '#000000',
       list: [{
         pagePath: 'pages/home',
-        // iconPath: './images/graybook.png',
-        // selectedIconPath: './images/book.png',
+        iconPath: './image/grayshop.png',
+        selectedIconPath: './image/blackshop.png',
         text: '商城'
       }, {
         pagePath: 'pages/cart',
-        // iconPath: './images/grayhearts.png',
-        // selectedIconPath: './images/hearts.png',
+        iconPath: './image/graycart.png',
+        selectedIconPath: './image/blackcart.png',
         text: '购物车'
       }, {
         pagePath: 'pages/mine',
-        // iconPath: './images/graytwo.png',
-        // selectedIconPath: './images/two.png',
+        iconPath: './image/graymine.png',
+        selectedIconPath: './image/blackmine.png',
         text: '我的'
       }]
     }
