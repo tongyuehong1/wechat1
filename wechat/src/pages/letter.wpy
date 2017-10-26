@@ -159,25 +159,25 @@ export default class Letter extends wepy.page {
     },
     insert() {
       wepy.getUserInfo({
-      success: async function(res) {
-        self.nickName = res.userInfo.nickName
-        self.avatarUrl = res.userInfo.avatarUrl
-        await wepy.request({
-          url: 'http://127.0.0.1:7001/two/missingselect',
-          method: 'POST',
-          data: {
-            wechat: self.nickName
-          },
-          success: function(res) {
-            self.text = res.data[0]
-            self.setData({
-              text: res.data[0]
-            })
-            console.log(self.text)
-          }
-        })
-      }
-    })
+        success: async function(res) {
+          self.nickName = res.userInfo.nickName
+          self.avatarUrl = res.userInfo.avatarUrl
+          await wepy.request({
+            url: 'http://127.0.0.1:7001/two/missingselect',
+            method: 'POST',
+            data: {
+              wechat: self.nickName
+            },
+            success: function(res) {
+              self.text = res.data[0]
+              self.setData({
+                text: res.data[0]
+              })
+              console.log(self.text)
+            }
+          })
+        }
+      })
     }
   }
   onLoad() {
