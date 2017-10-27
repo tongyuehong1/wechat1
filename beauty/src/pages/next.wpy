@@ -1,0 +1,146 @@
+<style lang="less">
+.center {
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.slide-image {
+  height: 14rem;
+}
+.ins {
+  height: 2rem;
+  width: 19rem;
+  font-size: 0.85rem;
+}
+.price {
+  display: flex;
+  margin-top: 0.6rem;
+  justify-content: space-between;
+}
+.between {
+  display: flex;
+  justify-content: space-between;
+}
+.first {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+}
+.circle {
+  border: 1px solid gray;
+  border-radius: 50%;
+  height: 0.8rem;
+  width: 0.8rem;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.7rem;
+}
+.second {
+  margin-top: 0.3rem;
+}
+.third {
+  margin-top: 2.5rem;
+  border: 1px solid white;
+  background-color: white;
+  height: 1.3rem;
+  font-size: 0.9rem;
+}
+.bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  height: 2rem;
+  background-color: white;
+  color: orange;
+}
+.flex {
+  flex: 1;
+}
+</style>
+<template>
+<view>
+  <view style="height: {{height}}px; width: {{width}}px; background-color: #f4f5f7">
+    <swiper style="height: 14rem; width: {{width}}px;" autoplay="true" interval="1000" class="margintop" circular="true" indicator-dots="true" >
+      <block wx:for="{{img}}" wx:key="index">
+      <swiper-item>
+          <image src="{{item}}" class="slide-image" style="width: {{width}}px"/>
+      </swiper-item>
+      </block>
+    </swiper>
+    <view class="center">
+      <view class="ins">
+        <text>三只松鼠坚果大礼包 休闲零食 约会必备 超值【双十一预售】</text>
+      </view>
+    </view>
+    <view class="price">88</view>
+    <view class="first" style="width: {{width}}px">
+      <text>快递：免运费</text>
+      <text>月销2000笔</text>
+      <text>河北石家庄</text>
+    </view>
+    <view class="row between">
+      <view class="row second">
+        <image class="circle"></image>
+        <view style="height: 0.8rem;">
+          <view>7天无理由</view>
+        </view>
+       </view>
+      <view class="row second">
+        <image class="circle"></image>
+        <view style="height: 0.8rem;">
+          <view>公益宝贝</view>
+        </view>
+      </view>
+      <view class="row second">
+        <image class="circle"></image>
+        <view style="height: 0.8rem;">
+          <view>24小时发货</view>
+        </view>
+      </view>
+    </view>
+    <view class="third">
+      <view>请选择 颜色分类</view>
+    </view>
+    <view class="third" style="margin-top: 0.2rem">
+      <view>产品参数</view>
+    </view>
+    <view class="bottom between" style="width: {{width}}px; display:flex; align-items: center;">
+        <text>联系卖家</text>
+        <text>加入购物车</text>
+        <text>立即购买</text>
+      </view>
+    </view>
+</view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Next extends wepy.page {
+  config = {
+    navigationBarTitleText: '商品详情'
+  }
+  data = {
+    height: '',
+    width: '',
+    img: [
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509109045309&di=2934108553469dd1e83c1b0f0c342049&imgtype=0&src=http%3A%2F%2Fd7.yihaodianimg.com%2FN11%2FM06%2F96%2F11%2FChEwoVhjdPSAFBLEAAHwzUx7zps18400.jpg',
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509109045308&di=9aeb1128f9aba3a6f2ae839a1e510a1d&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fpc_best%2F1710%2F24%2Fc46%2F64283876_1508840274423.jpg',
+      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509109045307&di=38beb66a121d0959318a7c933b376641&imgtype=0&src=http%3A%2F%2Fwww.xiaochanmao.net%2Fmaopic%2Fimgxiaochanmaoali%2Fimgextra%2Fi4%2F2196500332%2FTB2X9GHaUhnpuFjSZFpXXcpuXXa_%2521%25212196500332.jpg'
+    ]
+  }
+  methods = {
+  }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>

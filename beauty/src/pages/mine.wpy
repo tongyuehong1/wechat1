@@ -1,16 +1,122 @@
-<style>
+<style lang="less">
+.user {
+  height: 5.5rem;
+  width: 18rem;
+}
+.mine {
+  margin-top: 2rem;
+  height: 10rem;
+}
+.every {
+  border: 1px solid lightgray;
+  background-color: white;
+  // border-radius: 1rem;
+  height: 2rem;
+  width: 18rem;
+  font-size: 1rem;
+}
+.minecenter {
+  display: flex;
+  align-items: center;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image {
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-left: 0.6rem;
+}
+.userimage {
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.name {
+  height: 3.5rem;
+  margin-left: 0.8rem;
+}
+.set {
+  display: flex;
+  border: 1px solid #f4f5f7;
+  background-color: white;
+  height: 2rem;
+  width: 3rem;
+  // justify-content: end;
+}
 </style>
 <template>
+<view>
+  <view style="height: 1.1rem; background-color: #f4f5f7"></view>
+  <view style="height: {{height}}px; width: {{width}}px; background-color:#f4f5f7">
+    <view class="center">
+      <view style="width: 18rem;display: flex;justify-content: flex-end;">
+        <view class="set center">设置</view>
+      </view>
+    </view>
+    <view class="center">
+      <view class="user row">
+        <image src="{{avatarUrl}}" class="userimage"></image>
+        <view class="name" style="display: flex; align-items: center;">{{nickName}}</view>
+      </view>
+    </view>
+    <view class="center">
+      <view class="mine">
+        <view wx:for="{{title}}" wx:key="index" class="every minecenter" @tap="change" data-index="{{index}}">
+          <image class="image" src="{{item.icon}}"></image>
+          <text style="padding-left: 0.5rem">{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="center">
+      <view class="mine">
+        <view class="every minecenter">
+          <image class="image" src="{{service}}"></image>
+          <text style="padding-left: 0.5rem">联系客服</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
 </template>
 <script>
 import wepy from 'wepy'
 export default class Home extends wepy.page {
   config = {
-    navigationBarTitleText: '小程序'
+    navigationBarTitleText: '我的'
   }
   data = {
+    height: '',
+    width: '',
+    title: [
+      {icon: '../image/order.png', title: '我的订单'},
+      {icon: '../image/money.png', title: '待付款'},
+      {icon: '../image/deliver.png', title: '待发货'},
+      {icon: '../image/payment.png', title: '待收货'},
+      {icon: '../image/conversation.png', title: '待评价'}
+    ],
+    nickName: '',
+    avatarUrl: '',
+    service: '../image/service.png'
   }
   methods = {
+    change(e) {
+      console.log(e.currentTarget.dataset.index)
+      switch (e.currentTarget.dataset.index) {
+        case 0:
+          wepy.navigateTo({
+            url: './zero'
+          })
+          break
+      }
+    }
   }
   onLoad() {
     let self = this
@@ -18,6 +124,12 @@ export default class Home extends wepy.page {
       success(res) {
         self.height = res.windowHeight
         self.width = res.windowWidth
+      }
+    })
+    wepy.getUserInfo({
+      success: function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
       }
     })
   }

@@ -1,0 +1,33 @@
+
+<view>
+  <view style="height: 1.1rem; background-color: #f4f5f7"/>
+  <view style="height: {{height}}px; width: {{width}}px; background-color:#f4f5f7">
+    <view class="center">
+      <view style="width: 18rem;display: flex;justify-content: flex-end;">
+        <view class="set center">设置</view>
+      </view>
+    </view>
+    <view class="center">
+      <view class="user row">
+        <image src="{{avatarUrl}}" class="userimage"/>
+        <view class="name" style="display: flex; align-items: center;">{{nickName}}</view>
+      </view>
+    </view>
+    <view class="center">
+      <view class="mine">
+        <view  wx:for="{{title}}" wx:key="index" class="every minecenter" bindtap="change" data-index="{{index}}">
+          <image class="image" src="{{item.icon}}"/>
+          <text style="padding-left: 0.5rem">{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="center">
+      <view class="mine">
+        <view class="every minecenter">
+          <image class="image" src="{{service}}"/>
+          <text style="padding-left: 0.5rem">联系客服</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>

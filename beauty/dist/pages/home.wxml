@@ -35,7 +35,7 @@
         <image src="{{item}}" class="icons"/>
       </view>
     </view> 
-     <view class="center">
+     <view class="center between">
       <view style="display: flex; flex-direction: row; justify-content: space-between; width: 17rem">
         <view class="iconsword center" wx:for="{{firstword}}" wx:key="index">
           <text>{{item}}</text>
@@ -44,13 +44,22 @@
     </view>
     </view>
     <view class="center">
-      <view class="show between" wx:for="{{firstdisplay}}" wx:key="index">
-        <image src="{{item}}" style="height:8rem; width: 8rem; margin-right: 1rem;margin-left:1rem; margin-top:1.2rem"/>
+      <view style="width: 18rem" class="row between">
+        <view wx:for="{{firstdisplay}}" wx:key="index">
+          <image bindtap="next" src="{{item}}" style="height:8rem; width: 8rem;margin-top:1.2rem"/>
+        </view>
       </view>
     </view>
     <view class="center">
-      <view class="show between" wx:for="{{firstdisplay}}" wx:key="index">
-        <image src="{{item}}" style="height:8rem; width: 8rem; margin-right: 1rem;margin-left:1rem; margin-top:1.2rem"/>
+      <view class="between" wx:for="{{firsttitle}}" wx:key="index">
+        <text class="text" style="width: 8rem; margin-right: 1rem;margin-left:1rem; margin-top:0.5rem">{{item}}</text>
+      </view>
+    </view>
+    <view class="center">
+      <view style="width: 18rem" class="row between">
+        <view wx:for="{{firstdisplay}}" wx:key="index">
+          <image src="{{item}}" style="height:8rem; width: 8rem;margin-top:1.2rem"/>
+        </view>
       </view>
     </view>
   </scroll-view>
