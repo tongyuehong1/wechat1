@@ -18,7 +18,13 @@
       </view>
       <view style="height: 3rem; background-color: #f4f5f7"/>
     </scroll-view>
-    <view class="bottom center">
-      <view class="word">编辑</view>
+    <view class="bottom">
+      <view class="flex center">
+        <text>确定</text>
+      </view>
+      <view class="line"/>
+      <view class="flex center">
+        <text>编辑</text>
+      </view>
     </view>
   </view>

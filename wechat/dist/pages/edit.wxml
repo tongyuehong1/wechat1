@@ -22,7 +22,7 @@
           </view>
         </view>
       <view class="bottom">
-        <button formType="submit" class="button" bindtap="missing">确定</button>
+        <button formType="submit" class="buttom center" bindtap="missing">确定</button>
       </view>
       </form>
     </view>

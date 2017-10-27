@@ -138,7 +138,7 @@ export default class Two extends wepy.page {
     },
     memory() {
       wepy.navigateTo({
-        url: './memory'
+        url: './showmemory'
       })
     }
   }

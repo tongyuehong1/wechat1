@@ -99,9 +99,9 @@
             </view>
           </view>
         </view>
-         <view class="bottom">
-        <button class="button" @tap="edit">编辑</button>
-      </view>
+        <view class="bottom">
+          <button class="bottom center" @tap="edit">编辑</button>
+        </view>
     </view>
     <view wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
       <form bindsubmit="formSubmit">

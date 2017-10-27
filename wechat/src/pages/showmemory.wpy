@@ -1,0 +1,67 @@
+<style lang="less">
+.bottom {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  border: 1px solid white;
+  align-items: center;
+  height: 2.2rem;
+  width: 100%;
+  background-color: white;
+}
+.flex {
+  flex: 1;
+  font-size: 0.8rem;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.line {
+  border-right: 1px solid gray;
+  height: 1rem;
+}
+</style>
+<template>
+<view style="height: {{height}}px; background-color: #f4f5f7">
+  <view class="bottom">
+    <view class="flex center">
+      <text>确定</text>
+    </view>
+    <view class="line"></view>
+    <view class="flex center" bindtap="memory">
+      <text>添加</text>
+    </view>
+  </view>
+</view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Cart extends wepy.page {
+  config = {
+    navigationBarTitleText: '回忆集'
+  }
+  data = {
+    height: '',
+    width: ''
+  }
+  methods = {
+    memory() {
+      wepy.navigateTo({
+        url: './memory'
+      })
+    }
+  }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>

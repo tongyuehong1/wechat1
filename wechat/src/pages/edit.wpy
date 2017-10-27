@@ -99,7 +99,7 @@
           </view>
         </view>
       <view class="bottom">
-        <button formType="submit" class="button" @tap="missing">确定</button>
+        <button formType="submit" class="buttom center" @tap="missing">确定</button>
       </view>
       </form>
     </view>
