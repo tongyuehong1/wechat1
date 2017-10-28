@@ -100,7 +100,7 @@
       </view>
       <view class="bottom">
         <view class="flex center">
-          <text bindtap="set">确定</text>
+          <text bindtap="insert">确定</text>
         </view>
         <view class="line"></view>
         <view class="flex center">
@@ -122,24 +122,16 @@ export default class Letter extends wepy.page {
     width: '',
     add: '../images/add.png',
     inside: '',
-    img: []
+    img: [],
+    nickName: '',
+    avatarUrl: '',
+    text: ''
   }
   methods = {
     inside(e) {
       let self = this
       console.log(e.detail.value)
       self.inside = e.detail.value
-    },
-    set() {
-      let self = this
-      try {
-        wepy.setStorage({
-          key: 'third',
-          data: self.inside
-        })
-      } catch (e) {
-        console.log(e)
-      }
     },
     image() {
       let self = this
@@ -157,23 +149,27 @@ export default class Letter extends wepy.page {
         }
       })
     },
-    insert() {
+    insert(e) {
+      let self = this
+      // self.inside = e.detail.value
+      // console.log(self.inside)
       wepy.getUserInfo({
         success: async function(res) {
           self.nickName = res.userInfo.nickName
           self.avatarUrl = res.userInfo.avatarUrl
           await wepy.request({
-            url: 'http://127.0.0.1:7001/two/missingselect',
+            url: 'http://127.0.0.1:7001/hearts/send',
             method: 'POST',
             data: {
-              wechat: self.nickName
+              wechat: self.nickName,
+              letter: self.inside
             },
             success: function(res) {
               self.text = res.data[0]
               self.setData({
                 text: res.data[0]
               })
-              console.log(self.text)
+              console.log(res)
             }
           })
         }

@@ -17,7 +17,7 @@
       </view>
       <view class="bottom">
         <view class="flex center">
-          <text bindtap="set">确定</text>
+          <text bindtap="insert">确定</text>
         </view>
         <view class="line"/>
         <view class="flex center">

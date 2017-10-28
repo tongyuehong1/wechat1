@@ -150,9 +150,6 @@ export default class Photo extends wepy.page {
             url: 'http://127.0.0.1:7001/two/photoinsert',
             filePath: self.img[0],
             name: 'img',
-            // data: {
-            //   wechat: self.nickName
-            // },
             success: function(res) {
               console.log(res)
             }
