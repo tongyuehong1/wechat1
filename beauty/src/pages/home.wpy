@@ -7,7 +7,7 @@
 }
 .slide-image {
   height: 9rem;
-  width: 18rem;
+  width: 19rem;
 }
 .margintop {
   margin-top: 0.4rem;
@@ -38,7 +38,7 @@
   flex-direction: column;
 }
 .littleicon {
-  width: 17rem;
+  width: 18rem;
   height: 3.5rem;
   display: flex;
   flex-direction: row;
@@ -78,6 +78,9 @@
   -webkit-line-clamp:2;
   flex-wrap: wrap;
 }
+.photo {
+  height: 8rem;
+}
 </style>
 
 <template>
@@ -106,7 +109,7 @@
       </view>
     </view> 
     <view class="center">
-      <view style="display: flex; flex-direction: row; justify-content: space-between; width: 17rem">
+      <view style="display: flex; flex-direction: row; justify-content: space-between; width: 18rem">
         <view class="iconsword center" wx:for="{{firstword}}" wx:key="index">
           <text>{{item}}</text>
         </view>
@@ -116,109 +119,84 @@
       <view class="cir" wx:for="{{secondicons}}" wx:key="index">
         <image src="{{item}}" class="icons"></image>
       </view>
-    </view> 
-     <view class="center between">
-      <view style="display: flex; flex-direction: row; justify-content: space-between; width: 17rem">
-        <view class="iconsword center" wx:for="{{firstword}}" wx:key="index">
-          <text>{{item}}</text>
+    </view>
+    <view style="width: 19rem; display:flex; justify-content:center;margin-top: 1rem">
+      <view class="between">
+        <view @tap="next" wx:for="{{display}}" wx:key="index" style="display:flex; flex-direction: column;">
+          <image class="photo" src="{{item.photo}}" style="width: {{width / 2 - 20}}px"></image>
+          <text>{{item.title}}</text>
         </view>
       </view>
     </view>
     </view>
-    <!-- <view class="center" >
-      <view style="width: 18rem" class="row between">
-        <view wx:for="{{firstdisplay}}" wx:key="index">
-          <image bindtap="next" src="{{item}}" style="height:8rem; width: 8rem;margin-top:1.2rem"></image>
-        </view>
-      </view>
-    </view> -->
-    <!-- <view class="center">
-      <view class="between" wx:for="{{firsttitle}}" wx:key="index">
-        <text class="text" style="width: 8rem; margin-right: 1rem;margin-left:1rem; margin-top:0.5rem">{{item}}</text>
-      </view>
-    </view> -->
-    <!-- <view class="center" >
-      <view style="width: 18rem" class="row between">
-        <view wx:for="{{firstdisplay}}" wx:key="index">
-          <image src="{{item}}" style="height:8rem; width: 8rem;margin-top:1.2rem"></image>
-        </view>
-      </view>
-    </view> -->
   </scroll-view>
 </view>
 </template>
 
 <script>
-import wepy from 'wepy'
-import content from '../untils/content.js'
-export default class Home extends wepy.page {
-  config = {
-    navigationBarTitleText: '小程序'
-  }
-  data = {
-    src: '',
-    img: [
-      '../image/ffirst.jpg',
-      '../image/second.jpg',
-      '../image/third.jpg',
-      '../image/forth.jpg',
-      '../image/fifth.jpg'
-    ],
-    height: '',
-    width: '',
-    firsticons: [
-      '../image/fruit.jpg',
-      '../image/nuts.jpg',
-      '../image/cloth.jpg',
-      '../image/beauty.jpg'
-    ],
-    secondicons: [
-      '../image/fruit.jpg',
-      '../image/nuts.jpg',
-      '../image/cloth.jpg',
-      '../image/beauty.jpg'
-    ],
-    firstword: [
-      '水果',
-      '坚果',
-      '服饰',
-      '化妆品'
-    ],
-    firstdisplay: [
-      '../image/nuts.jpg',
-      '../image/beauty.jpg'
-    ],
-    firsttitle: [
-      '三只松鼠坚果大礼包 活力橙 夏威夷果 巴旦木 蟹香瓜子仁儿',
-      'cache秋冬季新款服饰新品'
-    ],
-    concent: null
-  }
-  methods = {
-    next() {
-     let self = this
-      let item = self.content[e.currentTarget.id]
-      wepy.navigateTo({
-        url: `./fruit?image=${item.img}&title=${item.title}`
-      })
-    },
-    fruit(e) {
+  import wepy from 'wepy'
+  import content from '../untils/content.js'
+  export default class Home extends wepy.page {
+    config = {
+      navigationBarTitleText: '小程序'
+    }
+    data = {
+      src: '',
+      img: [
+        '../image/ffirst.jpg',
+        '../image/second.jpg',
+        '../image/third.jpg',
+        '../image/forth.jpg',
+        '../image/fifth.jpg'
+      ],
+      height: '',
+      width: '',
+      firsticons: [
+        '../image/fruit.jpg',
+        '../image/nuts.jpg',
+        '../image/cloth.jpg',
+        '../image/beauty.jpg'
+      ],
+      secondicons: [
+        '../image/fruit.jpg',
+        '../image/nuts.jpg',
+        '../image/cloth.jpg',
+        '../image/beauty.jpg'
+      ],
+      display: [
+        {photo: 'http://img1.imgtn.bdimg.com/it/u=850119793,4249750756&fm=27&gp=0.jpg', title: '水果'},
+        {photo: 'http://img5.imgtn.bdimg.com/it/u=4120270162,516095231&fm=27&gp=0.jpg', title: '水果2'},
+        {photo: 'http://img1.imgtn.bdimg.com/it/u=1207912580,634887275&fm=27&gp=0.jpg', title: '水果3'},
+        {photo: 'http://img5.imgtn.bdimg.com/it/u=2229099749,611550402&fm=27&gp=0.jpg', title: '水果4'}
+      ],
+      content: null,
+      firstword: [
+        '水果',
+        '坚果',
+        '服饰',
+        '化妆品'
+      ]
+    }
+    methods = {
+      next(e) {
+        let self = this
+        let item = self.content[e.currentTarget.id]
+        console.log(e)
+        wepy.navigateTo({
+          url: `./fruit?image=${item.photo}&title=${item.title}`
+        })
+      }
+    }
+    onLoad() {
       let self = this
-      let item = self.content[e.currentTarget.id]
-      wepy.navigateTo({
-        url: `./fruit?image=${item.img}&title=${item.title}`
+      self.content = content
+      console.log(self.content)
+      wepy.getSystemInfo({
+        success(res) {
+          self.height = res.windowHeight
+          self.width = res.windowWidth
+        }
       })
     }
   }
-  onLoad() {
-    let self = this
-    self.content = content
-    wepy.getSystemInfo({
-      success(res) {
-        self.height = res.windowHeight
-        self.width = res.windowWidth
-      }
-    })
-  }
-}
 </script>

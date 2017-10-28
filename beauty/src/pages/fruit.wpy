@@ -133,14 +133,14 @@ export default class Fruit extends wepy.page {
     height: 0,
     width: 0,
     title: '',
-    img: []
+    photo: []
   }
   methods = {
   }
   onLoad(data) {
     let self = this
     self.title = data.title
-    self.img = data.image.split(',') // 将用逗号隔开的字符串转换为数组
+    self.img = data.photo.split(',') // 将用逗号隔开的字符串转换为数组
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight
