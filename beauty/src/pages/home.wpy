@@ -125,31 +125,32 @@
       </view>
     </view>
     </view>
-    <view class="center" >
+    <!-- <view class="center" >
       <view style="width: 18rem" class="row between">
         <view wx:for="{{firstdisplay}}" wx:key="index">
           <image bindtap="next" src="{{item}}" style="height:8rem; width: 8rem;margin-top:1.2rem"></image>
         </view>
       </view>
-    </view>
-    <view class="center">
+    </view> -->
+    <!-- <view class="center">
       <view class="between" wx:for="{{firsttitle}}" wx:key="index">
         <text class="text" style="width: 8rem; margin-right: 1rem;margin-left:1rem; margin-top:0.5rem">{{item}}</text>
       </view>
-    </view>
-    <view class="center" >
+    </view> -->
+    <!-- <view class="center" >
       <view style="width: 18rem" class="row between">
         <view wx:for="{{firstdisplay}}" wx:key="index">
           <image src="{{item}}" style="height:8rem; width: 8rem;margin-top:1.2rem"></image>
         </view>
       </view>
-    </view>
+    </view> -->
   </scroll-view>
 </view>
 </template>
 
 <script>
 import wepy from 'wepy'
+import content from '../untils/content.js'
 export default class Home extends wepy.page {
   config = {
     navigationBarTitleText: '小程序'
@@ -190,17 +191,28 @@ export default class Home extends wepy.page {
     firsttitle: [
       '三只松鼠坚果大礼包 活力橙 夏威夷果 巴旦木 蟹香瓜子仁儿',
       'cache秋冬季新款服饰新品'
-    ]
+    ],
+    concent: null
   }
   methods = {
     next() {
+     let self = this
+      let item = self.content[e.currentTarget.id]
       wepy.navigateTo({
-        url: './next'
+        url: `./fruit?image=${item.img}&title=${item.title}`
+      })
+    },
+    fruit(e) {
+      let self = this
+      let item = self.content[e.currentTarget.id]
+      wepy.navigateTo({
+        url: `./fruit?image=${item.img}&title=${item.title}`
       })
     }
   }
   onLoad() {
     let self = this
+    self.content = content
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight

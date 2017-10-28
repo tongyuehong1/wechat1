@@ -115,6 +115,16 @@ export default class Home extends wepy.page {
             url: './zero'
           })
           break
+        case 1:
+          wepy.navigateTo({
+            url: './first'
+          })
+          break
+        case 2:
+          wepy.navigateTo({
+            url: './second'
+          })
+          break
       }
     }
   }

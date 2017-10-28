@@ -125,34 +125,22 @@
 </template>
 <script>
 import wepy from 'wepy'
-export default class Next extends wepy.page {
+export default class Fruit extends wepy.page {
   config = {
-    navigationBarTitleText: '商品详情'
+    navigationBarTitleText: '我的订单'
   }
   data = {
     height: 0,
     width: 0,
-    img: [
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509109045309&di=2934108553469dd1e83c1b0f0c342049&imgtype=0&src=http%3A%2F%2Fd7.yihaodianimg.com%2FN11%2FM06%2F96%2F11%2FChEwoVhjdPSAFBLEAAHwzUx7zps18400.jpg',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509109045308&di=9aeb1128f9aba3a6f2ae839a1e510a1d&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fpc_best%2F1710%2F24%2Fc46%2F64283876_1508840274423.jpg',
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509109045307&di=38beb66a121d0959318a7c933b376641&imgtype=0&src=http%3A%2F%2Fwww.xiaochanmao.net%2Fmaopic%2Fimgxiaochanmaoali%2Fimgextra%2Fi4%2F2196500332%2FTB2X9GHaUhnpuFjSZFpXXcpuXXa_%2521%25212196500332.jpg'
-    ],
-    src: '',
-    star: '../image/graystar.png'
+    title: '',
+    img: []
   }
   methods = {
-    star() {
-      let self = this
-      self.start = !self.start
-      if (self.start) {
-        self.star = '../image/redstar.png'
-      } else {
-        self.star = '../image/graystar.png'
-      }
-    }
   }
-  onLoad() {
+  onLoad(data) {
     let self = this
+    self.title = data.title
+    self.img = data.image.split(',') // 将用逗号隔开的字符串转换为数组
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight
