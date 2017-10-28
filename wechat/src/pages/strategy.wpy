@@ -56,7 +56,7 @@
         <image class="pic" src="{{second}}"></image>
         <view class="word">
           <view>你是人间的四月天</view>
-          <view class="sentence">   我说 你是人间的四月天；笑响点亮了四面风；轻灵在春的光艳中交舞着变。你是四月早天里的云烟，黄昏吹着风的软，星子在无意中闪，细雨点洒在花前...</view>
+          <view class="sentence">我说 你是人间的四月天；笑响点亮了四面风；轻灵在春的光艳中交舞着变。你是四月早天里的云烟，黄昏吹着风的软，星子在无意中闪，细雨点洒在花前...</view>
         </view>
       </view>
     <!-- </view> -->
