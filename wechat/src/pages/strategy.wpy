@@ -42,33 +42,13 @@
   <view class="line"></view>
   <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
     <view class="top"></view>
-    <!-- <view class="center"> -->
-      <view class="every center" bindtap="first">
-        <image class="pic" src="{{first}}"></image>
+      <view class="every center" bindtap="first" wx:for="{{text}}" wx:key="index">
+        <image class="pic" src="{{item.pic}}"></image>
         <view class="word">
-          <view>致橡树</view>
-          <view class="sentence">我如果爱你，绝不做攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲...</view>
+          <view>{{item.title}}</view>
+          <view class="sentence">{{item.brief}}</view>
         </view>
       </view>
-    <!-- </view> -->
-     <!-- <view class="center"> -->
-      <view class="every center" bindtap="second">
-        <image class="pic" src="{{second}}"></image>
-        <view class="word">
-          <view>你是人间的四月天</view>
-          <view class="sentence">我说 你是人间的四月天；笑响点亮了四面风；轻灵在春的光艳中交舞着变。你是四月早天里的云烟，黄昏吹着风的软，星子在无意中闪，细雨点洒在花前...</view>
-        </view>
-      </view>
-    <!-- </view> -->
-    <!-- <view class="center"> -->
-      <view class="every center" bindtap="third">
-        <image class="pic" src="{{third}}"></image>
-        <view class="word">
-          <view>面朝大海</view>
-          <view class="sentence">面朝大海，春暖花开...</view>
-        </view>
-      </view>
-    <!-- </view> -->
     <view style="height: 1.5rem; background-color:#f4f5f7"></view>
   </scroll-view>
 </view>
@@ -86,12 +66,16 @@ export default class Strategy extends wepy.page {
     second: '../images/secondessay.jpg',
     third: '../images/first.jpg',
     height: '',
-    width: ''
+    width: '',
+    text: ''
   };
   methods = {
-    first() {
+    first(e) {
+      let self = this
+      let item = self.text
+      console.log(item)
       wepy.navigateTo({
-        url: './firstessay'
+        url: `./firstessay?image=${item.pic}&essay=${item.essay}`
       })
     },
     second() {
@@ -111,6 +95,23 @@ export default class Strategy extends wepy.page {
       success(res) {
         self.height = res.windowHeight
         self.width = res.windowWidth
+      }
+    })
+    wepy.getUserInfo({
+      success: async function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        await wepy.request({
+          url: 'http://127.0.0.1:7001/essay',
+          method: 'POST',
+          success: function(res) {
+            self.text = res.data
+            self.setData({
+              text: res.data
+            })
+            console.log(self.text)
+          }
+        })
       }
     })
   }

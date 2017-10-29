@@ -47,7 +47,7 @@ export default class Firstessay extends wepy.page {
   }
   methods = {
   }
-  onLoad() {
+  onLoad(data) {
     let self = this
     wepy.getSystemInfo({
       success(res) {
@@ -55,26 +55,8 @@ export default class Firstessay extends wepy.page {
         self.width = res.windowWidth
       }
     })
-    wepy.getUserInfo({
-      success: async function(res) {
-        self.nickName = res.userInfo.nickName
-        self.avatarUrl = res.userInfo.avatarUrl
-        await wepy.request({
-          url: 'http://127.0.0.1:7001/essayfirst',
-          method: 'POST',
-          // data: {
-          //   id: 1
-          // },
-          success: function(res) {
-            self.text = res.data[0].essay
-            self.setData({
-              text: res.data[0].essay
-            })
-            console.log(self.text)
-          }
-        })
-      }
-    })
+    self.title = data.essay
+    self.img = data.image
   }
 }
 </script>
