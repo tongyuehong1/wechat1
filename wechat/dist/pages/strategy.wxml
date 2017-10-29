@@ -3,7 +3,7 @@
   <view class="line"/>
   <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
     <view class="top"/>
-      <view class="every center" bindtap="first"  wx:for="{{text}}" wx:key="index">
+      <view class="every center" bindtap="show"  wx:for="{{text}}" wx:key="index" data-index="{{index}}">
         <image class="pic" src="{{item.pic}}"/>
         <view class="word">
           <view>{{item.title}}</view>
