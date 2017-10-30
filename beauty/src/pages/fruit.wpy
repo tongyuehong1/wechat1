@@ -77,10 +77,10 @@
     </swiper>
     <view class="center">
       <view class="ins">
-        <text>三只松鼠坚果大礼包 休闲零食 约会必备 超值【双十一预售】</text>
+        <text>{{title}}</text>
       </view>
     </view>
-    <view class="price">88</view>
+    <view class="price" style="margin-left: 1rem">{{price}}</view>
     <view class="first" style="width: {{width}}px">
       <text>快递：免运费</text>
       <text>月销2000笔</text>
@@ -117,7 +117,7 @@
           <image class="star" bindtap="star" src="{{start ? '../image/graystar.png' : star}}"></image>
           <text style="margin-left: 0.6rem; font-size: 0.95rem">客服</text>
         </view>
-        <text>加入购物车</text>
+        <view bindtap="add">加入购物车</view>
         <text>立即购买</text>
       </view>
     </view>
@@ -133,14 +133,59 @@ export default class Fruit extends wepy.page {
     height: 0,
     width: 0,
     title: '',
-    photo: []
+    img: [],
+    price: '',
+    star: '../image/graystar.png'
   }
   methods = {
+    star() {
+      let self = this
+      self.start = !self.start
+      if (self.start) {
+        self.star = '../image/redstar.png'
+      } else {
+        self.star = '../image/graystar.png'
+      }
+    },
+    add() {
+      let self = this
+      let thing = wepy.getStorageSync('thing')
+      if (thing) {
+        thing.push({
+          img: self.img[0],
+          title: self.title,
+          price: self.price
+        })
+        wepy.setStorageSync('thing', thing)
+      } else {
+        let thing = [
+          {
+            img: self.img[0],
+            title: self.title,
+            price: self.price
+          }
+        ]
+        wepy.setStorageSync('thing', thing)
+      }
+      wepy.showModal({
+        title: '完成',
+        content: '加入购物车成功',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
   }
   onLoad(data) {
     let self = this
     self.title = data.title
-    self.img = data.photo.split(',') // 将用逗号隔开的字符串转换为数组
+    self.img = data.image.split(',')
+    self.price = data.price
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight

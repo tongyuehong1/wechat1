@@ -37,8 +37,8 @@
     </view>
     <view style="width: 19rem; display:flex; justify-content:center;margin-top: 1rem">
       <view class="between">
-        <view bindtap="next" wx:for="{{display}}" wx:key="index" style="display:flex; flex-direction: column;">
-          <image class="photo" src="{{item.photo}}" style="width: {{width / 2 - 20}}px"/>
+        <view bindtap="next" wx:for="{{display}}" wx:key="index" style="display:flex; flex-direction: column;" data-index="{{index}}">
+          <image class="photo" src="{{item.photo}}" style="width: {{width / 2 - 30}}px"/>
           <text>{{item.title}}</text>
         </view>
       </view>

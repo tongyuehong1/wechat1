@@ -10,10 +10,10 @@
     </swiper>
     <view class="center">
       <view class="ins">
-        <text>三只松鼠坚果大礼包 休闲零食 约会必备 超值【双十一预售】</text>
+        <text>{{title}}</text>
       </view>
     </view>
-    <view class="price">88</view>
+    <view class="price" style="margin-left: 1rem">{{price}}</view>
     <view class="first" style="width: {{width}}px">
       <text>快递：免运费</text>
       <text>月销2000笔</text>
@@ -50,7 +50,7 @@
           <image class="star" bindtap="star" src="{{start ? '../image/graystar.png' : star}}"/>
           <text style="margin-left: 0.6rem; font-size: 0.95rem">客服</text>
         </view>
-        <text>加入购物车</text>
+        <view bindtap="add">加入购物车</view>
         <text>立即购买</text>
       </view>
     </view>

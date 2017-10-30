@@ -58,7 +58,7 @@
   <view style="height: {{height}}px; width: {{width}}px; background-color:#f4f5f7">
     <view class="center">
       <view style="width: 18rem;display: flex;justify-content: flex-end;">
-        <view class="set center">设置</view>
+        <view class="set center" bindtap="set">设置</view>
       </view>
     </view>
     <view class="center">
@@ -126,9 +126,14 @@ export default class Home extends wepy.page {
           })
           break
       }
+    },
+    set() {
+      wepy.navigateTo({
+        url: './set'
+      })
     }
   }
-  onLoad() {
+  async onLoad() {
     let self = this
     wepy.getSystemInfo({
       success(res) {
@@ -136,10 +141,14 @@ export default class Home extends wepy.page {
         self.width = res.windowWidth
       }
     })
-    wepy.getUserInfo({
+    await wepy.getUserInfo({
       success: function(res) {
         self.nickName = res.userInfo.nickName
         self.avatarUrl = res.userInfo.avatarUrl
+        self.setData({
+          nickName: res.userInfo.nickName,
+          avatarUrl: res.userInfo.avatarUrl
+        })
       }
     })
   }

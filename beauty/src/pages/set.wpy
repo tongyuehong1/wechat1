@@ -1,0 +1,45 @@
+<style lang="less">
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<template>
+<view bindtap="choose">收货地址</view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Zero extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的设置'
+  }
+  data = {
+  }
+  methods = {
+    choose() {
+      wepy.chooseAddress({
+        success: function (res) {
+          console.log(res.userName)
+          console.log(res.postalCode)
+          console.log(res.provinceName)
+          console.log(res.cityName)
+          console.log(res.countyName)
+          console.log(res.detailInfo)
+          console.log(res.nationalCode)
+          console.log(res.telNumber)
+        }
+      })
+    }
+  }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>

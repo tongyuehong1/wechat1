@@ -4,7 +4,7 @@
   <view style="height: {{height}}px; width: {{width}}px; background-color:#f4f5f7">
     <view class="center">
       <view style="width: 18rem;display: flex;justify-content: flex-end;">
-        <view class="set center">设置</view>
+        <view class="set center" bindtap="set">设置</view>
       </view>
     </view>
     <view class="center">

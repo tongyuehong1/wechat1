@@ -1,0 +1,13 @@
+
+<view style="height: {{height}}px; width: {{width}}px">
+  <view  wx:for="{{thing}}" wx:key="index" class="every" style="display: flex; flex-direction:row;">
+    <view class="radio center">
+      <radio/>
+    </view>
+    <view class="show center">
+      <image src="{{item.img}}" class="image"/>
+      <view>{{item.title}}</view>
+      <view>{{item.price}}</view>
+    </view>
+  </view>
+</view>

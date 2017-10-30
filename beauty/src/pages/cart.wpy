@@ -1,6 +1,40 @@
 <style lang="less">
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.every {
+  height: 12rem;
+  background-color: #f4f5f7;
+  font-size: 0.7rem;
+}
+.image {
+  height: 6rem;
+  width: 7rem;
+}
+.radio {
+  height: 12rem;
+  width: 15%;
+}
+.show {
+  height: 12rem;
+  width: 80%;
+}
 </style>
 <template>
+<view style="height: {{height}}px; width: {{width}}px">
+  <view wx:for="{{thing}}" wx:key="index" class="every" style="display: flex; flex-direction:row;">
+    <view class="radio center">
+      <radio></radio>
+    </view>
+    <view class="show center">
+      <image src="{{item.img}}" class="image"></image>
+      <view>{{item.title}}</view>
+      <view>{{item.price}}</view>
+    </view>
+  </view>
+</view>
 </template>
 <script>
 import wepy from 'wepy'
@@ -9,6 +43,9 @@ export default class Cart extends wepy.page {
     navigationBarTitleText: '小程序'
   }
   data = {
+    thing: [],
+    height: '',
+    width: ''
   }
   methods = {
   }
@@ -20,6 +57,12 @@ export default class Cart extends wepy.page {
         self.width = res.windowWidth
       }
     })
+    self.thing = wepy.getStorageSync('thing')
+    console.log(self.thing)
+    self.setData({
+      thing: wepy.getStorageSync('thing')
+    })
+    // console.log(self.thing[0].title)
   }
 }
 </script>
