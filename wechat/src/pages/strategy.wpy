@@ -76,8 +76,9 @@ export default class Strategy extends wepy.page {
       console.log(item)
       console.log(e.currentTarget.dataset.index)
       let i = e.currentTarget.dataset.index
+      console.log(item[i])
       wepy.navigateTo({
-        url: `./firstessay?image=${item[i].pic}&essay=${item[i].essay}`
+        url: `./firstessay?index=${i}`
       })
     }
   }
@@ -95,7 +96,7 @@ export default class Strategy extends wepy.page {
         self.avatarUrl = res.userInfo.avatarUrl
         await wepy.request({
           url: 'http://127.0.0.1:7001/essay',
-          method: 'POST',
+          // method: 'POST',
           success: function(res) {
             self.text = res.data
             self.setData({

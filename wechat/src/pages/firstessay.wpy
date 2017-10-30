@@ -26,10 +26,10 @@
  <view style="height :{{height}}px; width:{{width}}px; background-color: #f4f5f7">
    <view class="topline"></view>
    <view class="center top">
-     <image src="{{img}}" class="image"></image>
+     <image src="{{show.pic}}" class="image"></image>
    </view>
   <view class="center top">
-    <view class="essay">{{essay}}</view>
+    <view class="essay">{{show.essay}}</view>
   </view>
  </view>
 </template>
@@ -45,11 +45,13 @@ export default class Firstessay extends wepy.page {
     height: '',
     width: '',
     essay: '',
-    img: ''
+    pic: '',
+    index: '',
+    show: ''
   }
   methods = {
   }
-  onLoad(data) {
+  async onLoad(data) {
     let self = this
     wepy.getSystemInfo({
       success(res) {
@@ -57,9 +59,31 @@ export default class Firstessay extends wepy.page {
         self.width = res.windowWidth
       }
     })
-    self.essay = data.essay
-    self.img = data.image
-    console.log(data)
+    self.index = data.index
+    // console.log(self.index)
+    wepy.getUserInfo({
+      success: function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+      }
+    })
+    await wepy.request({
+      url: 'http://127.0.0.1:7001/essay',
+      // method: 'POST',
+      success: function(res) {
+        self.text = res.data
+        self.setData({
+          text: res.data
+        })
+        console.log(self.text[self.index])
+        self.show = self.text[self.index]
+        self.setData({
+          show: self.text[self.index]
+        })
+        console.log(self.show, 'show')
+        console.log(self.show.pic, 'show.pic')
+      }
+    })
   }
 }
 </script>
