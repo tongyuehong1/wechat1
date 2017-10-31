@@ -19,7 +19,7 @@ export default class extends wepy.app {
       'pages/home',
       'pages/cart',
       'pages/mine',
-      'pages/next',
+      // 'pages/next',
       'pages/zero',
       'pages/first',
       'pages/second',

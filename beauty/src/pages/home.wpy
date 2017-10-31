@@ -183,7 +183,7 @@
         let item = self.content[e.currentTarget.dataset.index]
         console.log(e)
         wepy.navigateTo({
-          url: `./fruit?image=${item.photo}&title=${item.title}&price=${item.price}`
+          url: `./fruit?image=${item.photo}&title=${item.title}&price=${item.price}&num=${item.num}`
         })
       }
     }

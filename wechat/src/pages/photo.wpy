@@ -152,6 +152,7 @@ export default class Photo extends wepy.page {
             name: 'img',
             success: function(res) {
               console.log(res)
+              console.log(self.img[0])
             }
           })
         }

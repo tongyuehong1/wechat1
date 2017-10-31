@@ -133,6 +133,7 @@ export default class Fruit extends wepy.page {
     height: 0,
     width: 0,
     title: '',
+    num: 1,
     img: [],
     price: '',
     star: '../image/graystar.png'
@@ -154,7 +155,8 @@ export default class Fruit extends wepy.page {
         thing.push({
           img: self.img[0],
           title: self.title,
-          price: self.price
+          price: self.price,
+          num: self.num
         })
         wepy.setStorageSync('thing', thing)
       } else {
@@ -162,7 +164,8 @@ export default class Fruit extends wepy.page {
           {
             img: self.img[0],
             title: self.title,
-            price: self.price
+            price: self.price,
+            num: self.num
           }
         ]
         wepy.setStorageSync('thing', thing)
@@ -186,6 +189,7 @@ export default class Fruit extends wepy.page {
     self.title = data.title
     self.img = data.image.split(',')
     self.price = data.price
+    self.num = data.num
     wepy.getSystemInfo({
       success(res) {
         self.height = res.windowHeight

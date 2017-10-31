@@ -1,5 +1,6 @@
 module.exports = [
   {
+    num: 1,
     photo: [
       'http://i01.pictn.sogoucdn.com/b39e97986d067604',
       'http://i01.pictn.sogoucdn.com/df301b86d9514c99',
@@ -10,6 +11,7 @@ module.exports = [
     price: 28
   },
   {
+    num: 1,
     photo: [
       'http://i01.pictn.sogoucdn.com/8ac3cc0b17864710',
       'http://i02.pictn.sogoucdn.com/503bcf3774d6e3b5',
