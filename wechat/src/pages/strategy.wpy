@@ -2,7 +2,6 @@
 .center {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
 }
 .every {
@@ -96,7 +95,6 @@ export default class Strategy extends wepy.page {
         self.avatarUrl = res.userInfo.avatarUrl
         await wepy.request({
           url: 'http://127.0.0.1:7001/essay',
-          // method: 'POST',
           success: function(res) {
             self.text = res.data
             self.setData({
