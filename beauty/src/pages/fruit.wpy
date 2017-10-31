@@ -170,17 +170,22 @@ export default class Fruit extends wepy.page {
         ]
         wepy.setStorageSync('thing', thing)
       }
-      wepy.showModal({
-        title: '完成',
-        content: '加入购物车成功',
-        showCancel: false,
-        success: function(res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
+      // wepy.showModal({
+      //   title: '完成',
+      //   content: '加入购物车成功',
+      //   showCancel: false,
+      //   success: function(res) {
+      //     if (res.confirm) {
+      //       console.log('用户点击确定')
+      //     } else if (res.cancel) {
+      //       console.log('用户点击取消')
+      //     }
+      //   }
+      // })
+      wepy.showToast({
+        title: '加入成功',
+        icon: 'success',
+        duration: 2000
       })
     }
   }
