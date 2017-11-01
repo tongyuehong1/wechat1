@@ -2,10 +2,39 @@
 <view>
   <view style="height:0.3rem; background-color:#f4f5f7"/>
   <scroll-view scroll-y style="height:{{height-6}}px; width:{{width}}px; background-color: #f4f5f7;">
-    <view class="row center" style="height:1.6rem;">
-      <view class="word">搜一下</view>
-      <view style="margin-left: 0.3rem;">
-      <input class="searchborder word"/>
+    <view style="display:flex;flex-direction:row">
+      <scroll-view scroll-x="true" style="width:92%">
+        <view class="title" style="margin-left: 0.5rem">
+          <view style="display:flex;flex-direction:row;">
+            <view style="display:flex;flex-direction: column;">
+              <view class="everytitle">精选优品</view>
+              <view style="border-bottom:2px solid {{firstcolor}};"/>
+            </view>
+            <view>
+              <view class="everytitle">年轻风尚</view>
+              <view style="border-bottom:2px solid {{secondcolor}};"/>
+            </view>
+            <view>
+             <view class="everytitle">休闲零食</view>
+             <view style="border-bottom:2px solid {{thirdcolor}};"/>
+            </view>
+            <view>
+              <view class="everytitle">美妆个护</view>
+              <view style="border-bottom:2px solid {{forthcolor}};"/>
+            </view>
+            <view>
+              <view class="everytitle">家清家居</view>
+              <view style="border-bottom:2px solid {{fifthcolor}};"/>
+            </view>
+            <view>
+              <view class="everytitle">国际尖货</view>
+              <view style="border-bottom:2px solid {{sixthcolor}};"/>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+      <view style="height:1rem;width: 20%" class="center">
+        <image src="{{search}}" style="height:1rem;width: 1rem"/>
       </view>
     </view>
   <view class="center">

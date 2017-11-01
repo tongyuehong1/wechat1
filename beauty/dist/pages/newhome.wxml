@@ -1,0 +1,12 @@
+
+  <view style="height:{{height}}px; width:{{width}}px; background-color: #f4f5f7">
+    <view style="height: 0.6rem; background-color:#f4f5f7"/>
+    <scroll-view scroll-x="true">
+      <view class="title" style="margin-left: 0.5rem">
+        <view  wx:for="{{title}}" wx:key="index">
+          <view class="everytitle" style="color:{{wordcolor}}" bindtap="title" data-index="{{index}}">{{item}}</view>
+          <!-- <view style="border-bottom:2px solid {{bordercolor}}; width: 3.45rem;" data-index="{{index}}"></view> -->
+        </view>
+      </view>
+    </scroll-view>
+  </view>
