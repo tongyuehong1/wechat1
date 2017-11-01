@@ -148,6 +148,10 @@ export default class Two extends wepy.page {
       success: function(res) {
         self.nickName = res.userInfo.nickName
         self.avatarUrl = res.userInfo.avatarUrl
+        self.setData({
+          nickName: res.userInfo.nickName,
+          avatarUrl: res.userInfo.avatarUrl
+        })
       }
     })
     wepy.getSystemInfo({

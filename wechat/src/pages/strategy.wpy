@@ -101,6 +101,9 @@ export default class Strategy extends wepy.page {
               text: res.data
             })
             console.log(self.text)
+            console.log(res)
+            console.log(self.text[0])
+            console.log(self.text[0].pic)
           }
         })
       }
