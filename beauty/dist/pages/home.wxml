@@ -3,39 +3,16 @@
   <view style="height:0.3rem; background-color:#f4f5f7"/>
   <scroll-view scroll-y style="height:{{height-6}}px; width:{{width}}px; background-color: #f4f5f7;">
     <view style="display:flex;flex-direction:row">
-      <scroll-view scroll-x="true" style="width:92%">
-        <view class="title" style="margin-left: 0.5rem">
-          <view style="display:flex;flex-direction:row;">
-            <view style="display:flex;flex-direction: column;">
-              <view class="everytitle">精选优品</view>
-              <view style="border-bottom:2px solid {{firstcolor}};"/>
-            </view>
-            <view>
-              <view class="everytitle">年轻风尚</view>
-              <view style="border-bottom:2px solid {{secondcolor}};"/>
-            </view>
-            <view>
-             <view class="everytitle">休闲零食</view>
-             <view style="border-bottom:2px solid {{thirdcolor}};"/>
-            </view>
-            <view>
-              <view class="everytitle">美妆个护</view>
-              <view style="border-bottom:2px solid {{forthcolor}};"/>
-            </view>
-            <view>
-              <view class="everytitle">家清家居</view>
-              <view style="border-bottom:2px solid {{fifthcolor}};"/>
-            </view>
-            <view>
-              <view class="everytitle">国际尖货</view>
-              <view style="border-bottom:2px solid {{sixthcolor}};"/>
-            </view>
-          </view>
+      <scroll-view scroll-x="true">
+      <view class="title" style="margin-left: 0.5rem">
+        <view  wx:for="{{title}}" wx:key="index" bindtap="choose" id="{{index}}">
+          <text class="everytitle" style="color: {{index == currentTargetId ? 'black' : 'gray'}}; border-bottom: 2px solid {{index == currentTargetId ? 'black' : '#f4f5f7'}}">{{item}}</text>
         </view>
-      </scroll-view>
-      <view style="height:1rem;width: 20%" class="center">
-        <image src="{{search}}" style="height:1rem;width: 1rem"/>
       </view>
+    </scroll-view>
+    <view style="height:1rem;width: 20%" class="center">
+      <image src="{{search}}" style="height:1rem;width: 1rem"/>
+    </view>
     </view>
   <view class="center">
     <swiper autoplay="true" interval="1000" class="slide-image margintop" circular="true" indicator-dots="true">
@@ -48,7 +25,7 @@
   </view>
   <view class="center" style="display:flex; flex-direction: column">
     <view class="littleicon">
-      <view class="cir"  wx:for="{{firsticons}}" wx:key="index">
+      <view class="cir" wx:for="{{firsticons}}" wx:key="index">
         <image src="{{item}}" class="icons"/>
       </view>
     </view> 
