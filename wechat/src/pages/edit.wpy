@@ -131,7 +131,7 @@ export default class Show extends wepy.page {
               url: 'http://127.0.0.1:7001/two/missingupdate',
               method: 'POST',
               data: {
-                id: 1,
+                id: 4,
                 date: e.detail.value.date,
                 ME: e.detail.value.ME,
                 TA: e.detail.value.TA,

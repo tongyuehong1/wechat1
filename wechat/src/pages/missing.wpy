@@ -214,6 +214,7 @@ export default class Missing extends wepy.page {
             self.setData({
               text: res.data[0]
             })
+            console.log(res.data)
             console.log(self.text)
           }
         })

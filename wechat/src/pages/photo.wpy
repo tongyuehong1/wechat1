@@ -119,6 +119,7 @@
 </template>
 <script>
 import wepy from 'wepy'
+// import upload from '../untils/upload.js'
 export default class Photo extends wepy.page {
   config = {
     navigationBarTitleText: '照片集'
@@ -130,17 +131,19 @@ export default class Photo extends wepy.page {
     width: '',
     camera: '../images/camera.png',
     nickName: '',
-    avatarUrl: ''
+    avatarUrl: '',
+    upload: ''
   }
   methods = {
     image() {
       let self = this
       wepy.chooseImage({
         count: 9, // 默认9
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
         success(res) {
           let arr = self.img
+          console.log("res: ", res)
           let image = arr.concat(res.tempFilePaths)
           self.img = image
           self.setData({
@@ -152,22 +155,12 @@ export default class Photo extends wepy.page {
             name: 'img',
             success: function(res) {
               console.log(res)
-              console.log(self.img[0])
+              console.log(self.img)
             }
           })
         }
       })
     }
-    // upload() {
-    //   wepy.uploadFile({
-    //     url: 'http://127.0.0.1:7001/two/photoinsert',
-    //     filePath: self.img[0],
-    //     name: 'img',
-    //     success: function(res) {
-    //       console.log(res)
-    //     }
-    //   })
-    // }
   }
   onLoad() {
     let self = this
@@ -183,6 +176,7 @@ export default class Photo extends wepy.page {
         self.avatarUrl = res.userInfo.avatarUrl
       }
     })
+    // self.upload = require('../../untils/upload.js')
   }
 }
 </script>
