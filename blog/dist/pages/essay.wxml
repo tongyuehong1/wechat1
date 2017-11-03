@@ -1,0 +1,18 @@
+
+<view style="height:{{height}}px;width:{{width}}px;">
+  <view class="center">
+    <view class="between">
+      <view  wx:for="{{type}}" wx:key="index" id="{{index}}" bindtap="choose">
+        <view class="everytitle" style="color: {{index == currentTargetId ? 'black' : 'gray'}}; border-bottom: {{index == currentTargetId ? '2px solid black' : ''}}">{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view  wx:for="{{text}}" wx:key="index" id="{{index}}" class="center" style="margin-top: 1rem">
+    <view class="title" bindtap="select" id="{{index}}" style="box-shadow: 5px 5px 10px #999999;">
+      <view class="center" style="margin-top:0.5rem">{{item.title}}</view>
+      <view class="center">
+        <view class="center" style="margin-top:1.5rem;width:80%">{{item.brief}}</view>
+      </view>
+    </view>
+  </view>
+</view>

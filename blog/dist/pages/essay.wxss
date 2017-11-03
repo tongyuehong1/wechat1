@@ -1,0 +1,1 @@
+.everytitle{display:flex;justify-content:center;align-items:center;margin-right:2rem;font-size:.8rem}.between{display:flex;flex-direction:row;justify-content:space-between;margin-top:.6rem;width:80%}.center{display:flex;justify-content:center}.title{height:9rem;width:90%;background-color:#f4f5f7;border:1px solid #f4f5f7;border-radius:10px}

@@ -1,0 +1,18 @@
+<style lang="less">
+</style>
+<template>
+</template>
+<script>
+  import wepy from 'wepy'
+  export default class Message extends wepy.page {
+    config = {
+      navigationBarTitleText: '个人信息'
+    }
+    data = {
+    }
+    methods = {
+    }
+    onLoad() {
+    }
+  }
+</script>

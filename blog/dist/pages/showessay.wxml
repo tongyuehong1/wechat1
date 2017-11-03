@@ -1,0 +1,4 @@
+
+<view>
+  <view>{{text[index].essay}}</view>
+</view>

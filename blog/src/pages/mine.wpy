@@ -1,0 +1,192 @@
+<style lang="less">
+.cir {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+}
+
+.userinfo-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 35px 0px rgba(220,220,220,70%);
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.out {
+  display: flex;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  height: 3.3rem;
+  width: 19rem;
+  background-color: white;
+  align-items: center;
+  // padding-left: 0.8rem;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice {
+  margin-top: 4.5rem;
+}
+
+.everychoice {
+  margin-top: 1rem;
+}
+
+.space {
+  height: 10.66rem;
+  width: 20rem;
+}
+
+.background {
+  background-color: #f4f5f7;
+}
+
+.mar {
+  margin-top: 30px;
+}
+
+.word {
+  font-size: 0.9rem;
+  margin-left: 0.8rem;
+}
+
+.avatarUrl {
+  height: 4rem;
+  width: 4rem;
+}
+
+.point {
+  margin-left: 10rem;
+  height: 1.3rem;
+  width: 1.5rem;
+}
+.name {
+  margin-top: 0.8rem;
+}
+.messagesize {
+  width: 7rem;
+}
+</style>
+<template>
+  <view style="height: {{height}}px; width:{{width}}px;" class="background">
+    <view class="center userinfo">
+      <view class="cir center">
+        <image class="userinfo-avatar avatarUrl" src="{{ avatarUrl }}" />
+      </view>
+      <view class="userinfo-nickname center name">{{ nickName }}</view>
+    </view>
+    <view class="center choice">
+      <view class="out" @tap="message">
+        <view class="messagesize">
+          <text class="word">个人信息</text>
+        </view>
+        <image src="{{point}}" class="point"></image>
+      </view>
+      <view class="out everychoice" @tap="github">
+        <view class="messagesize">
+          <text class="word">我的Github</text>
+        </view>
+        <image src="{{point}}" class="point"></image>
+      </view>
+      <view class="out" @tap="email">
+        <view class="messagesize">
+          <text class="word">我的e-mail</text>
+        </view>
+        <image src="{{point}}" class="point"></image>
+      </view>
+    </view>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Two extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的'
+  }
+  data = {
+    src: '',
+    nickName: '',
+    avatarUrl: '',
+    point: '../image/point.png',
+    height: '',
+    width: ''
+  }
+  methods = {
+    message() {
+      wepy.navigateTo({
+        url: './message'
+      })
+    },
+    github() {
+      wepy.showModal({
+        title: 'My Github',
+        content: 'https://github.com/tongyuehong1',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    },
+    email() {
+      wepy.showModal({
+        title: 'My Email',
+        content: '245503112@qq.com',
+        showCancel: false,
+        success: function(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+  }
+  async onLoad() {
+    let self = this
+    await wepy.getUserInfo({
+      success: function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        self.setData({
+          nickName: res.userInfo.nickName,
+          avatarUrl: res.userInfo.avatarUrl
+        })
+      }
+    })
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>
