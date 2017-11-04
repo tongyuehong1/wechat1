@@ -39,7 +39,7 @@
         <text style="width: 17rem; height: {{height-250}}px; font-size:0.8rem">{{text.letter}}</text>
       </view>
       <view class="bottom center">
-        <view class="word">删除</view>
+        <view class="word" bindtap="delete">删除</view>
       </view>
     </scroll-view>
   </view>
@@ -56,10 +56,37 @@ export default class List extends wepy.page {
     pic: '../images/cat.jpg',
     height: '',
     width: '',
-    index: 0
+    index: 0,
+    letterid: ''
   }
   methods = {
-
+    delete() {
+      let self = this
+      wepy.request({
+        url: 'http://127.0.0.1:7001/hearts/list',
+        method: 'POST',
+        data: {
+          wechat: self.wechat
+        },
+        success: function(res) {
+          self.text = res.data[self.index]
+          self.setData({
+            text: res.data[self.index]
+          })
+          self.letterid = self.text.id
+          console.log(self.letterid, 'id')
+          wepy.request({
+            url: 'http://127.0.0.1:7001/hearts/delete',
+            method: 'POST',
+            data: {
+              id: self.letterid
+            },
+            success: function(res) {
+            }
+          })
+        }
+      })
+    }
   }
   async onLoad(data) {
     let self = this
