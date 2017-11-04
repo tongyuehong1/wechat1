@@ -6,7 +6,7 @@
         <view style="font-size: 1rem;margin-top:0.6rem">{{text.title}}</view>
       </view>
       <view class="center top">
-        <text style="width: 17rem; height: {{height-250}}px; font-size:0.9rem">{{text.letter}}</text>
+        <text style="width: 17rem; height: {{height-250}}px; font-size:0.8rem">{{text.letter}}</text>
       </view>
       <view class="bottom center">
         <view class="word">删除</view>

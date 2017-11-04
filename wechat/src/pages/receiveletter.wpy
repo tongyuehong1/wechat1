@@ -36,7 +36,7 @@
         <view style="font-size: 1rem;margin-top:0.6rem">{{text.title}}</view>
       </view>
       <view class="center top">
-        <text style="width: 17rem; height: {{height-250}}px; font-size:0.9rem">{{text.letter}}</text>
+        <text style="width: 17rem; height: {{height-250}}px; font-size:0.8rem">{{text.letter}}</text>
       </view>
       <view class="bottom center">
         <view class="word">删除</view>
@@ -63,8 +63,8 @@ export default class List extends wepy.page {
   }
   async onLoad(data) {
     let self = this
-    console.log(data.index, 'aaaaaaaaaaa')
     self.index = data.index
+    self.wechat = data.wechat
     wepy.getUserInfo({
       success: async function(res) {
         self.nickName = res.userInfo.nickName
@@ -73,7 +73,7 @@ export default class List extends wepy.page {
           url: 'http://127.0.0.1:7001/hearts/list',
           method: 'POST',
           data: {
-            wechat: self.nickName
+            wechat: self.wechat
           },
           success: function(res) {
             self.text = res.data[self.index]

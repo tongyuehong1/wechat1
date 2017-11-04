@@ -1,6 +1,7 @@
 
   <view>
     <view class="rowline"/>
+    <view style="height: {{height}}px;width:{{width}}px">
     <view class="center">
       <view class="top row center">
         <view class="flex center">
@@ -12,31 +13,28 @@
         </view>
       </view>
     </view>
-    <view  wx:if="{{show}}" class="center next">
-      <view class="row second avg">
+    <view  wx:if="{{show}}" class="center">
+      <view class="row second avg" style="display:flex; flex-wrap: wrap;">
         <view class="addborder center" bindtap="letter">
           <image class="add" src="{{add}}"/>
         </view>
-        <view class="image">
-          <image class="image" src="{{cat}}" bindtap="second"/>
-          <view class="word">写给你的第二封信</view>
-        </view>
-        <view class="image">
-          <image class="image" src="{{plant}}" bindtap="first"/>
-          <view class="word">写给你的第一封信</view>
+        <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" style="height:7.5rem;width:5.5rem;margin-bottom:1.5rem;">
+          <view class="image">
+            <image class="image" src="{{item.img}}"/>
+            <view class="word">{{item.title}}</view>
+          </view>
         </view>
       </view>
     </view>
-    <view  wx:else class="center next">
-      <view class="row second">
-        <view class="receive">
-          <image class="image" src="{{cat}}" bindtap="second"/>
-          <view class="word">写给你的第二封信</view>
-        </view>
-        <view class="receive">
-          <image class="image" src="{{plant}}" bindtap="first"/>
-          <view class="word">写给你的第一封信</view>
-        </view>
+    <view  wx:else class="center">
+      <view class="row third" style="display:flex; flex-wrap: wrap;">
+        <view wx:for="{{receive}}" wx:key="index" id="{{index}}" bindtap="receiveletter" class="receiveimg">
+            <view class="image">
+              <image class="image" src="{{item.img}}"/>
+              <view class="word">{{item.title}}</view>
+            </view>
+          </view>
       </view>
+    </view>
     </view>
   </view>

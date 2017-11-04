@@ -3,26 +3,31 @@
     <view class="rowline"/>
     <view class="top"/>
     <view style="height: {{height-1}}px; width:{{width}}px; background-color:#f4f5f7;">
-      <view class="row">
-        <view>标题:</view>
-        <input class="input left center" placeholder="请输入标题"/>
-      </view>
-      <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"/>
-      <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"/>
-      <view class="add center" bindtap="image">
-        <image class="pic" src="{{add}}" bindtap="image"/>
-      </view>
-      <view class="addpic center">
-        <text style="font-size:0.7rem; color=lightgray">封面图片</text>
-      </view>
-      <view class="bottom">
-        <view class="flex center">
-          <text bindtap="insert">确定</text>
+        <view class="row">
+          <view>标题:</view>
+          <input class="input left center" placeholder="请输入标题" bindinput="input"/>
         </view>
-        <view class="line"/>
-        <view class="flex center">
-          <text>删除</text>
+        <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"/>
+        <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"/>
+        <view style="display:flex; flex-direction:row">
+          <view>
+            <view class="add center" bindtap="image">
+              <image class="pic" src="{{add}}" bindtap="image"/>
+            </view>
+            <view class="addpic center">
+              <text style="font-size:0.7rem; color=lightgray">封面图片</text>
+            </view>
+          </view>
+          <image src="{{img}}" class="image"/>
         </view>
-      </view>
+        <view class="bottom">
+          <view class="flex center">
+            <text bindtap="insert">确定</text>
+          </view>
+          <view class="line"/>
+          <view class="flex center">
+            <text>删除</text>
+          </view>
+        </view>
     </view>
   </view>

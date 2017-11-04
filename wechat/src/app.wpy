@@ -29,8 +29,8 @@ export default class extends wepy.app {
       'pages/edit',
       'pages/firstessay',
       'pages/secondessay',
-      'pages/thirdessay',
-      'pages/showmemory'
+      'pages/showmemory',
+      'pages/receiveletter'
     ],
     window: {
       backgroundTextStyle: 'dark',

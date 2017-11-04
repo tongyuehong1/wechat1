@@ -48,6 +48,12 @@
   margin-left: 1rem;
   margin-top: 0.8rem;
 }
+.image {
+  height: 4.3rem;
+  width: 4.3rem;
+  margin-left: 1rem;
+  margin-top: 0.8rem;
+}
 
 .pic {
   height: 2rem;
@@ -86,27 +92,32 @@
     <view class="rowline"></view>
     <view class="top"></view>
     <view style="height: {{height-1}}px; width:{{width}}px; background-color:#f4f5f7;">
-      <view class="row">
-        <view>标题:</view>
-        <input class="input left center" placeholder="请输入标题"></input>
-      </view>
-      <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"></view>
-      <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"></textarea>
-      <view class="add center" bindtap="image">
-        <image class="pic" src="{{add}}" bindtap="image"></image>
-      </view>
-      <view class="addpic center">
-        <text style="font-size:0.7rem; color=lightgray">封面图片</text>
-      </view>
-      <view class="bottom">
-        <view class="flex center">
-          <text bindtap="insert">确定</text>
+        <view class="row">
+          <view>标题:</view>
+          <input class="input left center" placeholder="请输入标题" bindinput="input"></input>
         </view>
-        <view class="line"></view>
-        <view class="flex center">
-          <text>删除</text>
+        <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"></view>
+        <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"></textarea>
+        <view style="display:flex; flex-direction:row">
+          <view>
+            <view class="add center" bindtap="image">
+              <image class="pic" src="{{add}}" bindtap="image"></image>
+            </view>
+            <view class="addpic center">
+              <text style="font-size:0.7rem; color=lightgray">封面图片</text>
+            </view>
+          </view>
+          <image src="{{img}}" class="image"></image>
         </view>
-      </view>
+        <view class="bottom">
+          <view class="flex center">
+            <text bindtap="insert">确定</text>
+          </view>
+          <view class="line"></view>
+          <view class="flex center">
+            <text>删除</text>
+          </view>
+        </view>
     </view>
   </view>
 </template>
@@ -125,34 +136,38 @@ export default class Letter extends wepy.page {
     img: [],
     nickName: '',
     avatarUrl: '',
-    text: ''
+    text: '',
+    title: ''
   }
   methods = {
     inside(e) {
       let self = this
       console.log(e.detail.value)
-      self.inside = e.detail.value
+      self.essay = e.detail.value
+    },
+    input(e) {
+      let self = this
+      console.log(e.detail.value)
+      self.title = e.detail.value
     },
     image() {
       let self = this
       wepy.chooseImage({
-        count: 9, // 默认9
+        count: 1, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success(res) {
-          let arr = self.img
-          let image = arr.concat(res.tempFilePaths)
-          self.img = image
+          self.img = res.tempFilePaths[0]
           self.setData({
-            img: image
+            img: res.tempFilePaths[0]
           })
         }
       })
     },
     insert(e) {
       let self = this
-      // self.inside = e.detail.value
-      // console.log(self.inside)
+      console.log(self.title, 'title')
+      console.log(self.essay, 'essay')
       wepy.getUserInfo({
         success: async function(res) {
           self.nickName = res.userInfo.nickName
@@ -162,7 +177,9 @@ export default class Letter extends wepy.page {
             method: 'POST',
             data: {
               wechat: self.nickName,
-              letter: self.inside
+              title: self.title,
+              img: 'a',
+              letter: self.essay
             },
             success: function(res) {
               self.text = res.data[0]
