@@ -9,7 +9,7 @@
         <text style="width: 17rem; height: {{height-250}}px; font-size:0.9rem">{{text.letter}}</text>
       </view>
       <view class="bottom center">
-        <view class="word">删除</view>
+        <view class="word" bindtap="delete">删除</view>
       </view>
     </scroll-view>
   </view>

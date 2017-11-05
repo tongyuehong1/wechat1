@@ -1,7 +1,12 @@
 
   <view style="height: {{height}}px; width:{{width}}px;" class="background">
     <view class="space"/>
-    <view class="center">
+    <view class="row">
+      <view>标题:</view>
+      <input class="input left center" placeholder="请输入标题(最长不超过七个字奥)" bindinput="input"/>
+    </view>
+    <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:0.5rem;"/>
+    <view class="center" style="margin-top: 1rem">
       <textarea class="area " name="textarea" bindinput="letter" placeholder="请输入内容"/>
     </view>
     <view class="center">
@@ -23,7 +28,7 @@
     </view>
     <view class="bottom">
       <view class="flex center">
-        <text>确定</text>
+        <text bindtap="insert">确定</text>
       </view>
       <view class="line"/>
       <view class="flex center">

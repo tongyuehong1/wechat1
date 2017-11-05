@@ -100,7 +100,7 @@
           </view>
         </view>
         <view class="bottom">
-          <button class="bottom center" @tap="edit">编辑</button>
+          <view class="bottom center" @tap="edit">编辑</view>
         </view>
     </view>
     <view wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
@@ -109,24 +109,24 @@
           <view class="out">
             <view class="word">我们相遇在</view>
             <view class="left center">
-              <input class="input center inputword" name="date" placeholder="2017-10-19"></input>
+              <input class="input center inputword" bindinput="date" placeholder="2017-10-19"></input>
             </view>
           </view>
           <view class="out">
             <view class="word">我的诞生日</view>
             <view class="left center">
-              <input class="input center inputword" name="ME" placeholder="填写日期"></input>
+              <input class="input center inputword" bindinput="ME" placeholder="填写日期"></input>
             </view>
           </view>
           <view class="out">
             <view class="word">TA的诞生日</view>
             <view class="TA center">
-              <input class="input center inputword" name="TA" placeholder="填写日期"></input>
+              <input class="input center inputword" bindinput="TA" placeholder="填写日期"></input>
             </view>
           </view>
         </view>
-      <view class="bottom">
-        <button formType="submit" class="button">确定</button>
+      <view class="bottom center">
+        <view bindtap="submit" class="button">确定</view>
       </view>
       </form>
     </view>
@@ -152,12 +152,23 @@ export default class Missing extends wepy.page {
     nickName: ''
   }
   methods = {
-    formSubmit(e) {
-      console.log(e.detail.value)
+    date(e) {
       let self = this
-      self.ME = e.detail.value.ME
-      self.TA = e.detail.value.TA
-      self.date = e.detail.value.date
+      console.log(e.detail.value, 'date')
+      self.date = e.detail.value
+    },
+    ME(e) {
+      let self = this
+      console.log(e.detail.value, 'ME')
+      self.ME = e.detail.value
+    },
+    TA(e) {
+      let self = this
+      console.log(e.detail.value, 'TA')
+      self.TA = e.detail.value
+    },
+    submit(e) {
+      let self = this
       if (self.ME !== '' & self.TA !== '' & self.date !== '') {
         wepy.getUserInfo({
           success: function(res) {
@@ -167,9 +178,9 @@ export default class Missing extends wepy.page {
               url: 'http://127.0.0.1:7001/two/missinginsert',
               method: 'POST',
               data: {
-                date: e.detail.value.date,
-                ME: e.detail.value.ME,
-                TA: e.detail.value.TA,
+                date: self.date,
+                ME: self.ME,
+                TA: self.TA,
                 wechat: self.nickName
               },
               success: function(res) {
@@ -191,7 +202,7 @@ export default class Missing extends wepy.page {
       })
     }
   }
-  async onLoad() {
+  async onShow() {
     let self = this
     wepy.getSystemInfo({
       success(res) {

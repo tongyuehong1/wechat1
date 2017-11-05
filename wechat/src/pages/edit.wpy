@@ -82,24 +82,24 @@
           <view class="out">
             <view class="word">我们相遇在</view>
             <view class="left center">
-              <input class="input center inputword" name="date" placeholder="2017-10-19"></input>
+              <input class="input center inputword" bindinput="date" placeholder="2017-10-19"></input>
             </view>
           </view>
           <view class="out">
             <view class="word">我的诞生日</view>
             <view class="left center">
-              <input class="input center inputword" name="ME" placeholder="填写日期"></input>
+              <input class="input center inputword" bindinput="ME" placeholder="填写日期"></input>
             </view>
           </view>
           <view class="out">
             <view class="word">TA的诞生日</view>
             <view class="TA center">
-              <input class="input center inputword" name="TA" placeholder="填写日期"></input>
+              <input class="input center inputword" bindinput="TA" placeholder="填写日期"></input>
             </view>
           </view>
         </view>
-      <view class="bottom">
-        <button formType="submit" class="buttom center" @tap="missing">确定</button>
+      <view class="bottom center">
+        <view bindtap="submit" class="buttom">确定</view>
       </view>
       </form>
     </view>
@@ -114,14 +114,30 @@ export default class Show extends wepy.page {
     text: '',
     height: '',
     width: '',
-    nickName: ''
+    nickName: '',
+    id: 0,
+    a: ''
   }
   methods = {
-    formSubmit(e) {
+    date(e) {
       let self = this
-      self.ME = e.detail.value.ME
-      self.TA = e.detail.value.TA
-      self.date = e.detail.value.date
+      console.log(e.detail.value, 'date')
+      self.date = e.detail.value
+    },
+    ME(e) {
+      let self = this
+      console.log(e.detail.value, 'ME')
+      self.ME = e.detail.value
+    },
+    TA(e) {
+      let self = this
+      console.log(e.detail.value, 'TA')
+      self.TA = e.detail.value
+    },
+    submit(e) {
+      let self = this
+      console.log('dates', self.date)
+      console.log(self.ME)
       if (self.ME !== '' & self.TA !== '' & self.date !== '') {
         wepy.getUserInfo({
           success: function(res) {
@@ -131,14 +147,24 @@ export default class Show extends wepy.page {
               url: 'http://127.0.0.1:7001/two/missingupdate',
               method: 'POST',
               data: {
-                id: 4,
-                date: e.detail.value.date,
-                ME: e.detail.value.ME,
-                TA: e.detail.value.TA,
+                id: self.id,
+                date: self.date,
+                ME: self.ME,
+                TA: self.TA,
                 wechat: self.nickName
               },
               success: function(res) {
                 console.log(res)
+                wepy.showToast({
+                  title: '成功',
+                  icon: 'success',
+                  duration: 2000,
+                  success: function() {
+                    wepy.navigateBack({
+                      delta: 1
+                    })
+                  }
+                })
               }
             })
           }
@@ -168,6 +194,21 @@ export default class Show extends wepy.page {
       success: async function(res) {
         self.nickName = res.userInfo.nickName
         self.avatarUrl = res.userInfo.avatarUrl
+        await wepy.request({
+          url: 'http://127.0.0.1:7001/two/missingselect',
+          method: 'POST',
+          data: {
+            wechat: self.nickName
+          },
+          success: function(res) {
+            self.id = res.data[0].id
+            self.setData({
+              id: res.data[0].id
+            })
+            console.log(res.data)
+            console.log(self.id)
+          }
+        })
       }
     })
   }

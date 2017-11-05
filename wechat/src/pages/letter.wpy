@@ -11,7 +11,7 @@
 
 .input {
   height: 1.1rem;
-  width: 12rem;
+  width: 13.2rem;
   border: 1px solid #f4f5f7;
   font-size: 0.9rem;
 }
@@ -94,10 +94,10 @@
     <view style="height: {{height-1}}px; width:{{width}}px; background-color:#f4f5f7;">
         <view class="row">
           <view>标题:</view>
-          <input class="input left center" placeholder="请输入标题" bindinput="input"></input>
+          <input class="input left center" placeholder="请输入标题(最长不超过七个字奥)" bindinput="input"></input>
         </view>
         <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"></view>
-        <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"></textarea>
+        <textarea class="area" style="height: 15rem; width:{{width-56}}px;font-size:0.8rem" bindinput="inside"></textarea>
         <view style="display:flex; flex-direction:row">
           <view>
             <view class="add center" bindtap="image">
@@ -153,14 +153,21 @@ export default class Letter extends wepy.page {
     image() {
       let self = this
       wepy.chooseImage({
-        count: 1, // 默认9
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
         success(res) {
           self.img = res.tempFilePaths[0]
           self.setData({
             img: res.tempFilePaths[0]
           })
+          if (self.img.length > 1) {
+            wepy.showToast({
+              title: '只能放1张哦',
+              icon: 'success',
+              duration: 1000
+            })
+          }
         }
       })
     },
@@ -172,23 +179,40 @@ export default class Letter extends wepy.page {
         success: async function(res) {
           self.nickName = res.userInfo.nickName
           self.avatarUrl = res.userInfo.avatarUrl
-          await wepy.request({
-            url: 'http://127.0.0.1:7001/hearts/send',
-            method: 'POST',
-            data: {
-              wechat: self.nickName,
-              title: self.title,
-              img: 'a',
-              letter: self.essay
-            },
-            success: function(res) {
-              self.text = res.data[0]
-              self.setData({
-                text: res.data[0]
-              })
-              console.log(res)
-            }
-          })
+          if (self.nickName !== '' & self.title !== '' & self.essay !== '') {
+            await wepy.request({
+              url: 'http://127.0.0.1:7001/hearts/send',
+              method: 'POST',
+              data: {
+                wechat: self.nickName,
+                title: self.title,
+                img: self.img,
+                letter: self.essay
+              },
+              success: function(res) {
+                self.text = res.data[0]
+                self.setData({
+                  text: res.data[0]
+                })
+                console.log(res)
+                wepy.showToast({
+                  title: '成功',
+                  icon: 'success',
+                  duration: 2000,
+                  success: function() {
+                    wepy.navigateBack({
+                      delta: 1
+                    })
+                  }
+                })
+              }
+            })
+          } else {
+            wepy.showToast({
+              title: '请补充信息',
+              image: '../images/hint.png'
+            })
+          }
         }
       })
     }

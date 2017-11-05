@@ -14,14 +14,14 @@
       </view>
     </view>
     <view  wx:if="{{show}}" class="center">
-      <view class="row second avg" style="display:flex; flex-wrap: wrap;">
-        <view class="addborder center" bindtap="letter">
+      <view class="row second" style="display:flex; flex-wrap: wrap;">
+        <view class="addborder center" bindtap="letter" style="margin-left:0.2rem;margin-right:0.2rem">
           <image class="add" src="{{add}}"/>
         </view>
-        <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" style="height:7.5rem;width:5.5rem;margin-bottom:1.5rem;">
+        <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
             <image class="image" src="{{item.img}}"/>
-            <view class="word">{{item.title}}</view>
+            <view class="word try">{{item.title}}</view>
           </view>
         </view>
       </view>

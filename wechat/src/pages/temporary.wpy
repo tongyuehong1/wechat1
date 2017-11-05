@@ -1,0 +1,35 @@
+<style lang="less">
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+<template>
+<view class="center" style="height:{{height}}px;width:{{width}}px">
+  <input></input>
+</view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class First extends wepy.page {
+  config = {
+    navigationBarTitleText: '临时界面'
+  }
+  data = {
+    height: 0,
+    width: 0
+  }
+  methods = {
+  }
+  onLoad() {
+    let self = this
+    wepy.getSystemInfo({
+      success(res) {
+        self.height = res.windowHeight
+        self.width = res.windowWidth
+      }
+    })
+  }
+}
+</script>

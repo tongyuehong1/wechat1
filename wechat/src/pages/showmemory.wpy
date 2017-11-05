@@ -23,9 +23,57 @@
   border-right: 1px solid gray;
   height: 1rem;
 }
+.piccenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.every {
+  height: 12rem;
+  width: 90%;
+  background-color: white;
+  margin-top: 0.6rem;
+}
+.pic {
+  height: 9rem;
+  width: 16rem;
+  margin-top: 0.8rem;
+}
+.line {
+  border-top: 1px solid gray;
+}
+.top {
+  height: 0.1rem;
+  background-color: #f4f5f7;
+}
+.word {
+  width: 16rem;
+}
+.sentence {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
 </style>
 <template>
 <view style="height: {{height}}px; background-color: #f4f5f7">
+  <view class="top"></view>
+  <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
+    <view class="top"></view>
+    <view class="center">
+      <view class="every piccenter" bindtap="show" wx:for="{{text}}" wx:key="index" id="{{index}}">
+        <image class="pic" src="{{item.img}}"></image>
+        <view class="word">
+          <view class="sentence">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    <view style="height: 1.5rem; background-color:#f4f5f7"></view>
+  </scroll-view>
   <view class="bottom">
     <view class="flex center">
       <text>确定</text>
@@ -45,12 +93,21 @@ export default class Cart extends wepy.page {
   }
   data = {
     height: '',
-    width: ''
+    width: '',
+    text: '',
+    id: 0
   }
   methods = {
     memory() {
       wepy.navigateTo({
         url: './memory'
+      })
+    },
+    show(e) {
+      let self = this
+      self.id = e.currentTarget.id
+      wepy.navigateTo({
+        url: `./readmemory?id=${self.id}`
       })
     }
   }
@@ -60,6 +117,29 @@ export default class Cart extends wepy.page {
       success(res) {
         self.height = res.windowHeight
         self.width = res.windowWidth
+      }
+    })
+  }
+  onShow() {
+    let self = this
+    wepy.getUserInfo({
+      success: async function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        await wepy.request({
+          url: 'http://127.0.0.1:7001/memory/select',
+          method: 'POST',
+          data: {
+            wechat: self.nickName
+          },
+          success: function(res) {
+            self.text = res.data
+            self.setData({
+              text: res.data
+            })
+            console.log(res, 'aaaaa')
+          }
+        })
       }
     })
   }

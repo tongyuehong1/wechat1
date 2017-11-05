@@ -105,11 +105,33 @@
   height: 3.3rem;
   width: 3.3rem;
 }
+.input {
+  height: 1.1rem;
+  width: 13.2rem;
+  border: 1px solid #f4f5f7;
+  font-size: 0.9rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
+}
+
+.left {
+  display: flex;
+  margin-left: 1rem;
+}
 </style>
 <template>
   <view style="height: {{height}}px; width:{{width}}px;" class="background">
     <view class="space"></view>
-    <view class="center">
+    <view class="row">
+      <view>标题:</view>
+      <input class="input left center" placeholder="请输入标题(最长不超过七个字奥)" bindinput="input"></input>
+    </view>
+    <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:0.5rem;"></view>
+    <view class="center" style="margin-top: 1rem">
       <textarea class="area " name="textarea" bindinput="letter" placeholder="请输入内容"></textarea>
     </view>
     <view class="center">
@@ -131,7 +153,7 @@
     </view>
     <view class="bottom">
       <view class="flex center">
-        <text>确定</text>
+        <text bindtap="insert">确定</text>
       </view>
       <view class="line"></view>
       <view class="flex center">
@@ -152,15 +174,25 @@ export default class Memory extends wepy.page {
     width: '',
     add: '../images/add.png',
     img: [],
-    arr: ''
+    arr: '',
+    essay: '',
+    title: ''
   }
   methods = {
+    letter(e) {
+      let self = this
+      self.essay = e.detail.value
+    },
+    input(e) {
+      let self = this
+      self.title = e.detail.value
+    },
     image() {
       let self = this
       wepy.chooseImage({
         count: 9, // 默认9
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
         success(res) {
           let arr = self.img
           let image = arr.concat(res.tempFilePaths)
@@ -168,6 +200,45 @@ export default class Memory extends wepy.page {
           self.setData({
             img: image
           })
+        }
+      })
+    },
+    insert() {
+      let self = this
+      wepy.getUserInfo({
+        success: async function(res) {
+          self.nickName = res.userInfo.nickName
+          self.avatarUrl = res.userInfo.avatarUrl
+          if (self.img !== '' & self.essay !== '') {
+            await wepy.request({
+              url: 'http://127.0.0.1:7001/memory/insert',
+              method: 'POST',
+              data: {
+                wechat: self.nickName,
+                img: self.img,
+                title: self.title,
+                essay: self.essay
+              },
+              success: function(res) {
+                console.log(res)
+                wepy.showToast({
+                  title: '成功',
+                  icon: 'success',
+                  duration: 2000,
+                  success: function() {
+                    wepy.navigateBack({
+                      delta: 1
+                    })
+                  }
+                })
+              }
+            })
+          } else {
+            wepy.showToast({
+              title: '请补充信息',
+              image: '../images/hint.png'
+            })
+          }
         }
       })
     }

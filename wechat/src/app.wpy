@@ -16,10 +16,8 @@ import 'wepy-async-function'
 export default class extends wepy.app {
   config = {
     pages: [
-      // 'pages/same',
       'pages/hearts',
       'pages/letter',
-      'pages/list',
       'pages/strategy',
       'pages/two',
       'pages/missing',
@@ -30,7 +28,9 @@ export default class extends wepy.app {
       'pages/firstessay',
       'pages/secondessay',
       'pages/showmemory',
-      'pages/receiveletter'
+      'pages/receiveletter',
+      'pages/readmemory',
+      'pages/temporary'
     ],
     window: {
       backgroundTextStyle: 'dark',

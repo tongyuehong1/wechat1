@@ -70,12 +70,9 @@ export default class Strategy extends wepy.page {
   };
   methods = {
     show(e) {
-      let self = this
-      let item = self.text
-      console.log(item)
-      console.log(e.currentTarget.dataset.index)
+      // let self = this
+      // let item = self.text
       let i = e.currentTarget.dataset.index
-      console.log(item[i])
       wepy.navigateTo({
         url: `./firstessay?index=${i}`
       })
@@ -101,10 +98,7 @@ export default class Strategy extends wepy.page {
             self.setData({
               text: res.data
             })
-            console.log(self.text)
-            console.log(res)
-            console.log(self.text[0])
-            console.log(self.text[0].pic)
+            console.log(res, 'res')
           }
         })
       }

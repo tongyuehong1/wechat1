@@ -1,5 +1,18 @@
 
 <view style="height: {{height}}px; background-color: #f4f5f7">
+  <view class="top"/>
+  <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
+    <view class="top"/>
+    <view class="center">
+      <view class="every piccenter" bindtap="show"  wx:for="{{text}}" wx:key="index" id="{{index}}">
+        <image class="pic" src="{{item.img}}"/>
+        <view class="word">
+          <view class="sentence">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    <view style="height: 1.5rem; background-color:#f4f5f7"/>
+  </scroll-view>
   <view class="bottom">
     <view class="flex center">
       <text>确定</text>

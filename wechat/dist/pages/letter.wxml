@@ -5,10 +5,10 @@
     <view style="height: {{height-1}}px; width:{{width}}px; background-color:#f4f5f7;">
         <view class="row">
           <view>标题:</view>
-          <input class="input left center" placeholder="请输入标题" bindinput="input"/>
+          <input class="input left center" placeholder="请输入标题(最长不超过七个字奥)" bindinput="input"/>
         </view>
         <view style="height: 1px; width:{{width-20}}px; background-color:lightgray; margin-left:1rem;"/>
-        <textarea class="area" style="height: 15rem; width:{{width-56}}px;" bindinput="inside"/>
+        <textarea class="area" style="height: 15rem; width:{{width-56}}px;font-size:0.8rem" bindinput="inside"/>
         <view style="display:flex; flex-direction:row">
           <view>
             <view class="add center" bindtap="image">

@@ -96,6 +96,11 @@
             <view class="camera center" bindtap="image">
               <image class="camerapic" src="{{camera}}"></image>
             </view>
+            <view wx:for="{{pic}}" wx:key="index">
+              <view>
+                <image class="picpho" mode="scaleToFill" src="{{item.img}}"></image>
+              </view>
+            </view>
             <view wx:for="{{img}}" wx:key="index">
               <view>
                 <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
@@ -108,7 +113,7 @@
     </scroll-view>
     <view class="bottom">
       <view class="flex center">
-        <text>确定</text>
+        <text bindtap="upload">确定</text>
       </view>
       <view class="line"></view>
       <view class="flex center">
@@ -132,7 +137,8 @@ export default class Photo extends wepy.page {
     camera: '../images/camera.png',
     nickName: '',
     avatarUrl: '',
-    upload: ''
+    upload: '',
+    pic: ''
   }
   methods = {
     image() {
@@ -149,15 +155,29 @@ export default class Photo extends wepy.page {
           self.setData({
             img: image
           })
-          wepy.uploadFile({
-            url: 'http://127.0.0.1:7001/two/photoinsert',
-            filePath: self.img[0],
-            name: 'file',
-            success: function(res) {
-              console.log(res)
-              console.log(self.img)
-            }
-          })
+          // wepy.uploadFile({
+          //   url: 'http://127.0.0.1:7001/two/photoinsert',
+          //   filePath: self.img[0],
+          //   name: 'file',
+          //   success: function(res) {
+          //     console.log(res)
+          //     console.log(self.img)
+          //   }
+          // })
+        }
+      })
+    },
+    upload() {
+      let self = this
+      wepy.request({
+        url: 'http://127.0.0.1:7001/two/photoinsert',
+        method: 'POST',
+        data: {
+          wechat: self.nickName,
+          img: self.img
+        },
+        success: function(res) {
+          console.log(res)
         }
       })
     }
@@ -176,7 +196,29 @@ export default class Photo extends wepy.page {
         self.avatarUrl = res.userInfo.avatarUrl
       }
     })
-    // self.upload = require('../../untils/upload.js')
+  }
+  onShow() {
+    let self = this
+    wepy.getUserInfo({
+      success: function(res) {
+        self.nickName = res.userInfo.nickName
+        self.avatarUrl = res.userInfo.avatarUrl
+        wepy.request({
+          url: 'http://127.0.0.1:7001/two/photoselect',
+          method: 'POST',
+          data: {
+            wechat: self.nickName
+          },
+          success: function(res) {
+            console.log(res, 'aaaaaaaa')
+            self.pic = res.data
+            self.setData({
+              pic: res.data
+            })
+          }
+        })
+      }
+    })
   }
 }
 </script>

@@ -82,6 +82,16 @@ export default class List extends wepy.page {
               id: self.letterid
             },
             success: function(res) {
+              wepy.showToast({
+                title: '删除成功',
+                icon: 'success',
+                duration: 2000,
+                success: function() {
+                  wepy.navigateBack({
+                    delta: 1
+                  })
+                }
+              })
             }
           })
         }

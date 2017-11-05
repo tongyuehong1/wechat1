@@ -73,7 +73,7 @@
 }
 .third {
   display: flex;
-  margin-top: 0.1rem;
+  margin-top: 1rem;
   width:90%;
 }
 .receiveimg {
@@ -83,6 +83,14 @@
   margin-right: 0.2rem;
   margin-left: 0.2rem;
 }
+// .try{
+//   display: -webkit-box;
+//   word-break: break-all;
+//   text-overflow: ellipsis;
+//   overflow: hidden;
+//   -webkit-box-orient: vertical;
+//   -webkit-line-clamp:1;
+// }
 </style>
 <template>
   <view>
@@ -100,14 +108,14 @@
       </view>
     </view>
     <view wx:if="{{show}}" class="center">
-      <view class="row second avg" style="display:flex; flex-wrap: wrap;">
-        <view class="addborder center" bindtap="letter">
+      <view class="row second" style="display:flex; flex-wrap: wrap;">
+        <view class="addborder center" bindtap="letter" style="margin-left:0.2rem;margin-right:0.2rem">
           <image class="add" src="{{add}}"></image>
         </view>
-        <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" style="height:7.5rem;width:5.5rem;margin-bottom:1.5rem;">
+        <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
             <image class="image" src="{{item.img}}"></image>
-            <view class="word">{{item.title}}</view>
+            <view class="word try">{{item.title}}</view>
           </view>
         </view>
       </view>
@@ -181,7 +189,7 @@ export default class Hearts extends wepy.page {
       })
     }
   }
-  onLoad() {
+  onShow() {
     let self = this
     wepy.getSystemInfo({
       success(res) {
@@ -204,7 +212,6 @@ export default class Hearts extends wepy.page {
             self.setData({
               text: res.data
             })
-            console.log(res)
           }
         })
       }

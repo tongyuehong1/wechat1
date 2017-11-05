@@ -22,7 +22,7 @@
           </view>
         </view>
         <view class="bottom">
-          <button class="bottom center" bindtap="edit">编辑</button>
+          <view class="bottom center" bindtap="edit">编辑</view>
         </view>
     </view>
     <view  wx:else style="height: {{height}}px; width:{{width}}px;" class="back">
@@ -31,24 +31,24 @@
           <view class="out">
             <view class="word">我们相遇在</view>
             <view class="left center">
-              <input class="input center inputword" name="date" placeholder="2017-10-19"/>
+              <input class="input center inputword" bindinput="date" placeholder="2017-10-19"/>
             </view>
           </view>
           <view class="out">
             <view class="word">我的诞生日</view>
             <view class="left center">
-              <input class="input center inputword" name="ME" placeholder="填写日期"/>
+              <input class="input center inputword" bindinput="ME" placeholder="填写日期"/>
             </view>
           </view>
           <view class="out">
             <view class="word">TA的诞生日</view>
             <view class="TA center">
-              <input class="input center inputword" name="TA" placeholder="填写日期"/>
+              <input class="input center inputword" bindinput="TA" placeholder="填写日期"/>
             </view>
           </view>
         </view>
-      <view class="bottom">
-        <button formType="submit" class="button">确定</button>
+      <view class="bottom center">
+        <view bindtap="submit" class="button">确定</view>
       </view>
       </form>
     </view>
