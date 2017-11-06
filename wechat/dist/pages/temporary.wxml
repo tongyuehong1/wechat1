@@ -1,4 +1,8 @@
 
-<view class="center" style="height:{{height}}px;width:{{width}}px">
-  <input/>
+<view class="center" style="height:{{height}}px;width:{{width}}px;background-color:#f4f5f7">
+  <view class="center column">
+    <view>请完整输入对方的微信名</view>
+    <input class="input" bindinput="input"/>
+    <view class="button center" bindtap="verify">确定</view>
+  </view>
 </view>

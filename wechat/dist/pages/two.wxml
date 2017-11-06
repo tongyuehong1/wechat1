@@ -19,5 +19,9 @@
         <text class="word">回忆集</text>
         <image src="{{point}}" class="point"/>
       </view>
+      <view class="out" bindtap="TA">
+        <text class="word">关联TA</text>
+        <image src="{{point}}" class="point"/>
+      </view>
     </view>
   </view>

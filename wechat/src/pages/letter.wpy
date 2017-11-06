@@ -176,11 +176,11 @@ export default class Letter extends wepy.page {
       console.log(self.title, 'title')
       console.log(self.essay, 'essay')
       wepy.getUserInfo({
-        success: async function(res) {
+        success:  function(res) {
           self.nickName = res.userInfo.nickName
           self.avatarUrl = res.userInfo.avatarUrl
           if (self.nickName !== '' & self.title !== '' & self.essay !== '') {
-            await wepy.request({
+            wepy.request({
               url: 'http://127.0.0.1:7001/hearts/send',
               method: 'POST',
               data: {
@@ -190,10 +190,10 @@ export default class Letter extends wepy.page {
                 letter: self.essay
               },
               success: function(res) {
-                self.text = res.data[0]
-                self.setData({
-                  text: res.data[0]
-                })
+                // self.text = res.data[0]
+                // self.setData({
+                //   text: res.data[0]
+                // })
                 console.log(res)
                 wepy.showToast({
                   title: '成功',

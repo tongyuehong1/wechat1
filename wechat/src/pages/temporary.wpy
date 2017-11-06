@@ -4,23 +4,132 @@
   justify-content: center;
   align-items: center;
 }
+.input {
+  height: 1.5rem;
+  width: 8rem;
+  border: 1px solid black;
+  margin-top: 1rem;
+}
+.button {
+  height: 1rem;
+  width: 4rem;
+  border: 1px solid black;
+  margin-top: 1rem;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
 </style>
 <template>
-<view class="center" style="height:{{height}}px;width:{{width}}px">
-  <input></input>
+<view class="center" style="height:{{height}}px;width:{{width}}px;background-color:#f4f5f7">
+  <view class="center column">
+    <view>请完整输入对方的微信名</view>
+    <input class="input" bindinput="input"></input>
+    <view class="button center" @tap="verify">确定</view>
+  </view>
 </view>
 </template>
 <script>
 import wepy from 'wepy'
-export default class First extends wepy.page {
+export default class Temporary extends wepy.page {
   config = {
-    navigationBarTitleText: '临时界面'
+    navigationBarTitleText: '关联TA'
   }
   data = {
     height: 0,
-    width: 0
+    width: 0,
+    nickName: '',
+    input: '',
+    anotherlength: '',
+    another: ''
   }
   methods = {
+    input(e) {
+      let self = this
+      self.input = e.detail.value
+    },
+    verify() {
+      let self = this
+      wepy.request({
+        url: 'http://127.0.0.1:7001/temporaryinsert',
+        data: {
+          wechat: self.nickName,
+          anthor: self.input
+        },
+        method: 'POST',
+        success: function(res) {
+        }
+      })
+      wepy.request({
+        url: 'http://127.0.0.1:7001/temporaryselect',
+        data: {
+          wechat: self.input
+        },
+        method: 'POST',
+        success: function(res) {
+          self.anotherlength = res.data.length
+          self.setData({
+            anotherlength: res.data.length
+          })
+          console.log(self.anotherlength)
+          if (self.anotherlength === 0) {
+            wepy.showModal({
+              title: '提示',
+              content: '他还没有使用奥',
+              showCancel: false
+            })
+          } else {
+            wepy.request({
+              url: 'http://127.0.0.1:7001/temporaryselect',
+              data: {
+                wechat: self.input
+              },
+              method: 'POST',
+              success: function(res) {
+                self.another = res.data[0].anthor
+                self.setData({
+                  another: res.data[0].anthor
+                })
+                console.log(self.another, '。。。。。another')
+                if (self.another === '') {
+                  wepy.showModal({
+                    title: '提示',
+                    content: '他还没有添加你奥',
+                    showCancel: false
+                  })
+                } else {
+                  if (self.another === self.nickName) {
+                    wepy.showModal({
+                      title: '成功',
+                      content: '添加成功',
+                      showCancel: false
+                    })
+                  } else {
+                    wepy.showModal({
+                      title: '提示',
+                      content: '对方添加的不是你',
+                      showCancel: false
+                    })
+                  }
+                }
+              }
+            })
+          }
+          wepy.request({
+            url: 'http://127.0.0.1:7001/user',
+            data: {
+              wechat: self.nickName,
+              anthor: self.input
+            },
+            method: 'POST',
+            success: function(res) {
+              console.log(self.input, 'input')
+            }
+          })
+        }
+      })
+    }
   }
   onLoad() {
     let self = this
@@ -30,6 +139,30 @@ export default class First extends wepy.page {
         self.width = res.windowWidth
       }
     })
+    wepy.request({
+      url: 'http://127.0.0.1:7001/userselect',
+      data: {
+        wechat: self.nickName
+      },
+      method: 'POST',
+      success: function(res) {
+      }
+    })
+    // wepy.getUserInfo({
+    //   success: function(res) {
+    //     self.nickName = res.userInfo.nickName
+    //     self.avatarUrl = res.userInfo.avatarUrl
+    //     wepy.request({
+    //       url: 'http://127.0.0.1:7001/userselect',
+    //       data: {
+    //         wechat: self.nickName
+    //       },
+    //       method: 'POST',
+    //       success: function(res) {
+    //       }
+    //     })
+    //   }
+    // })
   }
 }
 </script>

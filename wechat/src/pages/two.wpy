@@ -71,6 +71,7 @@
 .word {
   font-size: 0.9rem;
   margin-left: 0.8rem;
+  width: 6rem;
 }
 
 .avatarUrl {
@@ -79,7 +80,7 @@
 }
 
 .point {
-  margin-left: 14rem;
+  margin-left: 10.5rem;
   height: 1.3rem;
   width: 1.5rem;
 }
@@ -106,6 +107,10 @@
       </view>
       <view class="out" @tap="memory">
         <text class="word">回忆集</text>
+        <image src="{{point}}" class="point"></image>
+      </view>
+      <view class="out" @tap="TA">
+        <text class="word">关联TA</text>
         <image src="{{point}}" class="point"></image>
       </view>
     </view>
@@ -139,6 +144,11 @@ export default class Two extends wepy.page {
     memory() {
       wepy.navigateTo({
         url: './showmemory'
+      })
+    },
+    TA() {
+      wepy.navigateTo({
+        url: './temporary'
       })
     }
   }

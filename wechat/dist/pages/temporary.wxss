@@ -1,1 +1,1 @@
-.center{display:flex;justify-content:center;align-items:center}
+.center{display:flex;justify-content:center;align-items:center}.input{height:1.5rem;width:8rem;border:1px solid black;margin-top:1rem}.button{height:1rem;width:4rem;border:1px solid black;margin-top:1rem}.column{display:flex;flex-direction:column}
