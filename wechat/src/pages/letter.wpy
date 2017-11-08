@@ -137,7 +137,8 @@ export default class Letter extends wepy.page {
     nickName: '',
     avatarUrl: '',
     text: '',
-    title: ''
+    title: '',
+    essay: ''
   }
   methods = {
     inside(e) {
