@@ -102,7 +102,7 @@
               </view>
             </view>
             <view wx:for="{{img}}" wx:key="index">
-              <view>
+              <view bindtap="preview">
                 <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
               </view>
             </view>
@@ -131,7 +131,7 @@ export default class Photo extends wepy.page {
   }
   data = {
     img: [],
-    arr: '',
+    arr: [],
     height: '',
     width: '',
     camera: '../images/camera.png',
@@ -149,21 +149,12 @@ export default class Photo extends wepy.page {
         sourceType: ['album', 'camera'],
         success(res) {
           let arr = self.img
-          console.log('res: ', res)
           let image = arr.concat(res.tempFilePaths)
           self.img = image
           self.setData({
             img: image
           })
-          // wepy.uploadFile({
-          //   url: 'http://127.0.0.1:7001/two/photoinsert',
-          //   filePath: self.img[0],
-          //   name: 'file',
-          //   success: function(res) {
-          //     console.log(res)
-          //     console.log(self.img)
-          //   }
-          // })
+          console.log(self.img, 'aaa')
         }
       })
     },
@@ -179,6 +170,13 @@ export default class Photo extends wepy.page {
         success: function(res) {
           console.log(res)
         }
+      })
+    },
+    preview() {
+      console.log(self.img)
+      wepy.previewImage({
+        current: '', // 当前显示图片的http链接
+        urls: self.img // 需要预览的图片http链接列表
       })
     }
   }
@@ -210,7 +208,6 @@ export default class Photo extends wepy.page {
             wechat: self.nickName
           },
           success: function(res) {
-            console.log(res, 'aaaaaaaa')
             self.pic = res.data
             self.setData({
               pic: res.data

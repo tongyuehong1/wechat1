@@ -42,7 +42,7 @@
 }
 
 .add {
-  border: 1px solid darkgray;
+  // border: 2px solid darkgray;
   height: 4.3rem;
   width: 4.3rem;
   margin-left: 1rem;
@@ -56,8 +56,8 @@
 }
 
 .pic {
-  height: 2rem;
-  width: 2rem;
+  height: 4.3rem;
+  width: 4.3rem;
 }
 
 .addpic {
@@ -100,14 +100,14 @@
         <textarea class="area" style="height: 15rem; width:{{width-56}}px;font-size:0.8rem" bindinput="inside"></textarea>
         <view style="display:flex; flex-direction:row">
           <view>
-            <view class="add center" bindtap="image">
-              <image class="pic" src="{{add}}" bindtap="image"></image>
+            <view class="add center" bindtap="image" style="border: {{border == 'true' ? '1px solid gray' : ''}}">
+              <image class="pic" src="{{img}}" bindtap="image"></image>
             </view>
             <view class="addpic center">
               <text style="font-size:0.7rem; color=lightgray">封面图片</text>
             </view>
           </view>
-          <image src="{{img}}" class="image"></image>
+          <!-- <image src="{{img}}" class="image"></image> -->
         </view>
         <view class="bottom">
           <view class="flex center">
@@ -115,7 +115,7 @@
           </view>
           <view class="line"></view>
           <view class="flex center">
-            <text>删除</text>
+            <text bindtap="abolish">取消</text>
           </view>
         </view>
     </view>
@@ -131,9 +131,9 @@ export default class Letter extends wepy.page {
     src: '',
     height: '',
     width: '',
-    add: '../images/add.png',
+    img: '../images/littleadd.jpg',
     inside: '',
-    img: [],
+    border: 'true',
     nickName: '',
     avatarUrl: '',
     text: '',
@@ -152,6 +152,7 @@ export default class Letter extends wepy.page {
     },
     image() {
       let self = this
+      self.border = 'false'
       wepy.chooseImage({
         count: 1,
         sizeType: ['original', 'compressed'],
@@ -161,6 +162,7 @@ export default class Letter extends wepy.page {
           self.setData({
             img: res.tempFilePaths[0]
           })
+          console.log(self.img.length, 'aaaaa')
           if (self.img.length > 1) {
             wepy.showToast({
               title: '只能放1张哦',
@@ -176,7 +178,7 @@ export default class Letter extends wepy.page {
       console.log(self.title, 'title')
       console.log(self.essay, 'essay')
       wepy.getUserInfo({
-        success:  function(res) {
+        success: function(res) {
           self.nickName = res.userInfo.nickName
           self.avatarUrl = res.userInfo.avatarUrl
           if (self.nickName !== '' & self.title !== '' & self.essay !== '') {
@@ -190,10 +192,6 @@ export default class Letter extends wepy.page {
                 letter: self.essay
               },
               success: function(res) {
-                // self.text = res.data[0]
-                // self.setData({
-                //   text: res.data[0]
-                // })
                 console.log(res)
                 wepy.showToast({
                   title: '成功',
@@ -212,6 +210,20 @@ export default class Letter extends wepy.page {
               title: '请补充信息',
               image: '../images/hint.png'
             })
+          }
+        }
+      })
+    },
+    abolish() {
+      wepy.showModal({
+        title: '提示',
+        content: '是否放弃本次编辑',
+        success: function(res) {
+          if (res.confirm) {
+            wepy.navigateBack({
+              delta: 1
+            })
+          } else if (res.cancel) {
           }
         }
       })

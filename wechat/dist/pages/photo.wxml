@@ -14,7 +14,7 @@
               </view>
             </view>
             <view  wx:for="{{img}}" wx:key="index">
-              <view>
+              <view bindtap="preview">
                 <image class="picpho" mode="scaleToFill" src="{{item}}"/>
               </view>
             </view>

@@ -41,21 +41,21 @@ export default class extends wepy.app {
     tabBar: {
       backgroundColor: '#ffffff',
       color: '#808080',
-      selectedColor: '#000000',
+      selectedColor: '#ea1e63',
       list: [{
         pagePath: 'pages/strategy',
-        iconPath: './images/graybook.png',
-        selectedIconPath: './images/book.png',
+        iconPath: './images/home.png',
+        selectedIconPath: './images/home-active.png',
         text: '首页'
       }, {
         pagePath: 'pages/hearts',
-        iconPath: './images/grayhearts.png',
-        selectedIconPath: './images/hearts.png',
+        iconPath: './images/mailbox.png',
+        selectedIconPath: './images/mailbox-active.png',
         text: '信箱'
       }, {
         pagePath: 'pages/two',
-        iconPath: './images/graytwo.png',
-        selectedIconPath: './images/two.png',
+        iconPath: './images/mine.png',
+        selectedIconPath: './images/mine-active.png',
         text: '我'
       }]
     }

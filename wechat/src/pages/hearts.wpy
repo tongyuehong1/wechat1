@@ -33,24 +33,24 @@
   display: flex;
   // border: 0.5px solid gray;
   border-radius: 0.5rem;
-  height: 7.5rem;
-  width: 5.5rem;
+  height: 8.5rem;
+  width: 5.8rem;
   background-color: #f4f5f7;
   // margin-right: 0.8rem;
 }
 
 .add {
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 3rem;
+  width: 3rem;
 }
 .second {
   height: 100%;
-  width: 18rem;
+  width: 19.5rem;
   margin-top: 1rem;
 }
 .image {
-  height: 7.5rem;
-  width: 5.5rem;
+  height: 8.5rem;
+  width: 5.8rem;
   border: 1px solid white;
   border-radius: 0.5rem;
 }
@@ -77,11 +77,11 @@
   width:90%;
 }
 .receiveimg {
-  height:7.5rem;
-  width:5.5rem;
+  height:8.5rem;
+  width:5.8rem;
   margin-bottom:1.5rem;
-  margin-right: 0.2rem;
-  margin-left: 0.2rem;
+  margin-right: 0.4rem;
+  margin-left: 0.4rem;
 }
 // .try{
 //   display: -webkit-box;
@@ -109,15 +109,27 @@
     </view>
     <view wx:if="{{show}}" class="center">
       <view class="row second" style="display:flex; flex-wrap: wrap;">
-        <view class="addborder center" bindtap="letter" style="margin-left:0.2rem;margin-right:0.2rem">
+        <view class="addborder center" bindtap="letter" style="margin-left:0.3rem;margin-right:0.2rem">
           <image class="add" src="{{add}}"></image>
         </view>
-        <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" class="receiveimg">
+        <view  id="{{index}}" bindtap="second" class="receiveimg">
+          <view class="image">
+            <image class="image" src="{{cat}}"></image>
+            <view class="word try">标题</view>
+          </view>
+        </view>
+        <view  id="{{index}}" bindtap="second" class="receiveimg">
+          <view class="image">
+            <image class="image" src="{{plant}}"></image>
+            <view class="word try">标题</view>
+          </view>
+        </view>
+        <!-- <view wx:for="{{text}}" wx:key="index" id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
             <image class="image" src="{{item.img}}"></image>
             <view class="word try">{{item.title}}</view>
           </view>
-        </view>
+        </view> -->
       </view>
     </view>
     <view wx:else class="center">

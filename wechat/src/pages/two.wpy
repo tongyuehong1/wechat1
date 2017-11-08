@@ -87,6 +87,31 @@
 .name {
   margin-top: 0.8rem;
 }
+.absolute {
+  display: flex;
+  position: absolute;
+  top: 10rem;
+  right: 3rem;
+  height: 13rem;
+  width: 14rem;
+  background-color: lightgray;
+  border-radius: 15px;
+}
+.button {
+  height: 1rem;
+  width: 4rem;
+  border: 1px solid black;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+.input {
+  height: 1.5rem;
+  width: 8rem;
+  border: 1px solid black;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 10px;
+}
 </style>
 <template>
   <view style="height: {{height}}px; width:{{width}}px;" class="background">
@@ -114,6 +139,17 @@
         <image src="{{point}}" class="point"></image>
       </view>
     </view>
+    <view wx:if="{{showmodel}}">
+      <view class="absolute center">
+        <!-- <image src="{{cancel}}" biantap="cancel"></image> -->
+        <view>请完整输入对方的微信名</view>
+        <input class="input" bindinput="input"></input>
+        <view style="display:flex;flex-direction:row;width:12rem" class="center">
+          <view class="button center" @tap="cancel" style="margin-right: 1.5rem">取消</view>
+          <view class="button center" @tap="verify">确定</view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 <script>
@@ -128,7 +164,12 @@ export default class Two extends wepy.page {
     avatarUrl: '',
     point: '../images/point.png',
     height: '',
-    width: ''
+    width: '',
+    showmodel: false,
+    input: '',
+    anotherlength: '',
+    another: ''
+    // cancel: '../images/cancel.png'
   }
   methods = {
     missing() {
@@ -147,8 +188,95 @@ export default class Two extends wepy.page {
       })
     },
     TA() {
-      wepy.navigateTo({
-        url: './temporary'
+      let self = this
+      self.showmodel = true
+    },
+    input(e) {
+      let self = this
+      self.input = e.detail.value
+    },
+    cancel() {
+      let self = this
+      self.showmodel = false
+    },
+    verify() {
+      let self = this
+      wepy.request({
+        url: 'http://127.0.0.1:7001/temporaryinsert',
+        data: {
+          wechat: self.nickName,
+          anthor: self.input
+        },
+        method: 'POST',
+        success: function(res) {
+        }
+      })
+      wepy.request({
+        url: 'http://127.0.0.1:7001/temporaryselect',
+        data: {
+          wechat: self.input
+        },
+        method: 'POST',
+        success: function(res) {
+          self.anotherlength = res.data.length
+          self.setData({
+            anotherlength: res.data.length
+          })
+          console.log(self.anotherlength)
+          if (self.anotherlength === 0) {
+            wepy.showModal({
+              title: '提示',
+              content: '他还没有使用奥',
+              showCancel: false
+            })
+          } else {
+            wepy.request({
+              url: 'http://127.0.0.1:7001/temporaryselect',
+              data: {
+                wechat: self.input
+              },
+              method: 'POST',
+              success: function(res) {
+                self.another = res.data[0].anthor
+                self.setData({
+                  another: res.data[0].anthor
+                })
+                if (self.another === '') {
+                  wepy.showModal({
+                    title: '提示',
+                    content: '他还没有添加你奥',
+                    showCancel: false
+                  })
+                } else {
+                  if (self.another === self.nickName) {
+                    wepy.showModal({
+                      title: '成功',
+                      content: '添加成功',
+                      showCancel: false
+                    })
+                  } else {
+                    wepy.showModal({
+                      title: '提示',
+                      content: '对方添加的不是你',
+                      showCancel: false
+                    })
+                  }
+                }
+              }
+            })
+          }
+          wepy.request({
+            url: 'http://127.0.0.1:7001/user',
+            data: {
+              wechat: self.nickName,
+              anthor: self.input
+            },
+            method: 'POST',
+            success: function(res) {
+              console.log(self.input, 'input')
+            }
+          })
+        }
       })
     }
   }

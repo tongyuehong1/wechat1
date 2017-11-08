@@ -11,14 +11,14 @@
         <textarea class="area" style="height: 15rem; width:{{width-56}}px;font-size:0.8rem" bindinput="inside"/>
         <view style="display:flex; flex-direction:row">
           <view>
-            <view class="add center" bindtap="image">
-              <image class="pic" src="{{add}}" bindtap="image"/>
+            <view class="add center" bindtap="image" style="border: {{border == 'true' ? '1px solid gray' : ''}}">
+              <image class="pic" src="{{img}}" bindtap="image"/>
             </view>
             <view class="addpic center">
               <text style="font-size:0.7rem; color=lightgray">封面图片</text>
             </view>
           </view>
-          <image src="{{img}}" class="image"/>
+          <!-- <image src="{{img}}" class="image"></image> -->
         </view>
         <view class="bottom">
           <view class="flex center">
@@ -26,7 +26,7 @@
           </view>
           <view class="line"/>
           <view class="flex center">
-            <text>删除</text>
+            <text bindtap="abolish">取消</text>
           </view>
         </view>
     </view>

@@ -1,0 +1,6 @@
+"use strict";
+
+function example(props) {
+  return;
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYWN0LmpzIl0sIm5hbWVzIjpbImV4YW1wbGUiLCJwcm9wcyJdLCJtYXBwaW5ncyI6Ijs7QUFBQSxTQUFTQSxPQUFULENBQWlCQyxLQUFqQixFQUF3QjtBQUN0QjtBQUNEIiwiZmlsZSI6InJlYWN0LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZnVuY3Rpb24gZXhhbXBsZShwcm9wcykge1xuICByZXR1cm4gXG59Il19

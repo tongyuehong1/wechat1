@@ -1,13 +1,20 @@
 
 <view>
   <view class="line"/>
-  <scroll-view scroll-y style="height:{{height-1}}px; width:{{width}}px; background-color:#f4f5f7">
+  <scroll-view scroll-y style="height:{{height-1}}px;background-color:#f4f5f7">
     <view class="top"/>
-      <view class="every center" bindtap="show"  wx:for="{{text}}" wx:key="index" data-index="{{index}}">
-        <image class="pic" src="{{item.pic}}"/>
+      <view class="every" bindtap="show" data-index="{{index}}" style="padding:10px">
+        <image class="pic" src="{{first}}" mode="aspectFill"/>
         <view class="word">
-          <view>{{item.title}}</view>
-          <view class="sentence">{{item.brief}}</view>
+          <view style="font-size: 20px">标题</view>
+          <view class="sentence">简单介绍很长很长很长的占位符占位符占位符占位符占位符超级超级超级长</view>
+        </view>
+      </view>
+      <view class="every" bindtap="show" data-index="{{index}}" style="padding-left:10px;padding-right:10px">
+        <image class="pic" src="{{second}}" mode="aspectFill"/>
+        <view class="word">
+          <view style="font-size: 20px">标题</view>
+          <view class="sentence">简单介绍很长很长很长的占位符占位符占位符占位符占位符超级超级超级长</view>
         </view>
       </view>
     <view style="height: 1.5rem; background-color:#f4f5f7"/>

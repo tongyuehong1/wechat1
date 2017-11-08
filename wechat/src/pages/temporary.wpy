@@ -20,6 +20,12 @@
   display: flex;
   flex-direction: column;
 }
+.input {
+  height: 1.5rem;
+  width: 8rem;
+  border: 1px solid black;
+  margin-top: 1rem;
+}
 </style>
 <template>
 <view class="center" style="height:{{height}}px;width:{{width}}px;background-color:#f4f5f7">
@@ -91,7 +97,7 @@ export default class Temporary extends wepy.page {
                 self.setData({
                   another: res.data[0].anthor
                 })
-                console.log(self.another, '。。。。。another')
+                // console.log(self.another, '。。。。。another')
                 if (self.another === '') {
                   wepy.showModal({
                     title: '提示',

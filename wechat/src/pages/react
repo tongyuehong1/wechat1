@@ -1,0 +1,53 @@
+
+function example(props) {
+  return <h1>Tong</h1>
+}
+
+class example extends React.Component {
+  render() {
+    return(
+      <h1>Tong</h1>
+      <h2>Tong</h2>
+    )
+  }
+}
+
+
+
+
+function formatName(user) {
+  return user.firstname + '' + user.lastname;
+}
+const user = {
+  firstname: 'Tong',
+  lastname: 'Tong',
+};
+const element = (
+  <h1>Hello, {formatName(user)}</h1>
+);
+ReactDOM.render(
+  element
+  document.getElementById('root')
+);
+
+function element(props){
+  return <h1> Hello, {formatName(user)} </h1>
+}
+
+
+
+
+class child extends React.Component{
+  render(){
+    return (
+      <div>parent</div>
+    )
+  }
+}
+class parent extends React.Component{
+  render(){
+    return (
+      <child />
+    )
+  }
+}
