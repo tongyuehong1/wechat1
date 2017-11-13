@@ -12,7 +12,7 @@
         <view style="display:flex; flex-direction:row">
           <view>
             <view class="add center" bindtap="image" style="border: {{border == 'true' ? '1px solid gray' : ''}}">
-              <image class="pic" src="{{img}}" bindtap="image"/>
+              <image class="pic" src="{{img}}" bindtap="image" mode="aspectFit"/>
             </view>
             <view class="addpic center">
               <text style="font-size:0.7rem; color=lightgray">封面图片</text>

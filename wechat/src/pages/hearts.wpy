@@ -14,9 +14,9 @@
   border: 1px solid white;
   background-color: #f4f5f7;
   border-radius: 1.6rem;
-  height: 2rem;
-  width: 6rem;
-  font-size: 0.8rem;
+  height: 2.2rem;
+  width: 6.5rem;
+  font-size: 0.85rem;
   margin-top: 0.8rem;
 }
 
@@ -31,26 +31,24 @@
 
 .addborder {
   display: flex;
-  // border: 0.5px solid gray;
   border-radius: 0.5rem;
-  height: 8.5rem;
-  width: 5.8rem;
+  height: 9rem;
+  width: 31%;
   background-color: #f4f5f7;
-  // margin-right: 0.8rem;
 }
 
 .add {
-  height: 3rem;
-  width: 3rem;
+  height: 120rpx;
+  width: 120rpx;
 }
 .second {
   height: 100%;
-  width: 19.5rem;
+  width: 92%;
   margin-top: 1rem;
 }
 .image {
-  height: 8.5rem;
-  width: 5.8rem;
+  height: 9rem;
+  width: 100%;
   border: 1px solid white;
   border-radius: 0.5rem;
 }
@@ -68,20 +66,16 @@
 .rowline {
   border-top: 1px solid #f4f5f7;
 }
-.receive {
-  margin-right: 1rem;
-}
+
 .third {
   display: flex;
   margin-top: 1rem;
   width:90%;
 }
 .receiveimg {
-  height:8.5rem;
-  width:5.8rem;
+  height:9rem;
+  width:31%;
   margin-bottom:1.5rem;
-  margin-right: 0.4rem;
-  margin-left: 0.4rem;
 }
 // .try{
 //   display: -webkit-box;
@@ -108,19 +102,21 @@
       </view>
     </view>
     <view wx:if="{{show}}" class="center">
-      <view class="row second" style="display:flex; flex-wrap: wrap;">
-        <view class="addborder center" bindtap="letter" style="margin-left:0.3rem;margin-right:0.2rem">
-          <image class="add" src="{{add}}"></image>
+      <view class="row second" style="display:flex; flex-wrap: wrap;" style="display:flex; justify-content: space-between;">
+        <view class="addborder center">
+          <view bindtap="letter">
+            <image class="add" src="{{add}}" mode="aspectFill"></image>
+          </view>
         </view>
         <view  id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
-            <image class="image" src="{{cat}}"></image>
+            <image class="image" src="{{cat}}" mode="aspectFill"></image>
             <view class="word try">标题</view>
           </view>
         </view>
         <view  id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
-            <image class="image" src="{{plant}}"></image>
+            <image class="image" src="{{plant}}" mode="aspectFill"></image>
             <view class="word try">标题</view>
           </view>
         </view>
@@ -136,7 +132,7 @@
       <view class="row third" style="display:flex; flex-wrap: wrap;">
         <view wx:for="{{receive}}" wx:key="index" id="{{index}}" bindtap="receiveletter" class="receiveimg">
             <view class="image">
-              <image class="image" src="{{item.img}}"></image>
+              <image class="image" src="{{item.img}}" mode="aspectFill"></image>
               <view class="word">{{item.title}}</view>
             </view>
           </view>

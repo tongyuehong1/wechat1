@@ -5,7 +5,7 @@
     <view class="top"/>
     <view class="center">
       <view class="every piccenter" bindtap="show"  wx:for="{{text}}" wx:key="index" id="{{index}}">
-        <image class="pic" src="{{item.img}}"/>
+        <image class="pic" src="{{item.img}}" mode="aspectFill"/>
         <view class="word">
           <view class="sentence">{{item.title}}</view>
         </view>

@@ -66,7 +66,7 @@
     <view class="top"></view>
     <view class="center">
       <view class="every piccenter" bindtap="show" wx:for="{{text}}" wx:key="index" id="{{index}}">
-        <image class="pic" src="{{item.img}}"></image>
+        <image class="pic" src="{{item.img}}" mode="aspectFill"></image>
         <view class="word">
           <view class="sentence">{{item.title}}</view>
         </view>

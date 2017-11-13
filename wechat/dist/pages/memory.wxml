@@ -18,7 +18,7 @@
         </block>
         <view>
           <view class="pho center">
-            <image class="img" src="{{add}}" bindtap="image"/>
+            <image class="img" src="{{add}}" bindtap="image" mode="aspectFill"/>
           </view>
           <view class="wordwid center">
             <text class="addword">添加图片</text>

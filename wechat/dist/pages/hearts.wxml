@@ -14,19 +14,21 @@
       </view>
     </view>
     <view  wx:if="{{show}}" class="center">
-      <view class="row second" style="display:flex; flex-wrap: wrap;">
-        <view class="addborder center" bindtap="letter" style="margin-left:0.3rem;margin-right:0.2rem">
-          <image class="add" src="{{add}}"/>
+      <view class="row second" style="display:flex; justify-content: space-between;">
+        <view class="addborder center">
+          <view bindtap="letter">
+            <image class="add" src="{{add}}" mode="aspectFill"/>
+          </view>
         </view>
         <view id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
-            <image class="image" src="{{cat}}"/>
+            <image class="image" src="{{cat}}" mode="aspectFill"/>
             <view class="word try">标题</view>
           </view>
         </view>
         <view id="{{index}}" bindtap="second" class="receiveimg">
           <view class="image">
-            <image class="image" src="{{plant}}"/>
+            <image class="image" src="{{plant}}" mode="aspectFill"/>
             <view class="word try">标题</view>
           </view>
         </view>
@@ -42,7 +44,7 @@
       <view class="row third" style="display:flex; flex-wrap: wrap;">
         <view wx:for="{{receive}}" wx:key="index" id="{{index}}" bindtap="receiveletter" class="receiveimg">
             <view class="image">
-              <image class="image" src="{{item.img}}"/>
+              <image class="image" src="{{item.img}}" mode="aspectFill"/>
               <view class="word">{{item.title}}</view>
             </view>
           </view>

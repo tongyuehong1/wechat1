@@ -1,1 +1,1 @@
-.center{display:flex;justify-content:center;align-items:center}.essay{display:flex;width:18rem;font-size:.8rem;text-indent:1.5rem}.image{width:18rem;height:12rem}.top{margin-top:1rem}.topline{display:flex;border-bottom:1px solid gray}
+.center{display:flex;justify-content:center;align-items:center}.essay{display:flex;width:18rem;font-size:.8rem;text-indent:1.2rem;line-height:1.2rem}.image{width:18rem;height:12rem}.top{margin-top:1rem}.topline{display:flex;border-bottom:1px solid gray}
