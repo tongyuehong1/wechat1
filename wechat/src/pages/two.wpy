@@ -34,7 +34,7 @@
   border: 1px solid whitesmoke;
   border-radius: 5px;
   height: 3.3rem;
-  width: 19rem;
+  width: 92%;
   background-color: white;
   align-items: center;
   // padding-left: 0.8rem;
@@ -80,7 +80,7 @@
 }
 
 .point {
-  margin-left: 10.5rem;
+  margin-left: 11rem;
   height: 1.3rem;
   width: 1.5rem;
 }
