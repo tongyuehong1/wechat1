@@ -20,10 +20,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-.left {
-  margin-left: 10px;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 0.5rem;
 }
 
 .word {
@@ -36,10 +35,10 @@
 
 .camera {
   height: 4.5rem;
-  width: 4.5rem;
+  width: 4.6rem;
   background-color: lightgray;
-  margin-top: 0.2rem;
-  margin-left: 0.2rem;
+  // margin-top: 0.2rem;
+  // margin-left: 0.2rem;
 }
 .camerapic {
   height: 2rem;
@@ -48,29 +47,24 @@
 
 .pic {
   height: 4.5rem;
-  width: 4.5rem;
-  margin-left: 0.2rem;
+  width: 4.6rem;
+  // margin-left: 0.2rem;
 }
 
 .margin {
-  margin-top: 0.2rem;
-  margin-left: 0.6rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .top {
-  height: 0.3rem;
+  height: 0.2rem;
   background-color: #f4f5f7;
 }
 
 .picpho {
   height: 4.5rem;
-  width: 4.5rem;
-  margin-top: 0.3rem;
-  margin-left: 0.2rem;
-  margin-right: 0.1rem;
+  width: 4.6rem;
 }
 
 .second {
@@ -98,12 +92,12 @@
             </view>
             <view wx:for="{{pic}}" wx:key="index">
               <view>
-                <image class="picpho" mode="scaleToFill" src="{{item.img}}"></image>
+                <image class="picpho" mode="aspectFill" src="{{item.img}}"></image>
               </view>
             </view>
             <view wx:for="{{img}}" wx:key="index">
               <view bindtap="preview">
-                <image class="picpho" mode="scaleToFill" src="{{item}}"></image>
+                <image class="picpho" mode="aspectFill" src="{{item}}"></image>
               </view>
             </view>
           </view>

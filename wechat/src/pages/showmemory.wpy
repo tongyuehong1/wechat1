@@ -30,13 +30,13 @@
 }
 .every {
   height: 12rem;
-  width: 90%;
+  width: 95%;
   background-color: white;
   margin-top: 0.6rem;
 }
 .pic {
   height: 9rem;
-  width: 16rem;
+  width: 90%;
   margin-top: 0.8rem;
 }
 .line {
@@ -47,7 +47,7 @@
   background-color: #f4f5f7;
 }
 .word {
-  width: 16rem;
+  width: 95%;
 }
 .sentence {
   margin-top: 0.4rem;

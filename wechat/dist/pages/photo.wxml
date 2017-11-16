@@ -10,12 +10,12 @@
             </view>
             <view  wx:for="{{pic}}" wx:key="index">
               <view>
-                <image class="picpho" mode="scaleToFill" src="{{item.img}}"/>
+                <image class="picpho" mode="aspectFill" src="{{item.img}}"/>
               </view>
             </view>
             <view  wx:for="{{img}}" wx:key="index">
               <view bindtap="preview">
-                <image class="picpho" mode="scaleToFill" src="{{item}}"/>
+                <image class="picpho" mode="aspectFill" src="{{item}}"/>
               </view>
             </view>
           </view>
