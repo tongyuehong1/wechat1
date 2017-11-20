@@ -43,7 +43,7 @@
 .center {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 }
 
@@ -87,30 +87,51 @@
 .name {
   margin-top: 0.8rem;
 }
+.top {
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center
+}
 .absolute {
   display: flex;
   position: absolute;
-  top: 10rem;
-  right: 3rem;
-  height: 13rem;
-  width: 14rem;
-  background-color: lightgray;
+  display:flex;
+  width: 90%;
+  height: 50%;
+  margin-top:35%;
+  background-color: white;
   border-radius: 15px;
 }
-.button {
-  height: 1rem;
-  width: 4rem;
-  border: 1px solid black;
-  margin-top: 1rem;
+.input {
+  height: 2rem;
+  width: 85%;
+  border: 1px solid #f4f5f7;
+  background-color: #f4f5f7;
+  margin-top: 3rem;
   border-radius: 10px;
 }
-.input {
-  height: 1.5rem;
-  width: 8rem;
-  border: 1px solid black;
-  margin-top: 1rem;
-  margin-bottom: 0.8rem;
-  border-radius: 10px;
+.line {
+  width: 100%;
+  border-bottom: 1px solid #f4f5f7;
+  margin-top: 4.5rem;
+}
+.flex {
+  flex: 1;
+  font-size: 1rem;
+}
+.centerline {
+  height: 100%;
+  border-left: 1px solid #f4f5f7;
+}
+.lastcenter {
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 <template>
@@ -140,13 +161,20 @@
       </view>
     </view>
     <view wx:if="{{showmodel}}">
-      <view class="absolute center">
-        <!-- <image src="{{cancel}}" biantap="cancel"></image> -->
-        <view>请完整输入对方的微信名</view>
-        <input class="input" bindinput="input"></input>
-        <view style="display:flex;flex-direction:row;width:12rem" class="center">
-          <view class="button center" @tap="cancel" style="margin-right: 1.5rem">取消</view>
-          <view class="button center" @tap="verify">确定</view>
+      <view class="top">
+        <view class="absolute center">
+          <view style="margin-top:2rem">请输入关联的微信名</view>
+          <input class="input" bindinput='input'></input>
+            <view class="line"></view>
+            <view class="row" style="width: 100%;margin-top:0px;height:100%;">
+              <view class="flex lastcenter"  @tap="cancel">取消</view>
+              <view class="centerline"></view>
+              <view class="flex lastcenter" @tap="verify">确定</view>
+            </view>
+          <!-- <view style="display:flex;flex-direction:row;width:12rem" class="center">
+            <view class="button center" @tap="cancel" style="margin-right: 1.5rem">取消</view>
+            <view class="button center" @tap="verify">确定</view>
+          </view> -->
         </view>
       </view>
     </view>

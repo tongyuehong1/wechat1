@@ -6,13 +6,13 @@
 }
 .essay {
   display: flex;
-  width: 18rem;
-  font-size: 0.8rem;
+  width: 90%;
+  font-size: 0.85rem;
   text-indent: 1.2rem;
   line-height: 1.2rem;
 }
 .image {
-  width: 18rem;
+  width: 90%;
   height: 12rem;
 }
 .top {
@@ -22,13 +22,32 @@
   display: flex;
   border-bottom: 1px solid gray;
 }
+.title {
+  display: flex;
+  margin-top: 30px;
+  font-size: 1rem;
+  width: 90%;
+}
+.date {
+  display: flex;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  color: gray;
+  width: 90%;
+}
 </style>
 <template>
  <view style="height :{{height}}px; width:{{width}}px; background-color: #f4f5f7">
-   <view class="topline"></view>
-   <view class="center top">
-     <image src="{{first}}" class="image" mode="aspectFill"></image>
-   </view>
+  <view class="topline"></view>
+  <view class="center">
+    <view class="title">致橡树</view>
+  </view>
+  <view class="center">
+    <view class="date">写于2017年10月18日</view>
+  </view>
+  <view class="center top">
+    <image src="{{first}}" class="image" mode="aspectFill"></image>
+  </view>
   <view class="center top">
     <view class="essay">这里也是很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的占位符</view>
   </view>

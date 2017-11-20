@@ -25,13 +25,20 @@
       </view>
     </view>
     <view  wx:if="{{showmodel}}">
-      <view class="absolute center">
-        <!-- <image src="{{cancel}}" biantap="cancel"></image> -->
-        <view>请完整输入对方的微信名</view>
-        <input class="input" bindinput="input"/>
-        <view style="display:flex;flex-direction:row;width:12rem" class="center">
-          <view class="button center" bindtap="cancel" style="margin-right: 1.5rem">取消</view>
-          <view class="button center" bindtap="verify">确定</view>
+      <view class="top">
+        <view class="absolute center">
+          <view style="margin-top:2rem">请输入关联的微信名</view>
+          <input class="input" bindinput="input"/>
+            <view class="line"/>
+            <view class="row" style="width: 100%;margin-top:0px;height:100%;">
+              <view class="flex lastcenter" bindtap="cancel">取消</view>
+              <view class="centerline"/>
+              <view class="flex lastcenter" bindtap="verify">确定</view>
+            </view>
+          <!-- <view style="display:flex;flex-direction:row;width:12rem" class="center">
+            <view class="button center" bindtap="cancel" style="margin-right: 1.5rem">取消</view>
+            <view class="button center" bindtap="verify">确定</view>
+          </view> -->
         </view>
       </view>
     </view>
